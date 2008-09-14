@@ -1,6 +1,7 @@
 from NamedObject import NamedObject
 from Container import Container
 from PictureReference import PictureReference
+from Thumbnailer import Thumbnailer
 
 class Index(NamedObject, Container,PictureReference):
 

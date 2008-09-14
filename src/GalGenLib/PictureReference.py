@@ -1,3 +1,5 @@
+from Thumbnailer import Thumbnailer
+
 class PictureReference(object):
 
     def __init__(self, location):
@@ -11,3 +13,5 @@ class PictureReference(object):
 
     pic_location = property(getPicLocation, setPicLocation)
 
+    def getThumbnail(self):
+        return Thumbnailer.getInstance().getThumbnail(pic_location)

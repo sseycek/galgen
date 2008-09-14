@@ -13,7 +13,7 @@ class Project(NamedObject, Container, Modifyable):
         Modifyable.__init__(self)
         self.__filename = filename
         self.__top_level_indexes = []
-        self.__destDirName = ''
+        self.__destDirName = 'C:/GalGenTest/output'
 
     def SetFilename(self, filename):
         self.__filename = filename
@@ -46,3 +46,5 @@ class Project(NamedObject, Container, Modifyable):
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')
 
+    def generateOutput(self):
+        pass

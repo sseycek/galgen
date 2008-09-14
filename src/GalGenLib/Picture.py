@@ -19,3 +19,5 @@ class Picture(NamedObject, Modifyable, PictureReference):
     def __writeEndTag(self, stream):
         stream.write(u'</picture>\n')
 
+    def generateOutput(self):
+        pass

@@ -10,6 +10,7 @@ class Frame(wx.Frame):
     WX_ID_FILE_MENU_NEW = 201
     WX_ID_FILE_MENU_OPEN = 202
     WX_ID_FILE_MENU_SAVE = 203
+    WX_ID_FILE_MENU_GENERATE = 204
     WX_ID_FILE_MENU_EXIT = 210
     WX_ID_FILE_MENU_ABOUT = 301
 
@@ -25,6 +26,7 @@ class Frame(wx.Frame):
         menu_file.Append(Frame.WX_ID_FILE_MENU_NEW, '&New')
         menu_file.Append(Frame.WX_ID_FILE_MENU_OPEN, '&Open')
         menu_file.Append(Frame.WX_ID_FILE_MENU_SAVE, '&Save')
+        menu_file.Append(Frame.WX_ID_FILE_MENU_GENERATE, '&Generate')
         menu_file.AppendSeparator()
         menu_file.Append(Frame.WX_ID_FILE_MENU_EXIT, 'E&xit')
         menu_help = wx.Menu()
@@ -36,6 +38,7 @@ class Frame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnNewProject, id = Frame.WX_ID_FILE_MENU_NEW)
         self.Bind(wx.EVT_MENU, self.OnOpenProject, id = Frame.WX_ID_FILE_MENU_OPEN)
         self.Bind(wx.EVT_MENU, self.OnSaveProject, id = Frame.WX_ID_FILE_MENU_SAVE)
+        self.Bind(wx.EVT_MENU, self.OnGenerateOutput, id = Frame.WX_ID_FILE_MENU_GENERATE)
         self.Bind(wx.EVT_MENU, self.OnAbout, id = Frame.WX_ID_FILE_MENU_ABOUT)
         self.Bind(wx.EVT_MENU, self.OnQuit, id = Frame.WX_ID_FILE_MENU_EXIT)
 
@@ -104,6 +107,13 @@ class Frame(wx.Frame):
             fd = open(Core.getInstance().project.filename, 'w')
             Core.getInstance().project.save(fd)
             fd.close()
+
+    def OnGenerateOutput(self, event):
+        project = Core.getInstance().project
+        if not project:
+            wx.MessageBox('Nothing to generate', 'Save project', wx.OK | wx.ICON_INFORMATION, self)
+        project.generateOutput()
+
 
     def OnNewProject(self, event):
         if Core.getInstance().project:

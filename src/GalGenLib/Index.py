@@ -1,7 +1,7 @@
 from NamedObject import NamedObject
 from Container import Container
 from PictureReference import PictureReference
-import elementtree.ElementTree as ET
+from lxml import etree
 
 class Index(NamedObject, Container,PictureReference):
     __output_grid_rows = 6

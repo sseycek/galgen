@@ -16,9 +16,10 @@ class ProjectHTMLTemplate(object):
     def getHTML(self):
         global default_template
         html = etree.XML(default_template)
-        head = html.xpath('/html/head')[0]
+        ns = {'xhtml': 'http://www.w3.org/1999/xhtml'}
+        head = html.xpath('/xhtml:html/head', namespaces = ns)[0]
         title = etree.SubElement(head, 'title')
-        tile.text = self.__project.name
+        title.text = self.__project.name
         return html
 
     HTML = property(getHTML, None)

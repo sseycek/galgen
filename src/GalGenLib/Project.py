@@ -3,6 +3,7 @@ from Logging import *
 from NamedObject import NamedObject
 from Container import Container
 from Modifyable import Modifyable
+from ProjectHTMLOutputter import ProjectHTMLOutputter
 import Globals
 
 class Project(NamedObject, Container, Modifyable):
@@ -22,6 +23,14 @@ class Project(NamedObject, Container, Modifyable):
         return self.__filename
 
     filename = property(GetFilename, SetFilename)
+
+    def GetDestDirName(self):
+        return self.__destDirName
+
+    def SetDestDirName(self, dir):
+        self.__destDirName = dir
+
+    destination_dir = property(GetDestDirName, SetDestDirName)
 
     def load(self):
         if not self.__filename:
@@ -47,4 +56,5 @@ class Project(NamedObject, Container, Modifyable):
         stream.write(u'</project>\n')
 
     def generateOutput(self):
-        pass
+        outputter = ProjectHTMLOutputter(self)
+        outputter.generateOutput()

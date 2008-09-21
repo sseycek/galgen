@@ -1,4 +1,5 @@
 from ProjectHTMLTemplate import ProjectHTMLTemplate
+from lxml import etree
 
 class ProjectHTMLOutputter(object):
     def __init__(self, project):
@@ -6,4 +7,4 @@ class ProjectHTMLOutputter(object):
 
     def generateOutput(self):
         template = ProjectHTMLTemplate(self.__project)
-        print template.HTML
+        print etree.tostring(template.HTML)

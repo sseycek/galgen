@@ -29,7 +29,7 @@ def main(project_file):
     startGui()
 
 if __name__ == '__main__':
-    #project_file = 'C:/GalGenTest/sample_project.ggp'
-    project_file = '/home/stepan/GalGenTest/sample_project.ggp'
+    project_file = 'C:/GalGenTest/sample_project.ggp'
+    #project_file = '/home/stepan/GalGenTest/sample_project.ggp'
     if len(sys.argv) > 1: project_file = sys.argv[1]
     main(project_file)

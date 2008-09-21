@@ -13,9 +13,9 @@ default_template = '''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "
 </html>'''
 
 
-class DefaultProjectHTMLTemplate(object):
+class NamedObjectHTMLTemplate(object):
     def __init__(self, named_object):
-        self.__named_object = named_objet
+        self.__named_object = named_object
 
     def getHTML(self):
         global default_template

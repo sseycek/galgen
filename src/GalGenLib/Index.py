@@ -1,7 +1,7 @@
 from NamedObject import NamedObject
 from Container import Container
 from PictureReference import PictureReference
-from lxml import etree
+from IndexHTMLOutputter import IndexHTMLOutputter
 
 class Index(NamedObject, Container,PictureReference):
     __output_grid_rows = 6
@@ -26,5 +26,6 @@ class Index(NamedObject, Container,PictureReference):
     def __writeEndTag(self, stream):
         stream.write(u'</index>\n')
 
-    def generateOutput(self, template_dom_doc):
-        template_dom_doc.getElementWithId(__output_element_name)
+    def generateOutput(self):
+        outputter = IndexHTMLOutputter(self)
+        outputter.generateOutput()

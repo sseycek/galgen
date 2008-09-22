@@ -8,3 +8,5 @@ class Container(object):
 
     def getChildren(self):
         return self.__contained
+
+    children = property(getChildren, None)

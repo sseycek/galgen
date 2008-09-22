@@ -1,10 +1,12 @@
 from Observable import Observable
+from GalleryObject import GalleryObject
 
-class NamedObject(Observable):
+class NamedObject(GalleryObject, Observable):
     EVT_NAME_CHANGED = 'NamedObject.Evt.NameChanged'
 
     def __init__(self, name):
-        super(NamedObject, self).__init__()
+        GalleryObject.__init__(self)
+        Observable.__init__(self)
         self.__name = name
 
     def setName(self, name):

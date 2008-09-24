@@ -1,4 +1,5 @@
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
+from Thumbnailer import Thumbnailer
 from lxml import etree
 
 class IndexHTMLOutputter(NamedObjectHTMLOutputter):
@@ -18,6 +19,8 @@ class IndexHTMLOutputter(NamedObjectHTMLOutputter):
                 column_count = 0
             column_count += 1
             td = etree.SubElement(tr, 'td')
+            td.set('pic_location', child.pic_location)
+            thumb = child.thumbnail
             td.text = child.name
 
     def generateOutput(self):

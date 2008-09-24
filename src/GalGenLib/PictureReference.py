@@ -14,4 +14,6 @@ class PictureReference(object):
     pic_location = property(getPicLocation, setPicLocation)
 
     def getThumbnail(self):
-        return Thumbnailer.getInstance().getThumbnail(pic_location)
+        return Thumbnailer.getInstance().getThumbnail(self.pic_location)
+
+    thumbnail = property(getThumbnail, None)

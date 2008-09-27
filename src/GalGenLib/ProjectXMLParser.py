@@ -1,6 +1,7 @@
 import xml.sax
 from Logging import *
-from Index import Index
+from Album import Album
+from Gallery import Gallery
 from Picture import Picture
 
 class ProjectXMLParser(xml.sax.handler.ContentHandler):
@@ -29,8 +30,10 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
             self.__ignore_levels += 1
         elif name == "project":
             self.__startElementProject(attributes)
-        elif name == "index":
-            self.__startElementIndex(attributes)
+        elif name == "gallery":
+            self.__startElementGallery(attributes)
+        elif name == "album":
+            self.__startElementAlbum(attributes)
         elif name == "picture":
             self.__startElementPicture(attributes)
         else:
@@ -44,11 +47,18 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
             raise 'Unexpected - deserialising project, while there are already elements on the stack'
         self.__element_stack.append(self.__project)
 
-    def __startElementIndex(self, attributes):
-        # logDebug('startElementIndex called for "%s"' % attributes['name'])
+    def __startElementGallery(self, attributes):
+        # logDebug('startElementGallery called for "%s"' % attributes['name'])
         if not self.__element_stack:
-            raise 'Unexpected - deserialising index, while there is no project on the stack yet'
-        index = Index(attributes['name'], attributes['pic'])
+            raise 'Unexpected - deserialising gallery, while there is no project on the stack yet'
+        index = Gallery(attributes['name'], attributes['pic'])
+        self.__element_stack.append(index)
+
+    def __startElementAlbum(self, attributes):
+        # logDebug('startElementAlbum called for "%s"' % attributes['name'])
+        if not self.__element_stack:
+            raise 'Unexpected - deserialising album, while there is no project on the stack yet'
+        index = Album(attributes['name'], attributes['pic'])
         self.__element_stack.append(index)
 
     def __startElementPicture(self, attributes):

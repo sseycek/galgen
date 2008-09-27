@@ -21,10 +21,10 @@ class Index(NamedObject, Container,PictureReference):
         self.__writeEndTag(stream)
 
     def __writeStartTag(self, stream):
-        stream.write(u'<index name="%s" pic="%s">\n' % (self.getName(), self.pic_location))
+        raise 'abstract method called'
 
     def __writeEndTag(self, stream):
-        stream.write(u'</index>\n')
+        raise 'abstract method called'
 
     def generateOutput(self):
         outputter = IndexHTMLOutputter(self)

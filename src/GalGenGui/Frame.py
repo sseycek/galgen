@@ -60,8 +60,9 @@ class Frame(wx.Frame):
         save_tool = self.__toolbar.AddSimpleTool(wx.ID_ANY, save_ico, "Save project", "Saves project")
         self.Bind(wx.EVT_MENU, self.OnSaveProject, save_tool)
         self.__toolbar.AddSeparator()
-        new_gal_tool = self.__toolbar.AddSimpleTool(wx.ID_ANY, new_ico, "New gallery", "Creates new gallery")
-        self.Bind(wx.EVT_MENU, self.OnNewGal, new_gal_tool)
+        gen_ico = wx.ArtProvider.GetBitmap(wx.ART_FILE_SAVE_AS, wx.ART_TOOLBAR, icon_size)
+        gen_tool = self.__toolbar.AddSimpleTool(wx.ID_ANY, gen_ico, "Generate", "Generates XHTML Output")
+        self.Bind(wx.EVT_MENU, self.OnGenerateOutput, gen_tool)
         self.__toolbar.Realize()
 
     def __InitSplitter(self):
@@ -123,5 +124,3 @@ class Frame(wx.Frame):
             Core.getInstance().project.name = 'New project'
             self.__GetTree().Populate()
 
-    def OnNewGal(self, event):
-        wx.MessageBox('Should add gallery', 'New gallery', wx.OK | wx.ICON_INFORMATION, self)

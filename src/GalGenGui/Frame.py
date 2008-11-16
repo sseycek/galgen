@@ -15,7 +15,7 @@ class Frame(wx.Frame):
     WX_ID_FILE_MENU_ABOUT = 301
 
     def __init__(self, parent, title):
-        wx.Frame.__init__(self, parent, -1, title)
+        wx.Frame.__init__(self, parent, - 1, title)
         self.__InitMenu()
         self.__InitStatusBar()
         self.__InitToolBar()
@@ -35,19 +35,19 @@ class Frame(wx.Frame):
         menu_bar.Append(menu_file, '&File')
         menu_bar.Append(menu_help, '&Help')
         self.SetMenuBar(menu_bar)
-        self.Bind(wx.EVT_MENU, self.OnNewProject, id = Frame.WX_ID_FILE_MENU_NEW)
-        self.Bind(wx.EVT_MENU, self.OnOpenProject, id = Frame.WX_ID_FILE_MENU_OPEN)
-        self.Bind(wx.EVT_MENU, self.OnSaveProject, id = Frame.WX_ID_FILE_MENU_SAVE)
-        self.Bind(wx.EVT_MENU, self.OnGenerateOutput, id = Frame.WX_ID_FILE_MENU_GENERATE)
-        self.Bind(wx.EVT_MENU, self.OnAbout, id = Frame.WX_ID_FILE_MENU_ABOUT)
-        self.Bind(wx.EVT_MENU, self.OnQuit, id = Frame.WX_ID_FILE_MENU_EXIT)
+        self.Bind(wx.EVT_MENU, self.OnNewProject, id=Frame.WX_ID_FILE_MENU_NEW)
+        self.Bind(wx.EVT_MENU, self.OnOpenProject, id=Frame.WX_ID_FILE_MENU_OPEN)
+        self.Bind(wx.EVT_MENU, self.OnSaveProject, id=Frame.WX_ID_FILE_MENU_SAVE)
+        self.Bind(wx.EVT_MENU, self.OnGenerateOutput, id=Frame.WX_ID_FILE_MENU_GENERATE)
+        self.Bind(wx.EVT_MENU, self.OnAbout, id=Frame.WX_ID_FILE_MENU_ABOUT)
+        self.Bind(wx.EVT_MENU, self.OnQuit, id=Frame.WX_ID_FILE_MENU_EXIT)
 
     def __InitStatusBar(self):
         self.CreateStatusBar()
         self.SetStatusText('Hallo!');
 
     def __InitToolBar(self):
-        icon_size = (16,16)
+        icon_size = (16, 16)
         self.__toolbar = self.CreateToolBar()
         self.__toolbar.SetToolBitmapSize(icon_size)
         new_ico = wx.ArtProvider.GetBitmap(wx.ART_NEW, wx.ART_TOOLBAR, icon_size)
@@ -66,7 +66,7 @@ class Frame(wx.Frame):
         self.__toolbar.Realize()
 
     def __InitSplitter(self):
-        self.__splitter = Splitter(self, -1)
+        self.__splitter = Splitter(self, - 1)
 
     def __GetTree(self):
         return self.__splitter.GetTreePanel().GetTree()
@@ -80,11 +80,11 @@ class Frame(wx.Frame):
 
     def OnOpenProject(self, event):
         dlg = wx.FileDialog(self,
-                            message = "Choose a file",
-                            defaultDir = os.getcwd(),
-                            defaultFile = "",
-                            wildcard = "GalGen project file (*.ggp)|*.ggp|All files (*.*)|*.*",
-                            style = wx.OPEN | wx.CHANGE_DIR)
+                            message="Choose a file",
+                            defaultDir=os.getcwd(),
+                            defaultFile="",
+                            wildcard="GalGen project file (*.ggp)|*.ggp|All files (*.*)|*.*",
+                            style=wx.OPEN | wx.CHANGE_DIR)
         if dlg.ShowModal() == wx.ID_OK:
             if Core.getInstance().project and Core.getInstance().project.modified:
                 wx.MessageBox('%s has changes - save or close it' % Core.getInstance().project.name, 'Open project', wx.OK | wx.ICON_INFORMATION, self)
@@ -98,11 +98,11 @@ class Frame(wx.Frame):
         else:
             if not Core.getInstance().project.filename:
                 dlg = wx.FileDialog(self,
-                                    message = "Choose a file",
-                                    defaultDir = os.getcwd(),
-                                    defaultFile = "",
-                                    wildcard = "GalGen project file (*.ggp)|*.ggp|All files (*.*)|*.*",
-                                    style = wx.SAVE | wx.CHANGE_DIR)
+                                    message="Choose a file",
+                                    defaultDir=os.getcwd(),
+                                    defaultFile="",
+                                    wildcard="GalGen project file (*.ggp)|*.ggp|All files (*.*)|*.*",
+                                    style=wx.SAVE | wx.CHANGE_DIR)
                 if dlg.ShowModal() != wx.ID_OK: return
                 Core.getInstance().project.filename = dlg.GetPath()
             fd = open(Core.getInstance().project.filename, 'w')
@@ -113,7 +113,8 @@ class Frame(wx.Frame):
         project = Core.getInstance().project
         if not project:
             wx.MessageBox('Nothing to generate', 'Save project', wx.OK | wx.ICON_INFORMATION, self)
-        project.generateOutput()
+        else:
+            project.generateOutput()
 
 
     def OnNewProject(self, event):

@@ -1,4 +1,5 @@
 from Index import Index
+from GalleryHTMLOutputter import GalleryHTMLOutputter
 
 class Gallery(Index):
 
@@ -10,3 +11,7 @@ class Gallery(Index):
 
     def __writeEndTag(self, stream):
         stream.write(u'</gallery>\n')
+
+    def generateOutput(self):
+        outputter = GalleryHTMLOutputter(self)
+        outputter.generateOutput()

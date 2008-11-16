@@ -1,7 +1,6 @@
 from NamedObject import NamedObject
 from Container import Container
 from PictureReference import PictureReference
-from IndexHTMLOutputter import IndexHTMLOutputter
 
 class Index(NamedObject, Container,PictureReference):
     __output_grid_rows = 6
@@ -25,7 +24,3 @@ class Index(NamedObject, Container,PictureReference):
 
     def __writeEndTag(self, stream):
         raise 'abstract method called'
-
-    def generateOutput(self):
-        outputter = IndexHTMLOutputter(self)
-        outputter.generateOutput()

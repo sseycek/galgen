@@ -2,7 +2,7 @@ from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from lxml import etree
 
-class IndexHTMLOutputter(NamedObjectHTMLOutputter):
+class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 5
 
     def __init__(self, index):

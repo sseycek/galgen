@@ -1,4 +1,5 @@
 from Index import Index
+from AlbumHTMLOutputter import AlbumHTMLOutputter
 
 class Album(Index):
 
@@ -10,3 +11,7 @@ class Album(Index):
 
     def __writeEndTag(self, stream):
         stream.write(u'</album>\n')
+
+    def generateOutput(self):
+        outputter = AlbumHTMLOutputter(self)
+        outputter.generateOutput()

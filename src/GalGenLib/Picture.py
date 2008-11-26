@@ -1,6 +1,7 @@
 from NamedObject import NamedObject
 from Modifyable import Modifyable
 from PictureReference import PictureReference
+from PictureHTMLOutputter import PictureHTMLOutputter
 
 class Picture(NamedObject, Modifyable, PictureReference):
 
@@ -20,4 +21,5 @@ class Picture(NamedObject, Modifyable, PictureReference):
         stream.write(u'</picture>\n')
 
     def generateOutput(self):
-        pass
+        outputter = PictureHTMLOutputter(self)
+        outputter.generateOutput()

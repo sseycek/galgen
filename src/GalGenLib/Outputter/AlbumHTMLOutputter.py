@@ -1,6 +1,6 @@
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
-from lxml import etree
+from xml.etree import cElementTree as etree
 
 class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 6

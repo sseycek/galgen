@@ -1,5 +1,5 @@
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
-from lxml import etree
+from xml.etree import cElementTree as etree
 
 class ProjectHTMLOutputter(NamedObjectHTMLOutputter):
     def __init__(self, project):

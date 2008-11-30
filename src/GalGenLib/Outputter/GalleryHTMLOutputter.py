@@ -1,6 +1,6 @@
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
-from lxml import etree
+from xml.etree import cElementTree as etree
 
 class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 3
@@ -9,7 +9,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         NamedObjectHTMLOutputter.__init__(self, index)
 
     def addIndexTable(self):
-        content_element = self.html_tree.xpath('id("%s")' % self.content_tag_name)[0]
+        content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         tr = None
         column_count = 0

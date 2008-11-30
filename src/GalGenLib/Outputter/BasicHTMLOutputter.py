@@ -10,6 +10,7 @@ class BasicHTMLOutputter(object):
         self.__entity = entity
         template = HTMLTemplate()
         self.__html_tree = template.HTML
+        
 
     def getHTMLTree(self):
         return self.__html_tree
@@ -20,3 +21,6 @@ class BasicHTMLOutputter(object):
         return self.__entity
 
     entity = property(getEntity, None)
+
+    def getContentTag(self):
+        return self.__html_tree.find(".//div[@id='%s']" % self.content_tag_name)

@@ -11,7 +11,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         NamedObjectHTMLOutputter.__init__(self, index)
 
     def addIndexTable(self):
-        content_element = self.html_tree.xpath('id("%s")' % self.content_tag_name)[0]
+        content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         table.set('cellspacing', '0')
         table.set('cellpadding', '0')
@@ -34,6 +34,6 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
     def generateOutput(self):
         self.updateTitle()
         self.addIndexTable()
-        print etree.tostring(self.html_tree)
+        print etree.tostring(self.html_tree.getroot())
         for child in self.entity.children:
             child.generateOutput()

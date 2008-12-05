@@ -8,7 +8,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         NamedObjectHTMLOutputter.__init__(self, picture)
 
     def addPicture(self):
-        content_element = self.html_tree.xpath('id("%s")' % self.content_tag_name)[0]
+        content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         table.set('height', '696px');
         table.set('width', '696px');
@@ -24,5 +24,5 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def generateOutput(self):
         self.updateTitle()
         self.addPicture()
-        print etree.tostring(self.html_tree)
+        print etree.tostring(self.html_tree.getroot())
         

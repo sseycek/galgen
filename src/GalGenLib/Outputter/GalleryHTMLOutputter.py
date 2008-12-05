@@ -43,6 +43,6 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
     def generateOutput(self):
         self.updateTitle()
         self.addIndexTable()
-        print etree.tostring(self.html_tree)
+        print etree.tostring(self.html_tree.getroot())
         for child in self.entity.children:
             child.generateOutput()

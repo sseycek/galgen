@@ -7,6 +7,6 @@ class ProjectHTMLOutputter(NamedObjectHTMLOutputter):
 
     def generateOutput(self):
         self.updateTitle()
-        print etree.tostring(self.html_tree)
+        print etree.tostring(self.html_tree.getroot())
         for child in self.entity.children:
             child.generateOutput()

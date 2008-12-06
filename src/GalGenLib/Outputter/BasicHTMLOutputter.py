@@ -32,3 +32,4 @@ class BasicHTMLOutputter(object):
 
     def getTitleTag(self):
         return self.getElementById(self.title_tag_id)
+

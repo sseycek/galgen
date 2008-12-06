@@ -55,6 +55,6 @@ class Project(NamedObject, Container, Modifyable):
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')
 
-    def generateOutput(self):
+    def generateOutput(self, target_dir):
         outputter = ProjectHTMLOutputter(self)
-        outputter.generateOutput()
+        outputter.generateOutput(target_dir)

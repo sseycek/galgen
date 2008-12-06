@@ -1,3 +1,4 @@
+import os
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from xml.etree import cElementTree as etree
@@ -21,8 +22,9 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         img.set('src', 'pics/%s' % self.entity.pic_file_name)
         img.set('alt', 'Robson River')
 
-    def generateOutput(self):
+    def generateOutput(self, target_dir):
         self.updateTitle()
         self.addPicture()
-        print etree.tostring(self.html_tree.getroot())
+        file_name = '%s.html' % self.entity.name
+        self.html_tree.write(os.path.join(target_dir, file_name))
         

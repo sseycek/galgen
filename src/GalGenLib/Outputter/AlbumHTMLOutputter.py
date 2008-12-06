@@ -1,3 +1,4 @@
+import os
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from xml.etree import cElementTree as etree
@@ -31,9 +32,11 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             img.set('class', 'thumb')
             img.set('src', '%s/%s' % (self.__thumb_dir, self.entity.pic_file_name))
 
-    def generateOutput(self):
+    def generateOutput(self, target_dir):
         self.updateTitle()
         self.addIndexTable()
-        print etree.tostring(self.html_tree.getroot())
+        target_dir = os.path.join(target_dir, self.entity.name)
+        os.mkdir(target_dir)
+        self.html_tree.write(os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
-            child.generateOutput()
+            child.generateOutput(target_dir)

@@ -114,8 +114,22 @@ class Frame(wx.Frame):
         if not project:
             wx.MessageBox('Nothing to generate', 'Save project', wx.OK | wx.ICON_INFORMATION, self)
         else:
-            project.generateOutput()
+            target_dir_path = self.__GetTargetDir()
+            if target_dir_path and not os.listdir(target_dir_path):
+                print 'Generating output into %s ...' % target_dir_path 
+                project.generateOutput(target_dir_path)
+            else:
+                dlg = wx.MessageDialog(self, 'You have to select an empty target directory!',
+                                       'Generate output',
+                                       wx.OK | wx.ICON_ERROR)
+                dlg.ShowModal()
 
+    def __GetTargetDir(self):
+        ret = None
+        dlg = wx.DirDialog(self, "Target directory:", style = wx.DD_DEFAULT_STYLE)
+        if dlg.ShowModal() == wx.ID_OK:
+            ret = dlg.GetPath()
+        return ret
 
     def OnNewProject(self, event):
         if Core.getInstance().project:

@@ -12,6 +12,6 @@ class Album(Index):
     def __writeEndTag(self, stream):
         stream.write(u'</album>\n')
 
-    def generateOutput(self):
+    def generateOutput(self, target_dir):
         outputter = AlbumHTMLOutputter(self)
-        outputter.generateOutput()
+        outputter.generateOutput(target_dir)

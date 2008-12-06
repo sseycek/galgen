@@ -20,6 +20,6 @@ class Picture(NamedObject, Modifyable, PictureReference):
     def __writeEndTag(self, stream):
         stream.write(u'</picture>\n')
 
-    def generateOutput(self):
+    def generateOutput(self, target_dir):
         outputter = PictureHTMLOutputter(self)
-        outputter.generateOutput()
+        outputter.generateOutput(target_dir)

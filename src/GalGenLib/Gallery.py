@@ -12,6 +12,6 @@ class Gallery(Index):
     def __writeEndTag(self, stream):
         stream.write(u'</gallery>\n')
 
-    def generateOutput(self):
+    def generateOutput(self, target_dir):
         outputter = GalleryHTMLOutputter(self)
-        outputter.generateOutput()
+        outputter.generateOutput(target_dir)

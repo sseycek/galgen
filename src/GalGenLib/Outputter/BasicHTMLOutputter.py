@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from HTMLTemplate import HTMLTemplate
+from xml.etree import cElementTree as etree
 
 class BasicHTMLOutputter(object):
     title_tag_id = 'title'
@@ -33,3 +34,21 @@ class BasicHTMLOutputter(object):
     def getTitleTag(self):
         return self.getElementById(self.title_tag_id)
 
+    def getXHTMLHeader(self):
+        return ''''''
+
+    XHTMLHeader = property(getXHTMLHeader, None)
+    
+    def getXHTMLString(self, tree):
+        output = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n%s' % etree.tostring(tree.getroot())
+        output = output.replace('html:', '')
+        output = output.replace(':html', '')
+        output = output.replace('&amp;#', '&#')
+        return output
+
+    def writeXHTML(self, tree, file_path):
+        output = self.getXHTMLString(tree)
+        fd = open(file_path, 'w')
+        fd.write(output)
+        fd.close()
+        

@@ -46,6 +46,6 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)
         os.mkdir(target_dir)
-        self.html_tree.write(os.path.join(target_dir, 'index.html'))
+        self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
             child.generateOutput(target_dir)

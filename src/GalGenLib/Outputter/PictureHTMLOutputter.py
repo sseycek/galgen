@@ -26,5 +26,5 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self.updateTitle()
         self.addPicture()
         file_name = '%s.html' % self.entity.name
-        self.html_tree.write(os.path.join(target_dir, file_name))
+        self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
         

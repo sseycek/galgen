@@ -8,6 +8,6 @@ class ProjectHTMLOutputter(NamedObjectHTMLOutputter):
 
     def generateOutput(self, target_dir):
         self.updateTitle()
-        self.html_tree.write(os.path.join(target_dir, 'index.html'))
+        self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
             child.generateOutput(target_dir)

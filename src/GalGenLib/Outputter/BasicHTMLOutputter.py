@@ -6,6 +6,7 @@ from xml.etree import cElementTree as etree
 class BasicHTMLOutputter(object):
     title_tag_id = 'title'
     content_tag_id = 'content'
+    css_tag_id = 'css_ref'
 
     def __init__(self, entity):
         self.__entity = entity
@@ -34,6 +35,9 @@ class BasicHTMLOutputter(object):
     def getTitleTag(self):
         return self.getElementById(self.title_tag_id)
 
+    def getCSSTag(self):
+        return self.getElementById(self.css_tag_id)
+
     def getXHTMLHeader(self):
         return ''''''
 
@@ -52,3 +56,7 @@ class BasicHTMLOutputter(object):
         fd.write(output)
         fd.close()
         
+    def updateCssRef(self, level):
+        tag = self.getCSSTag()
+        value = './%sres/styles.css' % (level * '../')
+        tag.set('href', value)

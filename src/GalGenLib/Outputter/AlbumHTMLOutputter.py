@@ -43,6 +43,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
              os.mkdir(os.path.join(album_dir, 'thumbs', '%dx%d' % slide_thumb_size))
 
     def generateOutput(self, target_dir):
+        self.updateCssRef(2)
         self.updateTitle()
         self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)

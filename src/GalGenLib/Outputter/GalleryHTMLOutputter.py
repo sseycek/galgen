@@ -40,6 +40,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
             span.text = '2007'
 
     def generateOutput(self, target_dir):
+        self.updateCssRef(1)
         self.updateTitle()
         self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)

@@ -18,7 +18,6 @@ class Thumbnailer(object):
 
     def __cropImg(self, img):
         (width, height) = img.size
-        logDebug('bbox: %dx%d' % (width, height))
         if height == width:
             return img
         if height > width:

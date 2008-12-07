@@ -5,13 +5,14 @@ from xml.etree import cElementTree as etree
 
 class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 6
-    __thumb_dir = 'thumbs/album'
     __picture_page_dir = '.'
 
     def __init__(self, index):
         NamedObjectHTMLOutputter.__init__(self, index)
 
     def addIndexTable(self):
+        thumb_size = Thumbnailer.getInstance().album_thumb_size
+        thumb_dir = 'thumbs/%dx%d' % (thumb_size[0], thumb_size[1])
         content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         table.set('cellspacing', '0')
@@ -27,14 +28,19 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             column_count += 1
             td = etree.SubElement(tr, 'td')
             a = etree.SubElement(td, 'a')
-            a.set('href', '%s/%s' % (self.__picture_page_dir, self.entity.html_file_name))
+            a.set('href', '%s/%s' % (self.__picture_page_dir, child.html_file_name))
             img = etree.SubElement(a, 'img')
             img.set('class', 'thumb')
-            img.set('src', os.path.join(self.__thumb_dir, self.entity.pic_file_name))
+            img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
 
     def __createSubDirs(self, album_dir):
-        os.mkdir(os.path.join(album_dir, 'thumbs'))
         os.mkdir(os.path.join(album_dir, 'pics'))
+        os.mkdir(os.path.join(album_dir, 'thumbs'))
+        album_thumb_size = Thumbnailer.getInstance().album_thumb_size
+        os.mkdir(os.path.join(album_dir, 'thumbs', '%dx%d' % album_thumb_size))
+        slide_thumb_size = Thumbnailer.getInstance().slide_thumb_size
+        if slide_thumb_size != album_thumb_size:
+             os.mkdir(os.path.join(album_dir, 'thumbs', '%dx%d' % slide_thumb_size))
 
     def generateOutput(self, target_dir):
         self.updateTitle()

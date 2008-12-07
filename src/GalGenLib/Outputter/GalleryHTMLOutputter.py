@@ -1,6 +1,5 @@
 import os
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
-from Thumbnailer import Thumbnailer
 from xml.etree import cElementTree as etree
 
 class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
@@ -21,7 +20,6 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
             column_count += 1
             td = etree.SubElement(tr, 'td')
 #            td.set('pic_location', child.pic_location)
-            thumb = child.thumbnail
             td.text = child.name
             img = etree.SubElement(tr, 'img')
             img.set('src', 'thumbs/Album_Kanada.jpg')

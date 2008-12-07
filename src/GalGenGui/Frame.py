@@ -115,7 +115,7 @@ class Frame(wx.Frame):
             wx.MessageBox('Nothing to generate', 'Save project', wx.OK | wx.ICON_INFORMATION, self)
         else:
             target_dir_path = self.__GetTargetDir()
-            if target_dir_path and not os.listdir(target_dir_path):
+            if target_dir_path: #and not os.listdir(target_dir_path):
                 print 'Generating output into %s ...' % target_dir_path 
                 project.generateOutput(target_dir_path)
             else:

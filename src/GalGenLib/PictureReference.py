@@ -26,8 +26,3 @@ class PictureReference(object):
         return '%s.%s' % (root, self.__html_extension)
 
     html_file_name = property(getHtmlFileName, None)
-
-    def getThumbnail(self):
-        return Thumbnailer.getInstance().getThumbnail(self.pic_location)
-
-    thumbnail = property(getThumbnail, None)

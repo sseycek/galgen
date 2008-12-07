@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 class Core(object):
     __instance = None
 

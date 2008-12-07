@@ -2,6 +2,7 @@ import os
 import shutil
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
+from Core import Core
 from xml.etree import cElementTree as etree
 
 class PictureHTMLOutputter(NamedObjectHTMLOutputter):
@@ -26,8 +27,23 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __copyPicture(self, album_dir):
         shutil.copyfile(self.entity.pic_location, os.path.join(album_dir, 'pics', self.entity.pic_file_name))
 
+    def __generateThumbs(self, album_dir):
+        project = Core.getInstance().project
+        thumbnailer = Thumbnailer.getInstance()
+        slide_thumb_size = thumbnailer.slide_thumb_size
+        thumb_path = os.path.join(album_dir, 'thumbs', '%dx%d' % (slide_thumb_size[0], slide_thumb_size[1]), self.entity.pic_file_name)
+        if not os.path.lexists(thumb_path):
+            thumb = thumbnailer.getThumbnail(self.entity.pic_location, 'slide')
+            thumb.save(thumb_path, 'JPEG')
+        album_thumb_size = thumbnailer.album_thumb_size
+        thumb_path = os.path.join(album_dir, 'thumbs', '%dx%d' % (album_thumb_size[0], album_thumb_size[1]), self.entity.pic_file_name)
+        if not os.path.lexists(thumb_path):
+            thumb = thumbnailer.getThumbnail(self.entity.pic_location, 'album')
+            thumb.save(os.path.join(album_dir, 'thumbs', '%dx%d' % (album_thumb_size[0], album_thumb_size[1]), self.entity.pic_file_name), 'JPEG')
+
     def generateOutput(self, target_dir):
         self.__copyPicture(target_dir)
+        self.__generateThumbs(target_dir)
         self.updateTitle()
         self.addPicture()
         file_name = '%s.html' % self.entity.name

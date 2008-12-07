@@ -4,7 +4,6 @@ from Logging import *
 
 class Thumbnailer(object):
     __instance = None
-    __thumnail_size = (108,108)
 
     def getInstance():
         if not Thumbnailer.__instance:
@@ -14,7 +13,7 @@ class Thumbnailer(object):
 
     def __init__(self):
         self.__cache = {}
-        self.__cachedir = 'C:/GalGenTest/thumbcache'
+        self.__thumb_sizes = {'gallery': (108, 108), 'album': (108, 108), 'slide': (72, 72)}
         Thumbnailer.__instance = self
 
     def __cropImg(self, img):
@@ -40,16 +39,34 @@ class Thumbnailer(object):
                 x2 -= 1
         return img.crop((x1, y1, x2, y2))
 
-    def getThumbnail(self, path):
-        if path in self.__cache:
-            logDebug('Got thumbnail for %s from cache' % path)
-            return self.__cache[path]
+    def getThumbnail(self, path, type):
+        if type not in self.__thumb_sizes.iterkeys():
+            msg = 'Thumbnailer does not know category %s' % type
+            raise msg
+        size = self.__thumb_sizes[type]
+        if size in self.__cache and path in self.__cache[size]:
+            logDebug('Got %dx%d thumbnail for %s from cache' % (size[0], size[1], path))
+            return self.__cache[size][path]
         img = Image.open(path)
         img = self.__cropImg(img)
-        img.thumbnail(self.__thumnail_size, Image.ANTIALIAS)
-        self.__cache[path] = img
-        img.save('%s/%d.jpg' % (self.__cachedir, len(self.__cache)), 'JPEG')
-        logDebug('Added thumbnail for %s to cache' % path)
+        img.thumbnail(size, Image.ANTIALIAS)
+        if size not in self.__cache:
+            self.__cache[size] = {}
+        self.__cache[size][path] = img
+        logDebug('Added %dx%d thumbnail for %s to cache' % (size[0], size[1], path))
         return img
 
+    def getGalleryThumbnailSize(self):
+        return self.__thumb_sizes['gallery']
+    
+    gallery_thumb_size = property(getGalleryThumbnailSize, None)
 
+    def getAlbumThumbnailSize(self):
+        return self.__thumb_sizes['album']
+    
+    album_thumb_size = property(getAlbumThumbnailSize, None)
+
+    def getSlideThumbnailSize(self):
+        return self.__thumb_sizes['slide']
+
+    slide_thumb_size = property(getSlideThumbnailSize, None)

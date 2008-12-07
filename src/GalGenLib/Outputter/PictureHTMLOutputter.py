@@ -1,4 +1,5 @@
 import os
+import shutil
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from xml.etree import cElementTree as etree
@@ -22,7 +23,11 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         img.set('src', 'pics/%s' % self.entity.pic_file_name)
         img.set('alt', 'Robson River')
 
+    def __copyPicture(self, album_dir):
+        shutil.copyfile(self.entity.pic_location, os.path.join(album_dir, 'pics', self.entity.pic_file_name))
+
     def generateOutput(self, target_dir):
+        self.__copyPicture(target_dir)
         self.updateTitle()
         self.addPicture()
         file_name = '%s.html' % self.entity.name

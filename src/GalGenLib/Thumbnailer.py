@@ -45,10 +45,8 @@ class Thumbnailer(object):
             logDebug('Got thumbnail for %s from cache' % path)
             return self.__cache[path]
         img = Image.open(path)
-        #start_time = time()
         img = self.__cropImg(img)
         img.thumbnail(self.__thumnail_size, Image.ANTIALIAS)
-        #logDebug('Thumbnail creation for %s took %f ms' % (path, (time() - start_time) * 1000))
         self.__cache[path] = img
         img.save('%s/%d.jpg' % (self.__cachedir, len(self.__cache)), 'JPEG')
         logDebug('Added thumbnail for %s to cache' % path)

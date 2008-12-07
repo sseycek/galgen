@@ -30,13 +30,18 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             a.set('href', '%s/%s' % (self.__picture_page_dir, self.entity.html_file_name))
             img = etree.SubElement(a, 'img')
             img.set('class', 'thumb')
-            img.set('src', '%s/%s' % (self.__thumb_dir, self.entity.pic_file_name))
+            img.set('src', os.path.join(self.__thumb_dir, self.entity.pic_file_name))
+
+    def __createSubDirs(self, album_dir):
+        os.mkdir(os.path.join(album_dir, 'thumbs'))
+        os.mkdir(os.path.join(album_dir, 'pics'))
 
     def generateOutput(self, target_dir):
         self.updateTitle()
         self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)
         os.mkdir(target_dir)
+        self.__createSubDirs(target_dir)
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
             child.generateOutput(target_dir)

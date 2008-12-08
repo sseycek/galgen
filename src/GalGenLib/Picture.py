@@ -1,14 +1,12 @@
-from NamedObject import NamedObject
 from Modifyable import Modifyable
 from PictureReference import PictureReference
 from PictureHTMLOutputter import PictureHTMLOutputter
 
-class Picture(NamedObject, Modifyable, PictureReference):
+class Picture(Modifyable, PictureReference):
 
     def __init__(self, name, pic_location):
-        NamedObject.__init__(self, name)
         Modifyable.__init__(self)
-        PictureReference.__init__(self, pic_location)
+        PictureReference.__init__(self, name, pic_location)
 
     def save(self, stream):
         self.__writeStartTag(stream)

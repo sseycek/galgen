@@ -1,10 +1,12 @@
 import os
 from Thumbnailer import Thumbnailer
+from NamedObject import NamedObject
 
-class PictureReference(object):
+class PictureReference(NamedObject):
     __html_extension = 'html'
     
-    def __init__(self, location):
+    def __init__(self, name, location):
+        NamedObject.__init__(self, name)
         self.__location = location
 
     def getPicLocation(self):
@@ -21,8 +23,6 @@ class PictureReference(object):
     pic_file_name = property(getPicFileName, None)
 
     def getHtmlFileName(self):
-        basename = os.path.split(self.__location)[1]
-        root = os.path.splitext(basename)[0]
-        return '%s.%s' % (root, self.__html_extension)
+        return '%s.html' % self.name
 
     html_file_name = property(getHtmlFileName, None)

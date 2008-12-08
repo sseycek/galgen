@@ -1,4 +1,5 @@
 import os
+import urllib
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from xml.etree import cElementTree as etree

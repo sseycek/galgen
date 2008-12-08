@@ -1,9 +1,11 @@
 import wx
 from GalGenLib.Picture import Picture
 from GalGenLib.Project import Project
-from GalGenLib.Index import Index
+from GalGenLib.Album import Album
+from GalGenLib.Gallery import Gallery
 from ProjectDetailView import ProjectDetailView
-from IndexDetailView import IndexDetailView
+from AlbumDetailView import AlbumDetailView
+from GalleryDetailView import GalleryDetailView
 from PictureDetailView import PictureDetailView
 
 class DetailPanel(wx.Panel):
@@ -26,8 +28,10 @@ class DetailPanel(wx.Panel):
     def __GetViewForElement(self, element):
         if isinstance(element, Project):
             return ProjectDetailView(self, element)
-        elif isinstance(element, Index):
-            return IndexDetailView(self, element)
+        elif isinstance(element, Album):
+            return AlbumDetailView(self, element)
+        elif isinstance(element, Gallery):
+            return GalleryDetailView(self, element)
         elif isinstance(element, Picture):
             return PictureDetailView(self, element)
 

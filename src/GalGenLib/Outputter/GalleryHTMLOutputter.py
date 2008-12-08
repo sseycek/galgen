@@ -1,6 +1,8 @@
 import os
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from xml.etree import cElementTree as etree
+from Thumbnailer import Thumbnailer
+from Album import Album
 
 class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 3
@@ -8,7 +10,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
     def __init__(self, index):
         NamedObjectHTMLOutputter.__init__(self, index)
 
-    def addIndexTable(self):
+    def __addIndexTable(self):
         content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         tr = None
@@ -39,12 +41,28 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
             span.set('style', 'font-size:11px')
             span.text = '2007'
 
+    def __createSubDirs(self, gallery_dir):
+        os.mkdir(os.path.join(gallery_dir, 'thumbs'))
+        gallery_thumb_size = Thumbnailer.getInstance().gallery_thumb_size
+        os.mkdir(os.path.join(gallery_dir, 'thumbs', '%dx%d' % gallery_thumb_size))
+
+    def __generateAlbumThumbs(self, gallery_dir):
+        thumbnailer = Thumbnailer.getInstance()
+        (width, height) = thumbnailer.gallery_thumb_size
+        for child in self.entity.children:
+            thumb_path = os.path.join(gallery_dir, 'thumbs', '%dx%d' % (width, height), child.pic_file_name)
+            if not os.path.lexists(thumb_path):
+                thumb = thumbnailer.getThumbnail(child.pic_location, 'gallery')
+                thumb.save(thumb_path, 'JPEG')
+    
     def generateOutput(self, target_dir):
-        self.updateCssRef(1)
-        self.updateTitle()
-        self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)
         os.mkdir(target_dir)
+        self.__createSubDirs(target_dir)
+        self.__generateAlbumThumbs(target_dir)
+        self.updateCssRef(1)
+        self.updateTitle()
+        self.__addIndexTable()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
             child.generateOutput(target_dir)

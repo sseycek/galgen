@@ -1,6 +1,7 @@
 import wx
 import App
 from Tree import Tree
+from Container import Container
 
 class TreePanel(wx.Panel):
 
@@ -21,7 +22,6 @@ class TreePanel(wx.Panel):
             msg = str(e)
             print ('ERR: %s' % msg)
 
-
     def GetTree(self):
         return self.__tree
 
@@ -34,3 +34,9 @@ class TreePanel(wx.Panel):
         if item:
             element = self.__tree.GetPyData(item).element
             self.GetParent().detail_panel.Display(element)
+            # notify frame
+            self.GetParent().GetParent().OnTreeSelChanged(event)
+
+    def Notify(self, event, observed):
+         if event == Container.EVT_CHILD_ADDED or event == Container.EVT_CHILD_REMOVED:
+            self.__tree.Populate()

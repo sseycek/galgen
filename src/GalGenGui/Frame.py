@@ -3,6 +3,9 @@ import wx
 from GalGenLib import Globals
 from GalGenLib.Core import Core
 from GalGenLib.Project import Project
+from GalGenLib.Gallery import Gallery
+from GalGenLib.Album import Album
+from GalGenLib.Picture import Picture
 from Splitter import *
 
 class Frame(wx.Frame):
@@ -12,34 +15,42 @@ class Frame(wx.Frame):
     WX_ID_FILE_MENU_SAVE = 203
     WX_ID_FILE_MENU_GENERATE = 204
     WX_ID_FILE_MENU_EXIT = 210
-    WX_ID_FILE_MENU_ABOUT = 301
+    WX_ID_EDIT_MENU_ADD = 301
+    WX_ID_EDIT_MENU_REMOVE = 302
+    WX_ID_HELP_MENU_ABOUT = 401
 
     def __init__(self, parent, title):
-        wx.Frame.__init__(self, parent, - 1, title)
+        wx.Frame.__init__(self, parent, -1, title)
         self.__InitMenu()
         self.__InitStatusBar()
         self.__InitToolBar()
         self.__InitSplitter()
 
     def __InitMenu(self):
-        menu_file = wx.Menu()
-        menu_file.Append(Frame.WX_ID_FILE_MENU_NEW, '&New')
-        menu_file.Append(Frame.WX_ID_FILE_MENU_OPEN, '&Open')
-        menu_file.Append(Frame.WX_ID_FILE_MENU_SAVE, '&Save')
-        menu_file.Append(Frame.WX_ID_FILE_MENU_GENERATE, '&Generate')
-        menu_file.AppendSeparator()
-        menu_file.Append(Frame.WX_ID_FILE_MENU_EXIT, 'E&xit')
-        menu_help = wx.Menu()
-        menu_help.Append(Frame.WX_ID_FILE_MENU_ABOUT, '&About...')
-        menu_bar = wx.MenuBar()
-        menu_bar.Append(menu_file, '&File')
-        menu_bar.Append(menu_help, '&Help')
-        self.SetMenuBar(menu_bar)
+        self.__menu_file = wx.Menu()
+        self.__menu_file.Append(Frame.WX_ID_FILE_MENU_NEW, '&New\tCTRL+N')
+        self.__menu_file.Append(Frame.WX_ID_FILE_MENU_OPEN, '&Open\tCTRL+O')
+        self.__menu_file.Append(Frame.WX_ID_FILE_MENU_SAVE, '&Save\tCTRL+S')
+        self.__menu_file.Append(Frame.WX_ID_FILE_MENU_GENERATE, '&Generate\tCTRL+G')
+        self.__menu_file.AppendSeparator()
+        self.__menu_file.Append(Frame.WX_ID_FILE_MENU_EXIT, 'E&xit\tCTRL+Q')
+        self.__menu_edit = wx.Menu()
+        self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD, '&Add...\tINS')
+        self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_REMOVE, '&Remove\tDEL')
+        self.__menu_help = wx.Menu()
+        self.__menu_help.Append(Frame.WX_ID_HELP_MENU_ABOUT, '&About...\tF1')
+        self.__menu_bar = wx.MenuBar()
+        self.__menu_bar.Append(self.__menu_file, '&File')
+        self.__menu_bar.Append(self.__menu_edit, '&Edit')
+        self.__menu_bar.Append(self.__menu_help, '&Help')
+        self.SetMenuBar(self.__menu_bar)
         self.Bind(wx.EVT_MENU, self.OnNewProject, id=Frame.WX_ID_FILE_MENU_NEW)
         self.Bind(wx.EVT_MENU, self.OnOpenProject, id=Frame.WX_ID_FILE_MENU_OPEN)
         self.Bind(wx.EVT_MENU, self.OnSaveProject, id=Frame.WX_ID_FILE_MENU_SAVE)
         self.Bind(wx.EVT_MENU, self.OnGenerateOutput, id=Frame.WX_ID_FILE_MENU_GENERATE)
-        self.Bind(wx.EVT_MENU, self.OnAbout, id=Frame.WX_ID_FILE_MENU_ABOUT)
+        self.Bind(wx.EVT_MENU, self.OnEditAdd, id=Frame.WX_ID_EDIT_MENU_ADD)
+        self.Bind(wx.EVT_MENU, self.OnEditRemove, id=Frame.WX_ID_EDIT_MENU_REMOVE)
+        self.Bind(wx.EVT_MENU, self.OnAbout, id=Frame.WX_ID_HELP_MENU_ABOUT)
         self.Bind(wx.EVT_MENU, self.OnQuit, id=Frame.WX_ID_FILE_MENU_EXIT)
 
     def __InitStatusBar(self):
@@ -77,6 +88,23 @@ class Frame(wx.Frame):
     def OnAbout(self, event):
         wx.MessageBox('This is an application or creating photo gallery sites.',
         'About %s' % Globals.ProgName, wx.OK | wx.ICON_INFORMATION, self)
+
+    def OnEditAdd(self, event):
+        tree_item_id = self.__GetTree().GetSelection()
+        element = self.__GetTree().GetPyData(tree_item_id).element
+        if isinstance(element, Project):
+            element.addChild(Gallery('Gallery', ''))
+        elif isinstance(element, Gallery):
+            element.addChild(Album('Album', ''))
+        elif isinstance(element, Album):
+            element.addChild(Picture('Picture', ''))
+        else:
+            raise Exception, 'Don\'t know what to add'
+
+    def OnEditRemove(self, event):
+        tree_item_id = self.__GetTree().GetSelection()
+        element = self.__GetTree().GetPyData(tree_item_id).element
+        element.parent.removeChild(element)
 
     def OnOpenProject(self, event):
         dlg = wx.FileDialog(self,
@@ -139,3 +167,17 @@ class Frame(wx.Frame):
             Core.getInstance().project.name = 'New project'
             self.__GetTree().Populate()
 
+    def OnTreeSelChanged(self, event):
+        item = event.GetItem()
+        if item:
+            element = self.__GetTree().GetPyData(item).element
+            if isinstance(element, Project):
+                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_ADD, True)
+                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_REMOVE, False)
+            elif isinstance(element, Picture):
+                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_ADD, False)
+                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_REMOVE, True)
+            else:
+                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_ADD, True)
+                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_REMOVE, True)
+        

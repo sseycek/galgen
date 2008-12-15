@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 from GalGenLib.NamedObject import NamedObject
+from GalGenLib.Container import Container
 
 class TreeItem(object):
 
@@ -6,7 +9,12 @@ class TreeItem(object):
         self.__tree = tree
         self.__element = element
         self.__id = id
+        # subscribe item for name changes of underlying object
         element.subscribe(NamedObject.EVT_NAME_CHANGED, self)
+        if isinstance(element, Container):
+            # subscribe TreePanel for add/remove events
+            element.subscribe(Container.EVT_CHILD_ADDED, self.__tree.GetParent())
+            element.subscribe(Container.EVT_CHILD_REMOVED, self.__tree.GetParent())
 
     def GetElement(self):
         return self.__element

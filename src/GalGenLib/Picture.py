@@ -1,12 +1,14 @@
 from Modifyable import Modifyable
 from PictureReference import PictureReference
+from Contained import Contained
 from PictureHTMLOutputter import PictureHTMLOutputter
 
-class Picture(Modifyable, PictureReference):
+class Picture(Modifyable, PictureReference, Contained):
 
     def __init__(self, name, pic_location):
         Modifyable.__init__(self)
         PictureReference.__init__(self, name, pic_location)
+        Contained.__init__(self)
 
     def save(self, stream):
         self.__writeStartTag(stream)

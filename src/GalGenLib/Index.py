@@ -11,14 +11,14 @@ class Index(Container,PictureReference):
         PictureReference.__init__(self, name, pic_location)
 
     def save(self, stream):
-        self.__writeStartTag(stream)
+        self._writeStartTag(stream)
         children = self.getChildren()
         for child in children:
             child.save(stream)
-        self.__writeEndTag(stream)
+        self._writeEndTag(stream)
 
-    def __writeStartTag(self, stream):
+    def _writeStartTag(self, stream):
         raise 'abstract method called'
 
-    def __writeEndTag(self, stream):
+    def _writeEndTag(self, stream):
         raise 'abstract method called'

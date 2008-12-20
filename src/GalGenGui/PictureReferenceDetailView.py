@@ -19,11 +19,11 @@ class PictureReferenceDetailView(NamedObjectDetailView):
         self._control_grid.Add(self._img_location_edit, (2,2))
         self._control_grid.Add(self._find_button, (2,3))
 
-    def __IsImgLocationModified(self):
+    def _IsImgLocationModified(self):
         return self._img_location_edit.GetValue() != self.element.pic_location
 
     def _IsModified(self):
-        return (self.__IsImgLocationModified() or super(PictureReferenceDetailView, self)._IsModified())
+        return (self._IsImgLocationModified() or super(PictureReferenceDetailView, self)._IsModified())
 
     def __OnImgLocationEdited(self, event):
         self._OnEdited()
@@ -41,10 +41,10 @@ class PictureReferenceDetailView(NamedObjectDetailView):
 
     def _OnApply(self, event):
         super(PictureReferenceDetailView, self)._OnApply(event)
-        if self.__IsImgLocationModified():
+        if self._IsImgLocationModified():
             self.element.pic_location = self._img_location_edit.GetValue()
 
     def _OnCancel(self, event):
         super(PictureReferenceDetailView, self)._OnCancel(event)
-        if self.__IsImgLocationModified():
+        if self._IsImgLocationModified():
             self._img_location_edit.SetValue(self.element.pic_location)

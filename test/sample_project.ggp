@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Sample project" galgen-version="0.1">
+<project name="Sample project" galgen-version="0.1" xhtml-template="C:/GalGenTest/template.html">
 <gallery name="Cat 1" pic="C:/GalGenTest/Pic1.jpg">
 <album name="Gal 1" pic="C:/GalGenTest/Pic1.jpg">
 <picture name="Pic 1" location="C:/GalGenTest/Pic1.jpg">

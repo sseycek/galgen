@@ -8,13 +8,14 @@ import Globals
 
 class Project(NamedObject, Container, Modifyable):
 
-    def __init__(self, filename = '', name = '', template=''):
+    def __init__(self, filename = '', name = '', template = '', style_directory = ''):
         NamedObject.__init__(self, name)
         Container.__init__(self)
         Modifyable.__init__(self)
         self.__filename = filename
         self.__top_level_indexes = []
         self.__xhtml_template = template
+        self.__style_directory = style_directory
 
     def SetFilename(self, filename):
         self.__filename = filename
@@ -31,6 +32,14 @@ class Project(NamedObject, Container, Modifyable):
         return self.__xhtml_template
 
     xhtml_template = property(GetXhtmlTemplate, SetXhtmlTemplate)
+
+    def SetStyleDirectory(self, dir):
+        self.__style_directory = dir
+
+    def GetStyleDirectory(self):
+        return self.__style_directory
+
+    style_directory = property(GetStyleDirectory, SetStyleDirectory)
 
     def load(self):
         if not self.__filename:
@@ -50,7 +59,11 @@ class Project(NamedObject, Container, Modifyable):
         stream.write(u'<?xml version="1.0" encoding="UTF-8"?>\n')
 
     def __writeStartTag(self, stream):
-        stream.write(u'<project name="%s" galgen-version="%s" xhtml-template="%s">\n' % (self.getName(), Globals.ProgVersion, self.__xhtml_template))
+        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
+                     ('name', self.name,
+                      'galgen-version', Globals.ProgVersion,
+                      'xhtml-template', self.__xhtml_template,
+                      'style-directory', self.__style_directory))
 
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')

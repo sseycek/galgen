@@ -2,11 +2,11 @@
 <project
  name="Sample project "
  galgen-version="0.9"
- xhtml-template="C:/GalGenTest/template.html"
- style-directory="C:/GalGenTest">
-<gallery name="Cat 1" pic="C:/GalGenTest/Pic1.jpg">
+ xhtml-template="C:\GalGenTest\template.html"
+ style-directory="C:\GalGenTest\res">
+<gallery name="Cat 1" pic="C:\GalGenTest\Pic1.jpg">
 <album name="Gal 1" pic="C:/GalGenTest/Pic1.jpg">
-<picture name="Pic 1" location="C:/GalGenTest/Pic1.jpg">
+<picture name="Pic 1" location="C:/GalGenTest/Pic2.jpg">
 </picture>
 <picture name="Pic 2" location="C:/GalGenTest/Pic2.jpg">
 </picture>

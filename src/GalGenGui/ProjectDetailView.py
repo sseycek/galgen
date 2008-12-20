@@ -1,24 +1,33 @@
+import os
 import wx
 from NamedObjectDetailView import NamedObjectDetailView
 
 class ProjectDetailView(NamedObjectDetailView):
-
+    
     def __init__(self, panel, element):
         super(ProjectDetailView, self).__init__(panel, element)
 
     def __AddXhtmlTemplateControl(self):
         label = wx.StaticText(self._main_panel, -1, 'XHTML Template')
         self.__xhtml_template_edit = wx.TextCtrl(self._main_panel, -1, self.element.xhtml_template, size = (200, -1))
+        self.__find_xhtml_template_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
+        self._main_panel.Bind(wx.EVT_BUTTON, self.__OnXhtmlTemplateFindButton, self.__find_xhtml_template_button)
+        self.__find_xhtml_template_button.SetSize(self.__find_xhtml_template_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnXhtmlTemplateEdited, self.__xhtml_template_edit)
         self._control_grid.Add(label, (2, 1))
         self._control_grid.Add(self.__xhtml_template_edit, (2, 2))
+        self._control_grid.Add(self.__find_xhtml_template_button, (2, 3))
 
     def __AddStyleDirectoryControl(self):
         label = wx.StaticText(self._main_panel, -1, 'Style Directory')
         self.__style_directory_edit = wx.TextCtrl(self._main_panel, -1, self.element.style_directory, size = (200, -1))
+        self.__find_style_directory_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
+        self._main_panel.Bind(wx.EVT_BUTTON, self.__OnStyleDirectoryFindButton, self.__find_style_directory_button)
+        self.__find_style_directory_button.SetSize(self.__find_style_directory_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnStyleDirectoryEdited, self.__style_directory_edit)
         self._control_grid.Add(label, (3, 1))
         self._control_grid.Add(self.__style_directory_edit, (3, 2))
+        self._control_grid.Add(self.__find_style_directory_button, (3, 3))
 
     def _FillPropertySizer(self):
         super(ProjectDetailView, self)._FillPropertySizer()
@@ -32,8 +41,25 @@ class ProjectDetailView(NamedObjectDetailView):
         if self._main_panel.event_handlers_enabled:
             self._OnEdited()
 
+    def __OnXhtmlTemplateFindButton(self, event):
+        dlg = wx.FileDialog(self._main_panel,
+                            message="XHMTL template file",
+                            defaultDir=os.getcwd(),
+                            defaultFile="",
+                            wildcard="HTML files (*.html)|*.html",
+                            style=wx.OPEN | wx.CHANGE_DIR)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.__xhtml_template_edit.SetValue(dlg.GetPath())
+            self._OnEdited()
+
     def __OnStyleDirectoryEdited(self, event):
         if self._main_panel.event_handlers_enabled:
+            self._OnEdited()
+
+    def __OnStyleDirectoryFindButton(self, event):
+        dlg = wx.DirDialog(self._main_panel, "Style Directory", style = wx.DD_DEFAULT_STYLE)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.__style_directory_edit.SetValue(dlg.GetPath())
             self._OnEdited()
 
     def __IsXhtmlTemplateModified(self):

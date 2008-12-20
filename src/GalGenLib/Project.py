@@ -8,13 +8,13 @@ import Globals
 
 class Project(NamedObject, Container, Modifyable):
 
-    def __init__(self, filename = '', name = ''):
+    def __init__(self, filename = '', name = '', template=''):
         NamedObject.__init__(self, name)
         Container.__init__(self)
         Modifyable.__init__(self)
         self.__filename = filename
         self.__top_level_indexes = []
-        self.__destDirName = 'C:/GalGenTest/output'
+        self.__xhtml_template = template
 
     def SetFilename(self, filename):
         self.__filename = filename
@@ -24,13 +24,13 @@ class Project(NamedObject, Container, Modifyable):
 
     filename = property(GetFilename, SetFilename)
 
-    def GetDestDirName(self):
-        return self.__destDirName
+    def SetXhtmlTemplate(self, template):
+        self.__xhtml_template = template
 
-    def SetDestDirName(self, dir):
-        self.__destDirName = dir
+    def GetXhtmlTemplate(self):
+        return self.__xhtml_template
 
-    destination_dir = property(GetDestDirName, SetDestDirName)
+    xhtml_template = property(GetXhtmlTemplate, SetXhtmlTemplate)
 
     def load(self):
         if not self.__filename:
@@ -50,7 +50,7 @@ class Project(NamedObject, Container, Modifyable):
         stream.write(u'<?xml version="1.0" encoding="UTF-8"?>\n')
 
     def __writeStartTag(self, stream):
-        stream.write(u'<project name="%s" galgen-version="%s">\n' % (self.getName(), Globals.ProgVersion))
+        stream.write(u'<project name="%s" galgen-version="%s" xhtml-template="%s">\n' % (self.getName(), Globals.ProgVersion, self.__xhtml_template))
 
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')

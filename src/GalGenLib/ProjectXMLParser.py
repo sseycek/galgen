@@ -42,7 +42,8 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
 
     def __startElementProject(self, attributes):
         # logDebug('startElementProject called for "%s"' % attributes['name'])
-        self.__project.setName(attributes['name'])
+        self.__project.name = attributes['name']
+        self.__project.xhtml_template = attributes['xhtml-template']
         if self.__element_stack:
             raise 'Unexpected - deserialising project, while there are already elements on the stack'
         self.__element_stack.append(self.__project)

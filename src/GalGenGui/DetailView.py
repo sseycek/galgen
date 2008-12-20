@@ -28,12 +28,16 @@ class DetailView(object):
     def _FillPropertySizer(self):
         pass
 
+    def _FillPropertySizerBelowButtons(self):
+        pass
+    
     def FillPanel(self):
         self.__CreateSizers()
         self.__CreateLabel()
         self.__FillMainSizer()
         self._FillPropertySizer()
         self._AddButtons()
+        self._FillPropertySizerBelowButtons()
         self._main_panel.Layout()
 
     def GetElement(self):

@@ -1,0 +1,281 @@
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 11px;
+	color: #666666;	
+	margin: 0px;
+	padding: 0px;
+	background-color: #111111; 
+}
+
+a:link {
+	text-decoration: none;
+ 	color: #0000cc;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #993399;
+}
+
+a:focus {
+	text-decoration: none;
+	color: #a60000;
+}
+a:hover {
+	text-decoration: none;
+	color: #a60000;
+}
+
+a:active {
+	text-decoration: none;
+ 	color: #ffcc00;
+}
+
+.albumzelle {
+	width:232px;
+	height:116px;
+	margin-left:2px;
+	margin-right:2px
+}
+
+.album {
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.album:link {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.album:visited {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.album:focus {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #a60000;
+}
+.album:hover {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #a60000;
+}
+
+.album:active {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+ 	color: #ffcc00;
+}
+
+.gal-info {
+	margin-left: 18px;
+	border-left: 6px solid #111111;	
+	color: #666666;
+}
+	
+.gal-info:link {
+	margin-left: 18px;
+	border-left: 6px solid #111111;	
+	color: #666666;
+}
+
+.gal-info:visited {
+	text-decoration: none;
+	color: #666666;
+	margin-left: 18px;
+	border-left: 6px solid #111111;
+}
+
+.gal-info:focus{
+	text-decoration: none;
+	font-weight: bold;
+	color: #a60000;
+	margin-left: 18px;
+	border-left: 6px solid #111111;
+}
+
+.gal-info:hover {
+	text-decoration: none;
+	font-weight: bold;
+	color: #a60000;
+	margin-left: 18px;
+	border-left: 6px solid #111111;
+}
+
+.gal-info:active {
+	text-decoration: none;
+	font-weight: bold;
+ 	color: #ffcc00;
+	margin-left: 18px;
+	border-left: 6px solid #111111;
+}
+
+.logo { 
+	background-image:url(img/Logo_link.png);
+}
+
+.navi { 
+	border: 2px solid #111111;
+}
+
+.navi:hover { 
+	border: 2px solid #a60000;
+}
+
+.navi:active {
+ 	border: 2px solid #ffcc00;
+}
+
+.navithumb { 
+	border: 2px solid #111111;
+}
+
+.navithumb:hover { 
+	border: 2px solid #a60000;
+}
+
+.navithumb:active { 
+	border: 2px solid #ffcc00;
+}
+
+.navizelle-left { 
+	width: 58px;
+	height: 38px;
+	margin-right: 8px;
+	vertical-align: middle;	
+	text-align: right;
+}
+
+.navizelle-right { 
+	margin-left: 8px;
+	vertical-align: middle;	
+	text-align: left;
+}
+
+.thumb { 
+	border: 2px solid #000000;
+	border-collapse: collapse;
+}
+
+.thumb:hover { 
+	border: 2px solid #a60000;
+	border-collapse: collapse;
+}
+
+.thumb:active { 
+	border: 2px solid #ffcc00;
+	border-collapse: collapse;
+}
+.thumbzelle_small {
+	width: 116px;
+	height: 80px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.table1 {
+	border-collapse: collapse;
+	border: 0px;
+	padding: 0px;
+}
+
+.title { 
+	font-size: 14px;
+	font-weight: bold;	
+	margin-right: 8px;		
+	margin-left: 8px;
+	margin-bottom: 2px;
+}
+	
+.subtitle { 
+	font-size: 11px;
+	font-weight: bold;	
+	margin-right: 8px;		
+	margin-left: 8px;
+}
+
+.txtwindow {
+	font-size: 13px;
+	color: #000000;	
+	background-color: #cccccc;
+	border: 0px;
+}
+
+#leerzelle1 {
+	width:190px;
+	height:40px;
+}
+
+#logozelle {
+	width:696px; 
+}
+
+#leerzelle2 {
+	width:116px;
+}
+
+#menuzelle {
+	height:580px; 
+	font-size:12px;
+	line-height: 110%;
+	vertical-align:top;
+}
+
+#hauptzelle {
+	border-collapse:collapse; 
+	border:1px solid #333333;
+	background-color:#000000;	
+	vertical-align: middle;
+	text-align: center;
+}
+
+#thumbzelle {
+	height: 580px;
+}
+
+#titelzelle {
+	width: 174px;
+	height:58px;
+	line-height: 180%;
+	color: #666666;
+	border-bottom: 1px solid #a60000;
+	text-align:left;
+	vertical-align: bottom;
+}
+
+#subtitelzelle {
+	height:58px;
+	line-height: 180%;	
+	color: #666666;
+	text-align:left;
+	vertical-align:top;
+}
+
+#navizelle {	
+	height:116px;
+}
+
+#effect1 {
+	color: #999999;
+	font-weight: bold;
+	border-left:6px solid #a60000;
+	border-bottom:1px solid #a60000;
+}
+
+#effect2 {
+	border-left: 8px solid #a60000;
+	border-right: 8px solid #a60000;
+	border-top: 2px solid #a60000;
+	border-bottom: 2px solid #a60000;
+}

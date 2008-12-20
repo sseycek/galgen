@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import os
 from xml.etree import cElementTree as etree
+from GalGenLib.Core import Core
 
 default_template = u'''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -280,7 +282,17 @@ class HTMLTemplate(object):
         global default_template
         parser = etree.XMLTreeBuilder()
         self.__addXhtmlEntitiesToParser(parser)
-        parser.feed(default_template)
+        project = Core.getInstance().project
+        if project.xhtml_template and os.path.exists(project.xhtml_template):
+            fd = open(project.xhtml_template, 'r')
+            try:
+                parser.feed(fd.read())
+                fd.close()
+            except:
+                fd.close()
+                raise
+        else:
+            parser.feed(default_template)
         html = parser.close()
         return etree.ElementTree(html)
 

@@ -5,7 +5,7 @@ from xml.etree import cElementTree as etree
 
 class BasicHTMLOutputter(object):
     title_tag_id = 'title'
-    content_tag_id = 'content'
+    content_tag_id = 'hauptzelle'
     css_tag_id = 'css_ref'
 
     def __init__(self, entity):

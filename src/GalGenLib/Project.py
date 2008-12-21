@@ -1,3 +1,5 @@
+import os
+import shutil
 from ProjectXMLParser import ProjectXMLParser
 from Logging import *
 from NamedObject import NamedObject
@@ -69,5 +71,9 @@ class Project(NamedObject, Container, Modifyable):
         stream.write(u'</project>\n')
 
     def generateOutput(self, target_dir):
+        if os.path.exists(self.style_directory):
+            shutil.copytree(self.style_directory, os.path.join(target_dir, 'style'))
+        else:
+            raise Exception, 'Style directory not found'
         outputter = ProjectHTMLOutputter(self)
         outputter.generateOutput(target_dir)

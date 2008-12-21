@@ -58,5 +58,5 @@ class BasicHTMLOutputter(object):
         
     def updateCssRef(self, level):
         tag = self.getCSSTag()
-        value = './%sres/styles.css' % (level * '../')
+        value = './%sstyle/styles.css' % (level * '../')
         tag.set('href', value)

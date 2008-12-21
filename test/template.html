@@ -11,11 +11,11 @@
     <link rel="stylesheet" type="text/css" href="style/styles.css" id="css_ref"/>
     <script type="text/javascript">
       Normal1 = new Image();
-      Normal1.src = "img/Logo_link.png";   
+      Normal1.src = "style/img/Logo_link.png";   
       Highlight1 = new Image();
-      Highlight1.src = "img/Logo_hover.png"; 
+      Highlight1.src = "style/img/Logo_hover.png"; 
       Highlight2 = new Image();
-      Highlight2.src = "img/Logo_active.png"; 
+      Highlight2.src = "style/img/Logo_active.png"; 
       function Bildwechsel (Bildnr, Bildobjekt)
       {window.document.images[Bildnr].src = Bildobjekt.src;}
     </script>	
@@ -29,7 +29,7 @@
         <!-- Logo-Zelle -->
         <td id="logozelle">
           <a href="index.html" onmouseover="Bildwechsel(0, Highlight1)" onmouseout="Bildwechsel(0, Normal1)" onclick="Bildwechsel(0, Highlight2)" title="HOME">
-		    <img src="img/Logo_link.png" alt="Home" />
+		        <img src="style/img/Logo_link.png" alt="Home" id="logo" />
           </a>
         </td>	
         <!-- Leer-Zelle -->
@@ -39,7 +39,7 @@
       <!--Menu_Zelle -->
       <tr>
         <td id="menuzelle">
-          <img src="img/Galerien.png" alt="Galerien" /><br /><br />		
+          <img src="style/img/Galerien.png" alt="Galerien" /><br /><br />		
           <a href="reisen.html" class="gal-info" id="effect1" >&nbsp; Reisen</a><br /><br />
           <a href="oesterreich.html" class="gal-info">&nbsp; Österreich</a><br /><br />
           <a href="flora_u_fauna.html" class="gal-info">&nbsp; Flora &amp; Fauna</a><br /><br />
@@ -50,7 +50,7 @@
           <a href="details.html" class="gal-info">&nbsp; Pêle-mêle</a><br /><br />
           <a href="kreativ.html" class="gal-info">&nbsp; Experiment &amp; BW</a><br /><br />
           <br />
-          <img src="img/Info.png" alt="Info" />
+          <img src="style/img/Info.png" alt="Info" />
           <br /><br />
           <a href="diese_seiten.html" class="gal-info">&nbsp; Diese Seiten</a><br /><br />
           <a href="neues.html" class="gal-info">&nbsp; Neu &amp; aktualisiert</a><br /><br />		

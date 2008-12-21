@@ -279,3 +279,7 @@ a:active {
 	border-top: 2px solid #a60000;
 	border-bottom: 2px solid #a60000;
 }
+
+#logo {
+	border-style: none;
+}

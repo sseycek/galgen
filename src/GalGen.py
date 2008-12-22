@@ -1,3 +1,4 @@
+import os
 import sys
 sys.path.append('./GalGenLib')
 sys.path.append('./GalGenLib/Outputter')
@@ -21,18 +22,19 @@ def startGui():
     a.MainLoop()
 
 def main(project_file):
-    project = Project(project_file)
-    project.load()
-    Core.getInstance().project = project
-    #writeNames(project)
-    #fd = open('C:/GalGenTest/out.xml', 'w')
-    #project.save(fd)
-    #fd.close()
-    #print('Saved project file ...')
+    if project_file:
+        project = Project(project_file)
+        project.load()
+        Core.getInstance().project = project
     startGui()
 
 if __name__ == '__main__':
-    project_file = 'C:/GalGenTest/sample_project.ggp'
-    #project_file = '/home/stepan/GalGenTest/sample_project.ggp'
-    if len(sys.argv) > 1: project_file = sys.argv[1]
+    if len(sys.argv) > 1:
+        project_file = sys.argv[1]
+    elif os.path.exists('C:/GalGenTest/sample_project1.ggp'):
+        project_file = 'C:/GalGenTest/sample_project.ggp'
+    elif os.path.exists('/home/stepan/GalGenTest/sample_project.ggp'):
+        project_file = '/home/stepan/GalGenTest/sample_project.ggp'
+    else:
+        project_file = ''
     main(project_file)

@@ -46,6 +46,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
     def generateOutput(self, target_dir):
         self.updateCssRef(2)
         self.updateTitle()
+        self.disableNaviControls()
         self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)
         os.mkdir(target_dir)

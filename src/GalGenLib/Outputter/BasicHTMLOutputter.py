@@ -7,6 +7,7 @@ class BasicHTMLOutputter(object):
     title_tag_id = 'title'
     content_tag_id = 'hauptzelle'
     css_tag_id = 'css_ref'
+    navi_tag_id = 'navizelle'
 
     def __init__(self, entity):
         self.__entity = entity
@@ -38,6 +39,9 @@ class BasicHTMLOutputter(object):
     def getCSSTag(self):
         return self.getElementById(self.css_tag_id)
 
+    def getNaviTag(self):
+        return self.getElementById(self.navi_tag_id)
+
     def getXHTMLHeader(self):
         return ''''''
 
@@ -60,3 +64,13 @@ class BasicHTMLOutputter(object):
         tag = self.getCSSTag()
         value = './%sstyle/styles.css' % (level * '../')
         tag.set('href', value)
+
+    def updateCssRef(self, level):
+        tag = self.getCSSTag()
+        value = './%sstyle/styles.css' % (level * '../')
+        tag.set('href', value)
+
+    def disableNaviControls(self):
+        tag = self.getNaviTag()
+        tag.clear()
+

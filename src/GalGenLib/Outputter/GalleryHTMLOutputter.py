@@ -62,6 +62,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         self.__generateAlbumThumbs(target_dir)
         self.updateCssRef(1)
         self.updateTitle()
+        self.disableNaviControls()
         self.__addIndexTable()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:

@@ -9,6 +9,7 @@ class ProjectHTMLOutputter(NamedObjectHTMLOutputter):
     def generateOutput(self, target_dir):
         self.updateCssRef(0)
         self.updateTitle()
+        self.disableNaviControls()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
             child.generateOutput(target_dir)

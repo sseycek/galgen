@@ -2,8 +2,8 @@
 <project
  name="Sample project "
  galgen-version="0.9"
- xhtml-template="C:\GalGenTest\template.html"
- style-directory="C:\GalGenTest\style">
+ xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
+ style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style">
 <gallery name="Cat 1" pic="C:\GalGenTest\Pic1.jpg">
 <album name="Gal 1" pic="C:/GalGenTest/Pic1.jpg">
 <picture name="Pic 1" location="C:/GalGenTest/Pic2.jpg">

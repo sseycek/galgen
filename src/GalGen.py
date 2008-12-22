@@ -31,8 +31,8 @@ def main(project_file):
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         project_file = sys.argv[1]
-    elif os.path.exists('C:/GalGenTest/sample_project1.ggp'):
-        project_file = 'C:/GalGenTest/sample_project.ggp'
+    elif os.path.exists('C:\\Data\\dev\\eclipse\\galgen_trunk\\test\\sample_project.ggp'):
+        project_file = 'C:\\Data\\dev\\eclipse\\galgen_trunk\\test\\sample_project.ggp'
     elif os.path.exists('/home/stepan/GalGenTest/sample_project.ggp'):
         project_file = '/home/stepan/GalGenTest/sample_project.ggp'
     else:

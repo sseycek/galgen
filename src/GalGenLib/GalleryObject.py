@@ -2,4 +2,12 @@
 
 class GalleryObject(object):
     def __init__(self):
-        self.output_base_dir = None
+        self.__menu_id = ''
+
+    def getMenuId(self):
+        return self.__menu_id
+    
+    def setMenuId(self, id):
+        self.__menu_id = id
+        
+    menu_id = property(getMenuId, setMenuId)

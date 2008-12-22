@@ -14,9 +14,9 @@ class ProjectDetailView(NamedObjectDetailView):
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnXhtmlTemplateFindButton, self.__find_xhtml_template_button)
         self.__find_xhtml_template_button.SetSize(self.__find_xhtml_template_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnXhtmlTemplateEdited, self.__xhtml_template_edit)
-        self._control_grid.Add(label, (2, 1))
-        self._control_grid.Add(self.__xhtml_template_edit, (2, 2))
-        self._control_grid.Add(self.__find_xhtml_template_button, (2, 3))
+        self._control_grid.Add(label, (3, 1))
+        self._control_grid.Add(self.__xhtml_template_edit, (3, 2))
+        self._control_grid.Add(self.__find_xhtml_template_button, (3, 3))
 
     def __AddStyleDirectoryControl(self):
         label = wx.StaticText(self._main_panel, -1, 'Style Directory')
@@ -25,9 +25,9 @@ class ProjectDetailView(NamedObjectDetailView):
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnStyleDirectoryFindButton, self.__find_style_directory_button)
         self.__find_style_directory_button.SetSize(self.__find_style_directory_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnStyleDirectoryEdited, self.__style_directory_edit)
-        self._control_grid.Add(label, (3, 1))
-        self._control_grid.Add(self.__style_directory_edit, (3, 2))
-        self._control_grid.Add(self.__find_style_directory_button, (3, 3))
+        self._control_grid.Add(label, (4, 1))
+        self._control_grid.Add(self.__style_directory_edit, (4, 2))
+        self._control_grid.Add(self.__find_style_directory_button, (4, 3))
 
     def _FillPropertySizer(self):
         super(ProjectDetailView, self)._FillPropertySizer()

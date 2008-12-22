@@ -1,21 +1,19 @@
 import wx
-from DetailView import DetailView
+from GalleryObjectDetailView import GalleryObjectDetailView
 
-class NamedObjectDetailView(DetailView):
+class NamedObjectDetailView(GalleryObjectDetailView):
 
     def __init__(self, panel, element):
         super(NamedObjectDetailView, self).__init__(panel, element)
 
     def _FillPropertySizer(self):
         super(NamedObjectDetailView, self)._FillPropertySizer()
-        self._control_grid = wx.GridBagSizer(5, 5)
         label = wx.StaticText(self._main_panel, -1, 'Name')
         self._name_edit = wx.TextCtrl(self._main_panel, -1, self.element.name, size = (200, -1))
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnNameEdited, self._name_edit)
         self._control_grid.Add((10, 10), (0, 0))
         self._control_grid.Add(label, (1, 1))
         self._control_grid.Add(self._name_edit, (1, 2))
-        self.property_box.Add(self._control_grid, 0, wx.EXPAND)
 
     def __IsNameModified(self):
         return self._name_edit.GetValue() != self.element.name

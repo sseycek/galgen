@@ -15,9 +15,9 @@ class PictureReferenceDetailView(NamedObjectDetailView):
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnFindButton, self._find_button)
         self._find_button.SetSize(self._find_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnImgLocationEdited, self._img_location_edit)
-        self._control_grid.Add(label, (2, 1))
-        self._control_grid.Add(self._img_location_edit, (2,2))
-        self._control_grid.Add(self._find_button, (2,3))
+        self._control_grid.Add(label, (3, 1))
+        self._control_grid.Add(self._img_location_edit, (3,2))
+        self._control_grid.Add(self._find_button, (3,3))
 
     def _IsImgLocationModified(self):
         return self._img_location_edit.GetValue() != self.element.pic_location

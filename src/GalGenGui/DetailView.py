@@ -26,7 +26,8 @@ class DetailView(object):
         self._name_text = wx.StaticText(self._main_panel, -1, self.GetLabelCategory(), style = wx.ALIGN_CENTER)
 
     def _FillPropertySizer(self):
-        pass
+        self._control_grid = wx.GridBagSizer(5, 5)
+        self.property_box.Add(self._control_grid, 0, wx.EXPAND)
 
     def _FillPropertySizerBelowButtons(self):
         pass

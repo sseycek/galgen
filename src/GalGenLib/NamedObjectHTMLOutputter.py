@@ -9,7 +9,7 @@ class NamedObjectHTMLOutputter(BasicHTMLOutputter):
     def __init__(self, named_object):
         BasicHTMLOutputter.__init__(self, named_object)
 
-    def updateTitle(self):
-        title = self.getTitleTag()
+    def updateDocTitle(self):
+        title = self.getDocTitleTag()
         title.text = self.entity.name
         

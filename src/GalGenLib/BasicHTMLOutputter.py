@@ -4,10 +4,12 @@ from HTMLTemplate import HTMLTemplate
 from xml.etree import cElementTree as etree
 
 class BasicHTMLOutputter(object):
-    title_tag_id = 'title'
+    doc_title_tag_id = 'doctitle'
     content_tag_id = 'hauptzelle'
     css_tag_id = 'css_ref'
     navi_tag_id = 'navizelle'
+    title_tag_id = 'title'
+    subtitle_tag_id = 'subtitle'
 
     def __init__(self, entity):
         self.__entity = entity
@@ -33,14 +35,20 @@ class BasicHTMLOutputter(object):
     def getContentTag(self):
         return self.getElementById(self.content_tag_id)
 
-    def getTitleTag(self):
-        return self.getElementById(self.title_tag_id)
+    def getDocTitleTag(self):
+        return self.getElementById(self.doc_title_tag_id)
 
     def getCSSTag(self):
         return self.getElementById(self.css_tag_id)
 
     def getNaviTag(self):
         return self.getElementById(self.navi_tag_id)
+
+    def getTitleTag(self):
+        return self.getElementById(self.title_tag_id)
+
+    def getSubtitleTag(self):
+        return self.getElementById(self.subtitle_tag_id)
 
     def getXHTMLHeader(self):
         return ''''''
@@ -74,6 +82,12 @@ class BasicHTMLOutputter(object):
                         value = '%s%s' % (level * '../', elem.attrib[attr].lstrip('./'))
                         elem.set(attr, value)
                     
+    def updateTitleCell(self, title, subtitle):
+        title = self.getTitleTag()
+        if self.entity.title: title.text = self.entity.title
+        else: title.text = self.entity.name
+        subtitle = self.getSubtitleTag()
+        if self.entity.subtitle: subtitle.text = self.entity.subtitle
 
     def disableNaviControls(self):
         tag = self.getNaviTag()

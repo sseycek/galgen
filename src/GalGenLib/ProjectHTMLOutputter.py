@@ -8,7 +8,8 @@ class ProjectHTMLOutputter(NamedObjectHTMLOutputter):
 
     def generateOutput(self, target_dir):
         self.updateCssRef(0)
-        self.updateTitle()
+        self.updateDocTitle()
+        self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.disableNaviControls()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:

@@ -46,6 +46,8 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         self.__project.xhtml_template = attributes['xhtml-template']
         self.__project.style_directory = attributes['style-directory']
         self.__project.menu_id = attributes['menu-id']
+        self.__project.title = attributes['title']
+        self.__project.subtitle = attributes['subtitle']
         if self.__element_stack:
             raise 'Unexpected - deserialising project, while there are already elements on the stack'
         self.__element_stack.append(self.__project)
@@ -54,21 +56,21 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         # logDebug('startElementGallery called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising gallery, while there is no project on the stack yet'
-        index = Gallery(attributes['name'], attributes['pic'], attributes['menu-id'])
+        index = Gallery(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
         self.__element_stack.append(index)
 
     def __startElementAlbum(self, attributes):
         # logDebug('startElementAlbum called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising album, while there is no project on the stack yet'
-        index = Album(attributes['name'], attributes['pic'], attributes['menu-id'])
+        index = Album(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
         self.__element_stack.append(index)
 
     def __startElementPicture(self, attributes):
         # logDebug('startElementPicture called for "%s" located at "%s"' % (attributes['name'], attributes['location']))
         if len(self.__element_stack) < 2:
             raise 'Unexpected - deserialising picture, while there is no index on the stack yet'
-        picture = Picture(attributes['name'], attributes['location'], attributes['menu-id'])
+        picture = Picture(attributes['name'], attributes['location'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
         self.__element_stack.append(picture)
 
     def characters(self, data):

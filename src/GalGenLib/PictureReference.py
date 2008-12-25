@@ -5,8 +5,8 @@ from NamedObject import NamedObject
 class PictureReference(NamedObject):
     __html_extension = 'html'
     
-    def __init__(self, name, location, menu_id):
-        NamedObject.__init__(self, name, menu_id)
+    def __init__(self, name, location, menu_id, title, subtitle):
+        NamedObject.__init__(self, name, menu_id, title, subtitle)
         self.__location = location
 
     def getPicLocation(self):

@@ -1,2 +1,2 @@
 ProgName = 'GalGen'
-ProgVersion = '0.9'
+ProgVersion = '0.8'

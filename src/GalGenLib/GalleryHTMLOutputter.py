@@ -61,6 +61,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         self.__createSubDirs(target_dir)
         self.__generateAlbumThumbs(target_dir)
         self.updateCssRef(1)
+        self.updateStyleDirRefs(1)
         self.updateTitle()
         self.disableNaviControls()
         self.__addIndexTable()

@@ -65,10 +65,15 @@ class BasicHTMLOutputter(object):
         value = './%sstyle/styles.css' % (level * '../')
         tag.set('href', value)
 
-    def updateCssRef(self, level):
-        tag = self.getCSSTag()
-        value = './%sstyle/styles.css' % (level * '../')
-        tag.set('href', value)
+    def updateStyleDirRefs(self, level):
+        ref_attributes = ['href', 'src']
+        if level:
+            for elem in self.__html_tree.getiterator():
+                for attr in ref_attributes:
+                    if attr in elem.attrib and (elem.attrib[attr].startswith('style') or elem.attrib[attr].startswith('./style')):
+                        value = '%s%s' % (level * '../', elem.attrib[attr].lstrip('./'))
+                        elem.set(attr, value)
+                    
 
     def disableNaviControls(self):
         tag = self.getNaviTag()

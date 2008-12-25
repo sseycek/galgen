@@ -45,6 +45,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
 
     def generateOutput(self, target_dir):
         self.updateCssRef(2)
+        self.updateStyleDirRefs(2)
         self.updateTitle()
         self.disableNaviControls()
         self.addIndexTable()

@@ -45,6 +45,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self.__copyPicture(target_dir)
         self.__generateThumbs(target_dir)
         self.updateCssRef(2)
+        self.updateStyleDirRefs(2)
         self.updateTitle()
         self.addPicture()
         file_name = '%s.html' % self.entity.name

@@ -4,16 +4,18 @@
  galgen-version="0.9"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
- menu-id="">
-<gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="xxxx">
-<album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="">
-<picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="">
+ menu-id=""
+ title=""
+ subtitle="">
+<gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="xxxx" title="" subtitle="">
+<album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="" title="" subtitle="">
+<picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="" title="" subtitle="">
 </picture>
 </album>
 </gallery>
-<gallery name="gal1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="menu_gal1xy">
-<album name="Album 1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" menu-id="xxxxx">
-<picture name="Picture x" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="vcsava">
+<gallery name="gal1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="menu_gal1xy" title="" subtitle="">
+<album name="Album 1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" menu-id="xxxxx" title="" subtitle="">
+<picture name="Picture x" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="vcsava" title="" subtitle="">
 </picture>
 </album>
 </gallery>

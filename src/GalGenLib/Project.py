@@ -10,8 +10,8 @@ import Globals
 
 class Project(NamedObject, Container, Modifyable):
 
-    def __init__(self, filename = '', name = '', template = '', style_directory = ''):
-        NamedObject.__init__(self, name)
+    def __init__(self, filename = '', name = '', template = '', style_directory = '', menu_id = ''):
+        NamedObject.__init__(self, name, menu_id)
         Container.__init__(self)
         Modifyable.__init__(self)
         self.__filename = filename
@@ -61,11 +61,12 @@ class Project(NamedObject, Container, Modifyable):
         stream.write(u'<?xml version="1.0" encoding="UTF-8"?>\n')
 
     def __writeStartTag(self, stream):
-        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
+        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
                      ('name', self.name,
                       'galgen-version', Globals.ProgVersion,
                       'xhtml-template', self.__xhtml_template,
-                      'style-directory', self.__style_directory))
+                      'style-directory', self.__style_directory,
+                      'menu-id', self.menu_id))
 
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')

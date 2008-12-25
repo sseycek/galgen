@@ -4,12 +4,13 @@ from GalleryHTMLOutputter import GalleryHTMLOutputter
 
 class Gallery(Index, Contained):
 
-    def __init__(self, name, pic_location):
-        Index.__init__(self, name, pic_location)
+    def __init__(self, name, pic_location, menu_id):
+        Index.__init__(self, name, pic_location, menu_id)
         Contained.__init__(self)
 
     def _writeStartTag(self, stream):
-        stream.write(u'<gallery name="%s" pic="%s">\n' % (self.getName(), self.pic_location))
+        stream.write(u'<gallery name="%s" pic="%s" menu-id="%s">\n'
+                     % (self.name, self.pic_location, self.menu_id))
 
     def _writeEndTag(self, stream):
         stream.write(u'</gallery>\n')

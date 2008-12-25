@@ -26,6 +26,10 @@ class GalleryObjectDetailView(DetailView):
 
     def _OnApply(self, event):
         super(GalleryObjectDetailView, self)._OnApply(event)
+        if self.__IsMenuIdModified():
+            self.element.menu_id = self._menu_id_edit.GetValue()
 
     def _OnCancel(self, event):
         super(GalleryObjectDetailView, self)._OnCancel(event)
+        if self.__IsMenuIdModified():
+            self._menu_id_edit.SetValue(self.element.menu_id)

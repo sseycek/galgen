@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 class GalleryObject(object):
-    def __init__(self):
-        self.__menu_id = ''
+    def __init__(self, menu_id):
+        self.__menu_id = menu_id
 
     def getMenuId(self):
         return self.__menu_id

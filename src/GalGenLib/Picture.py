@@ -5,9 +5,9 @@ from PictureHTMLOutputter import PictureHTMLOutputter
 
 class Picture(Modifyable, PictureReference, Contained):
 
-    def __init__(self, name, pic_location):
+    def __init__(self, name, pic_location, menu_id):
         Modifyable.__init__(self)
-        PictureReference.__init__(self, name, pic_location)
+        PictureReference.__init__(self, name, pic_location, menu_id)
         Contained.__init__(self)
 
     def save(self, stream):
@@ -15,7 +15,8 @@ class Picture(Modifyable, PictureReference, Contained):
         self.__writeEndTag(stream)
 
     def __writeStartTag(self, stream):
-        stream.write(u'<picture name="%s" location="%s">\n' % (self.getName(), self.pic_location))
+        stream.write(u'<picture name="%s" location="%s" menu-id="%s">\n'
+                     % (self.name, self.pic_location, self.menu_id))
 
     def __writeEndTag(self, stream):
         stream.write(u'</picture>\n')

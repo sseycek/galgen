@@ -6,9 +6,9 @@ class Index(Container,PictureReference):
     __output_grid_columns = 6
     __output_element_name = 'img_grid'
 
-    def __init__(self, name, pic_location):
+    def __init__(self, name, pic_location, menu_id):
         Container.__init__(self)
-        PictureReference.__init__(self, name, pic_location)
+        PictureReference.__init__(self, name, pic_location, menu_id)
 
     def save(self, stream):
         self._writeStartTag(stream)

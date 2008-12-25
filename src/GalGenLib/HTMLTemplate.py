@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import xml.etree.ElementTree # needed for py2exe
 from xml.etree import cElementTree as etree
 from GalGenLib.Core import Core
 

@@ -1,7 +1,7 @@
 import wx
 import App
 from Tree import Tree
-from Container import Container
+from GalGenLib.Container import Container
 
 class TreePanel(wx.Panel):
 

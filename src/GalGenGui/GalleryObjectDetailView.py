@@ -22,7 +22,7 @@ class GalleryObjectDetailView(DetailView):
         return self._menu_id_edit.GetValue() != self.element.menu_id
 
     def _IsModified(self):
-        return (self.__IsMenuIdModified() or super(NamedObjectDetailView, self)._IsModified())
+        return (self.__IsMenuIdModified() or super(GalleryObjectDetailView, self)._IsModified())
 
     def _OnApply(self, event):
         super(GalleryObjectDetailView, self)._OnApply(event)

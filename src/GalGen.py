@@ -1,7 +1,7 @@
 import os
 import sys
 sys.path.append('./GalGenLib')
-sys.path.append('./GalGenLib/Outputter')
+#sys.path.append('./GalGenLib/Outputter')
 
 from GalGenLib.Project import Project
 from GalGenLib.Core import Core

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Sample project "
- galgen-version="0.9"
+ galgen-version="0.8"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""
- title=""
- subtitle="">
-<gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="xxxx" title="" subtitle="">
-<album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="" title="" subtitle="">
-<picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="" title="" subtitle="">
+ title="Foo"
+ subtitle="Bar">
+<gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="xxxx" title="Foo" subtitle="Bar">
+<album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="" title="Foo" subtitle="Bar">
+<picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="" title="foo" subtitle="bar">
 </picture>
 </album>
 </gallery>

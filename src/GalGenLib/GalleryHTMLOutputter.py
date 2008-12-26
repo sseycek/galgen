@@ -5,7 +5,7 @@ from Thumbnailer import Thumbnailer
 from Album import Album
 
 class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
-    __column_count = 3
+    __column_count = 6
 
     def __init__(self, index):
         NamedObjectHTMLOutputter.__init__(self, index)
@@ -32,12 +32,15 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
             else:
                 pic_td = etree.SubElement(tr, 'td')
                 title_td = etree.SubElement(tr, 'td')
+            pic_td.set('class', 'albumzelle')
+            title_td.set('class', 'albumzelle')
             pic_a = etree.SubElement(pic_td, 'a')
+            pic_a.set('href', '%s/index.html' % child.name)
             img = etree.SubElement(pic_a, 'img')
             img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
             img.set('class', 'thumb')
             title_a = etree.SubElement(title_td, 'a')
-            title_a.set('href', '%s/%s' % (thumb_dir, child.pic_file_name))
+            title_a.set('href', '%s/index.html' % child.name)
             title_a.text = child.title
             if not title_a.text:
                 title_a.text = child.name

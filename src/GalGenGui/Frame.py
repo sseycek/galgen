@@ -86,7 +86,10 @@ class Frame(wx.Frame):
         self.Close()
 
     def OnAbout(self, event):
-        wx.MessageBox('This is an application or creating photo gallery sites.',
+        wx.MessageBox('%s\n\n%s\n%s' %
+                      ('This is an application or creating photo gallery sites.',
+                       'PRE-ALPHA State ...',
+                       'File tickets under http://sseycek.dyndns.org/galgen/'),
         'About %s' % Globals.ProgName, wx.OK | wx.ICON_INFORMATION, self)
 
     def OnEditAdd(self, event):

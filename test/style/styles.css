@@ -266,7 +266,7 @@ a:active {
 	height:116px;
 }
 
-#effect1 {
+.effect1 {
 	color: #999999;
 	font-weight: bold;
 	border-left:6px solid #a60000;

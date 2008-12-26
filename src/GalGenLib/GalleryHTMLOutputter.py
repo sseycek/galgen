@@ -84,6 +84,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         self.updateDocTitle()
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(1)
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
+        self.activateMenuItem()
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.disableNaviControls()
         self.__addIndexTable()

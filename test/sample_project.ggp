@@ -7,7 +7,7 @@
  menu-id=""
  title="Foo"
  subtitle="Bar">
-<gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="xxxx" title="Foo" subtitle="Bar">
+<gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="menu_reisen" title="Foo" subtitle="Bar">
 <album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="" title="Foo" subtitle="Bar">
 <picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="" title="foo" subtitle="bar">
 </picture>

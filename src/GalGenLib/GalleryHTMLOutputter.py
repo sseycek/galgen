@@ -7,6 +7,7 @@ from Album import Album
 
 class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 6
+    __row_count = 6
 
     def __init__(self, index):
         NamedObjectHTMLOutputter.__init__(self, index)
@@ -17,7 +18,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         table.set('cellpadding', '0')
-        table.set('cellcpacing', '0')
+        table.set('cellspacing', '0')
         tr = None
         column_count = 0
         row_count = 0
@@ -26,7 +27,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
                 tr = etree.SubElement(table, 'tr')
                 row_count += 1
                 column_count = 0
-            column_count += 1
+            column_count += 2
             if row_count % 2:
                 title_td = etree.SubElement(tr, 'td')
                 pic_td = etree.SubElement(tr, 'td')
@@ -45,7 +46,19 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
             title_a.text = child.title
             if not title_a.text:
                 title_a.text = child.name
-
+        # fill up with empty cells
+        for i in range(self.__column_count * self.__row_count - (self.__column_count * row_count + column_count)):
+            if tr is None or column_count == self.__column_count:
+                tr = etree.SubElement(table, 'tr')
+                row_count += 1
+                column_count = 0
+            column_count += 1
+            td1 = etree.SubElement(tr, 'td')
+            td1.set('class', 'albumzelle')
+            td1.text = unichr(160)
+            td2 = etree.SubElement(tr, 'td')
+            td2.set('class', 'albumzelle')
+            td2.text = unichr(160)
             
     def __createSubDirs(self, gallery_dir):
         os.mkdir(os.path.join(gallery_dir, 'thumbs'))

@@ -89,6 +89,12 @@ class BasicHTMLOutputter(object):
         subtitle = self.getSubtitleTag()
         if self.entity.subtitle: subtitle.text = self.entity.subtitle
 
+    def updateMenuHrefs(self, id_href_mapping):
+        for (id, href) in id_href_mapping:
+            a = self.getElementById(id)
+            if a is not None:
+                a.set('href', href)
+                
     def disableNaviControls(self):
         tag = self.getNaviTag()
         tag.clear()

@@ -81,3 +81,10 @@ class Project(NamedObject, Container, Modifyable):
             raise Exception, 'Style directory not found'
         outputter = ProjectHTMLOutputter(self)
         outputter.generateOutput(target_dir)
+
+    def getMenuIdHrefMapping(self, level):
+        ret = []
+        for gal in self.children:
+            if gal.menu_id:
+                ret.append((gal.menu_id, '%s%s/index.html' % (level * '../', gal.name)))
+        return ret

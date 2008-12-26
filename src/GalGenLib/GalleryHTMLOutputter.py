@@ -1,4 +1,5 @@
 import os
+from Core import Core
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from xml.etree import cElementTree as etree
 from Thumbnailer import Thumbnailer
@@ -68,6 +69,8 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         self.updateCssRef(1)
         self.updateStyleDirRefs(1)
         self.updateDocTitle()
+        menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(1)
+        if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.disableNaviControls()
         self.__addIndexTable()

@@ -1,4 +1,5 @@
 import os
+from Core import Core
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from xml.etree import cElementTree as etree
 
@@ -9,6 +10,8 @@ class ProjectHTMLOutputter(NamedObjectHTMLOutputter):
     def generateOutput(self, target_dir):
         self.updateCssRef(0)
         self.updateDocTitle()
+        menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(0)
+        if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.disableNaviControls()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))

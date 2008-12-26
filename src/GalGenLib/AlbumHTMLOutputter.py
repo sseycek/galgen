@@ -1,5 +1,6 @@
 import os
 import urllib
+from Core import Core
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from xml.etree import cElementTree as etree
@@ -47,6 +48,8 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         self.updateCssRef(2)
         self.updateStyleDirRefs(2)
         self.updateDocTitle()
+        menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(2)
+        if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.disableNaviControls()
         self.addIndexTable()

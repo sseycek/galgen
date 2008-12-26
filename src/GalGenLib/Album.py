@@ -15,6 +15,9 @@ class Album(Index, Contained):
     def _writeEndTag(self, stream):
         stream.write(u'</album>\n')
 
+    def _getHtmlPath(self):
+        return '%s/%s/index.html' % (self.parent.name, self.name)
+
     def generateOutput(self, target_dir):
         outputter = AlbumHTMLOutputter(self)
         outputter.generateOutput(target_dir)

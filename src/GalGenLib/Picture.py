@@ -21,6 +21,9 @@ class Picture(Modifyable, PictureReference, Contained):
     def __writeEndTag(self, stream):
         stream.write(u'</picture>\n')
 
+    def _getHtmlPath(self):
+        return '%s/%s/%s' % (self.parent.parent.name, self.parent.name, self.html_file_name)
+
     def generateOutput(self, target_dir):
         outputter = PictureHTMLOutputter(self)
         outputter.generateOutput(target_dir)

@@ -18,3 +18,6 @@ class NamedObject(GalleryObject, Observable):
         return self.__name
 
     name = property(getName, setName)
+
+    def _getHtmlPath(self):
+        raise Exception, 'Abstract method call'

@@ -15,6 +15,9 @@ class Gallery(Index, Contained):
     def _writeEndTag(self, stream):
         stream.write(u'</gallery>\n')
 
+    def _getHtmlPath(self):
+        return '%s/index.html' % self.name
+
     def generateOutput(self, target_dir):
         outputter = GalleryHTMLOutputter(self)
         outputter.generateOutput(target_dir)

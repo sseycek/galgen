@@ -42,6 +42,9 @@ class Project(NamedObject, Container, Modifyable):
     def GetStyleDirectory(self):
         return self.__style_directory
 
+    def _getHtmlPath(self):
+        return 'index.html'
+
     style_directory = property(GetStyleDirectory, SetStyleDirectory)
 
     def load(self):
@@ -82,9 +85,14 @@ class Project(NamedObject, Container, Modifyable):
         outputter = ProjectHTMLOutputter(self)
         outputter.generateOutput(target_dir)
 
+    def __getMenuIdHrefMappingRecoursive(self, element, level, ret):
+        if isinstance(element, Container):
+            for child in element.children:
+                if child.menu_id:
+                    ret.append((child.menu_id, '%s%s' % (level * '../', child._getHtmlPath())))
+                self.__getMenuIdHrefMappingRecoursive(child, level, ret)
+
     def getMenuIdHrefMapping(self, level):
         ret = []
-        for gal in self.children:
-            if gal.menu_id:
-                ret.append((gal.menu_id, '%s%s/index.html' % (level * '../', gal.name)))
+        self.__getMenuIdHrefMappingRecoursive(self, level, ret)
         return ret

@@ -31,6 +31,10 @@ a:active {
  	color: #ffcc00;
 }
 
+#gallery-index-column {
+  width:232px;
+}
+
 .albumzelle {
 	width:116px;
 	height:116px;
@@ -271,6 +275,7 @@ a:active {
 	font-weight: bold;
 	border-left:6px solid #a60000;
 	border-bottom:1px solid #a60000;
+  margin-left: 18px;
 }
 
 #effect2 {

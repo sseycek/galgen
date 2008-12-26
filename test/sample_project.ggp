@@ -8,12 +8,18 @@
  title="Foo"
  subtitle="Bar">
 <gallery name="Cat 2" pic="C:/GalGenTest/Pic4.jpg" menu-id="menu_reisen" title="Foo" subtitle="Bar">
-<album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="" title="Foo" subtitle="Bar">
-<picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="" title="foo" subtitle="bar">
+<album name="Gal 3" pic="C:/GalGenTest/Pic4.jpg" menu-id="menu_landschaften" title="Foo" subtitle="Bar">
+<picture name="Pic 4" location="C:/GalGenTest/Pic4.jpg" menu-id="menu_menschen" title="foo" subtitle="bar">
 </picture>
 </album>
+<album name="Album 1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="A1" subtitle="Sub A1">
+</album>
+<album name="Album 2" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="A2" subtitle="Sub A2">
+</album>
+<album name="Album 3" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" menu-id="" title="A3" subtitle="Sub A3">
+</album>
 </gallery>
-<gallery name="gal1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="menu_gal1xy" title="" subtitle="">
+<gallery name="gal1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="menu_oesterreich" title="" subtitle="">
 <album name="Album 1" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" menu-id="xxxxx" title="" subtitle="">
 <picture name="Picture x" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="vcsava" title="" subtitle="">
 </picture>

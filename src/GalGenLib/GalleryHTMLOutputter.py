@@ -6,7 +6,7 @@ from Thumbnailer import Thumbnailer
 from Album import Album
 
 class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
-    __column_count = 6
+    __column_count = 3
     __row_count = 6
 
     def __init__(self, index):
@@ -19,46 +19,59 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         table = etree.SubElement(content_element, 'table')
         table.set('cellpadding', '0')
         table.set('cellspacing', '0')
+        table.set('class', 'table1')
+        colgroup = etree.SubElement(table, 'colgroup')
+        colgroup.set('span', str(self.__column_count))
+        colgroup.set('id', 'gallery-index-column')
         tr = None
         column_count = 0
         row_count = 0
+        cell_count = 0
         for child in self.entity.children:
             if tr is None or column_count == self.__column_count:
                 tr = etree.SubElement(table, 'tr')
                 row_count += 1
                 column_count = 0
-            column_count += 2
-            if row_count % 2:
-                title_td = etree.SubElement(tr, 'td')
-                pic_td = etree.SubElement(tr, 'td')
-            else:
-                pic_td = etree.SubElement(tr, 'td')
-                title_td = etree.SubElement(tr, 'td')
-            pic_td.set('class', 'albumzelle')
-            title_td.set('class', 'albumzelle')
-            pic_a = etree.SubElement(pic_td, 'a')
-            pic_a.set('href', '%s/index.html' % child.name)
-            img = etree.SubElement(pic_a, 'img')
-            img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
+            column_count += 1
+            cell_count += 1
+            if row_count % 2: pic_first = True
+            else: pic_first = False
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'albumzelle')
+            a = etree.SubElement(td, 'a')
+            div = etree.SubElement(td, 'div')
+            a.set('href', '%s/index.html' % child.name)
+            img = etree.SubElement(a, 'img')
             img.set('class', 'thumb')
-            title_a = etree.SubElement(title_td, 'a')
+            img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
+            img.set('alt', '%s' % child.name)
+            if pic_first:
+                div.set('align', 'left')
+                img.set('style', 'float: left; margin-left: 2px;')
+            else:
+                div.set('align', 'right')
+                img.set('style', 'float: right; margin-right: 2px;')
+            title_a = etree.SubElement(div, 'a')
+            title_a.set('class', 'album')
             title_a.set('href', '%s/index.html' % child.name)
-            title_a.text = child.title
-            if not title_a.text:
-                title_a.text = child.name
+            etree.SubElement(title_a, 'br')
+            etree.SubElement(title_a, 'br')
+            title_span = etree.SubElement(title_a, 'span')
+            title_span.text = child.title
+            etree.SubElement(title_a, 'br')
+            subtitle_span = etree.SubElement(title_a, 'span')
+            subtitle_span.set('style', 'font-size: 11px;')
+            subtitle_span.text = child.subtitle
         # fill up with empty cells
-        for i in range(self.__column_count * self.__row_count - (self.__column_count * row_count + column_count)):
+        for i in range(self.__column_count * self.__row_count - cell_count):
             if tr is None or column_count == self.__column_count:
                 tr = etree.SubElement(table, 'tr')
                 row_count += 1
                 column_count = 0
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'albumzelle')
             column_count += 1
-            td1 = etree.SubElement(tr, 'td')
-            td1.set('class', 'albumzelle')
-            td1.text = unichr(160)
-            td2 = etree.SubElement(tr, 'td')
-            td2.set('class', 'albumzelle')
-            td2.text = unichr(160)
+            cell_count += 1
             
     def __createSubDirs(self, gallery_dir):
         os.mkdir(os.path.join(gallery_dir, 'thumbs'))

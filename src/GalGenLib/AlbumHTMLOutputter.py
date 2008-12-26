@@ -7,6 +7,7 @@ from xml.etree import cElementTree as etree
 
 class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
     __column_count = 6
+    __row_count = 6
     __picture_page_dir = '.'
 
     def __init__(self, index):
@@ -17,23 +18,40 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         thumb_dir = 'thumbs/%dx%d' % (thumb_size[0], thumb_size[1])
         content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
+        table.set('class', 'table1')
         table.set('cellspacing', '0')
         table.set('cellpadding', '0')
-        table.set('style', 'border-collapse:collapse; border:1px solid #333333; width:696px; height:696px')
+        colgroup = etree.SubElement(table, 'colgroup')
+        colgroup.set('span', str(self.__column_count))
+        colgroup.set('id', 'album-index-column')
         tr = None
         column_count = 0
+        cell_count = 0
         for child in self.entity.children:
             if tr is None or column_count == self.__column_count:
                 tr = etree.SubElement(table, 'tr')
                 tr.set('align', 'center')
                 column_count = 0
-            column_count += 1
             td = etree.SubElement(tr, 'td')
+            td.set('class', 'bildzelle')
+            column_count += 1
+            cell_count += 1
             a = etree.SubElement(td, 'a')
             a.set('href', '%s/%s' % (self.__picture_page_dir, child.html_file_name))
             img = etree.SubElement(a, 'img')
             img.set('class', 'thumb')
             img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
+
+        # fill up with empty cells
+        for i in range(self.__column_count * self.__row_count - cell_count):
+            if tr is None or column_count == self.__column_count:
+                tr = etree.SubElement(table, 'tr')
+                tr.set('align', 'center')
+                column_count = 0
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'bildzelle')
+            column_count += 1
+            cell_count += 1
 
     def __createSubDirs(self, album_dir):
         os.mkdir(os.path.join(album_dir, 'pics'))

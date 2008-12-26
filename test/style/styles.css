@@ -35,11 +35,22 @@ a:active {
   width:232px;
 }
 
+#album-index-column {
+  width:116px;
+}
+
 .albumzelle {
-	width:116px;
-	height:116px;
-	margin-left:2px;
-	margin-right:2px
+  width:116px;
+  height:116px;
+  margin-left:2px;
+  margin-right:2px
+}
+
+.bildzelle {
+  width:116px;
+  height:116px;
+  margin-left:2px;
+  margin-right:2px
 }
 
 .album {

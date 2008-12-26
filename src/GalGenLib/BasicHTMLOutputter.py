@@ -10,6 +10,7 @@ class BasicHTMLOutputter(object):
     navi_tag_id = 'navizelle'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
+    active_menu_item_class = 'effect1'
 
     def __init__(self, entity):
         self.__entity = entity
@@ -99,3 +100,9 @@ class BasicHTMLOutputter(object):
         tag = self.getNaviTag()
         tag.clear()
 
+    def activateMenuItem(self):
+        if self.entity.menu_id:
+            a = self.getElementById(self.entity.menu_id)
+            if a is not None:
+                a.set('class', self.active_menu_item_class) 
+                

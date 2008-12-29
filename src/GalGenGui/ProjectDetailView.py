@@ -1,8 +1,8 @@
 import os
 import wx
-from NamedObjectDetailView import NamedObjectDetailView
+from CustomContentReferenceDetailView import CustomContentReferenceDetailView
 
-class ProjectDetailView(NamedObjectDetailView):
+class ProjectDetailView(CustomContentReferenceDetailView):
     
     def __init__(self, panel, element):
         super(ProjectDetailView, self).__init__(panel, element)
@@ -14,9 +14,9 @@ class ProjectDetailView(NamedObjectDetailView):
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnXhtmlTemplateFindButton, self.__find_xhtml_template_button)
         self.__find_xhtml_template_button.SetSize(self.__find_xhtml_template_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnXhtmlTemplateEdited, self.__xhtml_template_edit)
-        self._control_grid.Add(label, (5, 1))
-        self._control_grid.Add(self.__xhtml_template_edit, (5, 2))
-        self._control_grid.Add(self.__find_xhtml_template_button, (5, 3))
+        self._control_grid.Add(label, (7, 1))
+        self._control_grid.Add(self.__xhtml_template_edit, (7, 2))
+        self._control_grid.Add(self.__find_xhtml_template_button, (7, 3))
 
     def __AddStyleDirectoryControl(self):
         label = wx.StaticText(self._main_panel, -1, 'Style Directory')
@@ -25,9 +25,9 @@ class ProjectDetailView(NamedObjectDetailView):
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnStyleDirectoryFindButton, self.__find_style_directory_button)
         self.__find_style_directory_button.SetSize(self.__find_style_directory_button.GetBestSize())
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnStyleDirectoryEdited, self.__style_directory_edit)
-        self._control_grid.Add(label, (6, 1))
-        self._control_grid.Add(self.__style_directory_edit, (6, 2))
-        self._control_grid.Add(self.__find_style_directory_button, (6, 3))
+        self._control_grid.Add(label, (8, 1))
+        self._control_grid.Add(self.__style_directory_edit, (8, 2))
+        self._control_grid.Add(self.__find_style_directory_button, (8, 3))
 
     def _FillPropertySizer(self):
         super(ProjectDetailView, self)._FillPropertySizer()

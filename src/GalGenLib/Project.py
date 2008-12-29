@@ -2,17 +2,18 @@ import os
 import shutil
 from ProjectXMLParser import ProjectXMLParser
 from Logging import *
-from NamedObject import NamedObject
+from CustomContentReference import CustomContentReference
 from Container import Container
 from Modifyable import Modifyable
 from ProjectHTMLOutputter import ProjectHTMLOutputter
 import Globals
 
-class Project(NamedObject, Container, Modifyable):
+class Project(CustomContentReference, Container, Modifyable):
+    parent = None
 
     def __init__(self, filename = '', name = '', template = '', style_directory = '',
-                 menu_id = '', title = '', subtitle = ''):
-        NamedObject.__init__(self, name, menu_id, title, subtitle)
+                 menu_id = '', title = '', subtitle = '', html_location = '', supplemental_dir = ''):
+        CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir)
         Container.__init__(self)
         Modifyable.__init__(self)
         self.__filename = filename
@@ -42,10 +43,10 @@ class Project(NamedObject, Container, Modifyable):
     def GetStyleDirectory(self):
         return self.__style_directory
 
+    style_directory = property(GetStyleDirectory, SetStyleDirectory)
+
     def _getHtmlPath(self):
         return 'index.html'
-
-    style_directory = property(GetStyleDirectory, SetStyleDirectory)
 
     def load(self):
         if not self.__filename:
@@ -65,14 +66,16 @@ class Project(NamedObject, Container, Modifyable):
         stream.write(u'<?xml version="1.0" encoding="UTF-8"?>\n')
 
     def __writeStartTag(self, stream):
-        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
+        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
                      ('name', self.name,
                       'galgen-version', Globals.ProgVersion,
                       'xhtml-template', self.__xhtml_template,
                       'style-directory', self.__style_directory,
                       'menu-id', self.menu_id,
                       'title', self.title,
-                      'subtitle', self.subtitle))
+                      'subtitle', self.subtitle,
+                      'html-location', self.html_location,
+                      'supplemental-dir', self.supplemental_dir))
 
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')

@@ -43,6 +43,8 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
     def __startElementProject(self, attributes):
         # logDebug('startElementProject called for "%s"' % attributes['name'])
         self.__project.name = attributes['name']
+        self.__project.html_location = attributes['html-location']
+        self.__project.supplemental_dir = attributes['supplemental-dir']
         self.__project.xhtml_template = attributes['xhtml-template']
         self.__project.style_directory = attributes['style-directory']
         self.__project.menu_id = attributes['menu-id']

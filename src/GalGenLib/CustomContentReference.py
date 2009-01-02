@@ -1,3 +1,6 @@
+#!/usr/bin/env pyton
+
+import os
 from NamedObject import NamedObject
 
 class CustomContentReference(NamedObject):
@@ -14,6 +17,11 @@ class CustomContentReference(NamedObject):
         self.__html_location = html_location
         
     html_location = property(_getHtmlLocation, _setHtmlLocation)
+
+    def _getContentReferenceRelativeHtmlPath(self):
+        return os.path.split(self.html_location)[1]
+    
+    custom_content_reference_relative_html_path = property(_getContentReferenceRelativeHtmlPath, None)
     
     def _getSupplementalDir(self):
         return self.__supplemental_dir

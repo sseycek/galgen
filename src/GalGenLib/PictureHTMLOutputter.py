@@ -10,7 +10,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __init__(self, picture):
         NamedObjectHTMLOutputter.__init__(self, picture)
 
-    def addPicture(self):
+    def __addPicture(self):
         content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
         table.set('height', '696px');
@@ -50,7 +50,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(2)
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
-        self.addPicture()
+        self.__addPicture()
         file_name = '%s.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
         

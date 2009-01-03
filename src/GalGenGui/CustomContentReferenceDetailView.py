@@ -10,7 +10,7 @@ class CustomContentReferenceDetailView(NamedObjectDetailView):
     def _FillPropertySizer(self):
         super(CustomContentReferenceDetailView, self)._FillPropertySizer()
         label = wx.StaticText(self._main_panel, -1, 'HTML file location')
-        self._html_location_edit = wx.TextCtrl(self._main_panel, -1, self.element.html_location, size = (200, -1))
+        self._html_location_edit = wx.TextCtrl(self._main_panel, -1, self.element.html_location, size = (600, -1))
         self._find_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnFindButton, self._find_button)
         self._find_button.SetSize(self._find_button.GetBestSize())
@@ -19,7 +19,7 @@ class CustomContentReferenceDetailView(NamedObjectDetailView):
         self._control_grid.Add(self._html_location_edit, (5,2))
         self._control_grid.Add(self._find_button, (5,3))
         label = wx.StaticText(self._main_panel, -1, 'Supplemental files directory')
-        self._supplemental_dir_edit = wx.TextCtrl(self._main_panel, -1, self.element.supplemental_dir, size = (200, -1))
+        self._supplemental_dir_edit = wx.TextCtrl(self._main_panel, -1, self.element.supplemental_dir, size = (600, -1))
         self._find_dir_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnFindDirButton, self._find_dir_button)
         self._find_dir_button.SetSize(self._find_dir_button.GetBestSize())

@@ -10,7 +10,7 @@ class PictureReferenceDetailView(NamedObjectDetailView):
     def _FillPropertySizer(self):
         super(PictureReferenceDetailView, self)._FillPropertySizer()
         label = wx.StaticText(self._main_panel, -1, 'Image location')
-        self._img_location_edit = wx.TextCtrl(self._main_panel, -1, self.element.pic_location, size = (200, -1))
+        self._img_location_edit = wx.TextCtrl(self._main_panel, -1, self.element.pic_location, size = (600, -1))
         self._find_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnFindButton, self._find_button)
         self._find_button.SetSize(self._find_button.GetBestSize())

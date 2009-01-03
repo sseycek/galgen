@@ -8,19 +8,19 @@ class GalleryObjectDetailView(DetailView):
 
     def __AddMenuIdEdit(self):
         label = wx.StaticText(self._main_panel, -1, 'Menu ID')
-        self._menu_id_edit = wx.TextCtrl(self._main_panel, -1, self.element.menu_id, size = (200, -1))
+        self._menu_id_edit = wx.TextCtrl(self._main_panel, -1, self.element.menu_id, size = (600, -1))
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnEdited, self._menu_id_edit)
         self._control_grid.Add(label, (2, 1))
         self._control_grid.Add(self._menu_id_edit, (2, 2))
     
     def __AddDetails(self):
         title_label = wx.StaticText(self._main_panel, -1, 'Title')
-        self._title_edit = wx.TextCtrl(self._main_panel, -1, self.element.title, size = (200, -1))
+        self._title_edit = wx.TextCtrl(self._main_panel, -1, self.element.title, size = (600, -1))
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnEdited, self._title_edit)
         self._control_grid.Add(title_label, (3, 1))
         self._control_grid.Add(self._title_edit, (3, 2))
         subtitle_label = wx.StaticText(self._main_panel, -1, 'Subtitle')
-        self._subtitle_edit = wx.TextCtrl(self._main_panel, -1, self.element.subtitle, size = (200, -1))
+        self._subtitle_edit = wx.TextCtrl(self._main_panel, -1, self.element.subtitle, size = (600, -1))
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnEdited, self._subtitle_edit)
         self._control_grid.Add(subtitle_label, (4, 1))
         self._control_grid.Add(self._subtitle_edit, (4, 2))

@@ -9,7 +9,7 @@ class NamedObjectDetailView(GalleryObjectDetailView):
     def _FillPropertySizer(self):
         super(NamedObjectDetailView, self)._FillPropertySizer()
         label = wx.StaticText(self._main_panel, -1, 'Name')
-        self._name_edit = wx.TextCtrl(self._main_panel, -1, self.element.name, size = (200, -1))
+        self._name_edit = wx.TextCtrl(self._main_panel, -1, self.element.name, size = (600, -1))
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnNameEdited, self._name_edit)
         self._control_grid.Add((10, 10), (0, 0))
         self._control_grid.Add(label, (1, 1))

@@ -9,7 +9,7 @@ class ProjectDetailView(CustomContentReferenceDetailView):
 
     def __AddXhtmlTemplateControl(self):
         label = wx.StaticText(self._main_panel, -1, 'XHTML Template')
-        self.__xhtml_template_edit = wx.TextCtrl(self._main_panel, -1, self.element.xhtml_template, size = (200, -1))
+        self.__xhtml_template_edit = wx.TextCtrl(self._main_panel, -1, self.element.xhtml_template, size = (600, -1))
         self.__find_xhtml_template_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnXhtmlTemplateFindButton, self.__find_xhtml_template_button)
         self.__find_xhtml_template_button.SetSize(self.__find_xhtml_template_button.GetBestSize())
@@ -20,7 +20,7 @@ class ProjectDetailView(CustomContentReferenceDetailView):
 
     def __AddStyleDirectoryControl(self):
         label = wx.StaticText(self._main_panel, -1, 'Style Directory')
-        self.__style_directory_edit = wx.TextCtrl(self._main_panel, -1, self.element.style_directory, size = (200, -1))
+        self.__style_directory_edit = wx.TextCtrl(self._main_panel, -1, self.element.style_directory, size = (600, -1))
         self.__find_style_directory_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnStyleDirectoryFindButton, self.__find_style_directory_button)
         self.__find_style_directory_button.SetSize(self.__find_style_directory_button.GetBestSize())

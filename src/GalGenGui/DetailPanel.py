@@ -11,7 +11,7 @@ from PictureDetailView import PictureDetailView
 class DetailPanel(wx.Panel):
 
     def __init__(self, parent, style):
-        wx.Panel.__init__(self, parent = parent, style = style)
+        wx.Panel.__init__(self, parent = parent, style = style | wx.TAB_TRAVERSAL)
         self.__event_handlers_enabled = True
         self.__element = None
         self.__view = None

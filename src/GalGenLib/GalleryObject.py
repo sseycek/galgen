@@ -5,6 +5,8 @@ class GalleryObject(object):
         self.__menu_id = menu_id
         self.__title = title
         self.__subtitle = subtitle
+        # container for gui properties associated with this object
+        self.__gui_properties = {}
 
     def getMenuId(self):
         return self.__menu_id
@@ -28,4 +30,13 @@ class GalleryObject(object):
     def setSubtitle(self, subtitle):
         self.__subtitle = subtitle
         
-    subtitle = property(getSubtitle, setSubtitle)    
+    subtitle = property(getSubtitle, setSubtitle)
+    
+    def setGuiProperty(self, property, value):
+        self.__gui_properties[property] = value
+        
+    def getGuiProperty(self, property):
+        if property in self.__gui_properties:
+            return self.__gui_properties[property]
+        else:
+            return None

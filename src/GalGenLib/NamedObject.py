@@ -12,7 +12,7 @@ class NamedObject(GalleryObject, Observable):
     def setName(self, name):
         if self.__name != name:
             self.__name = name
-            self._notify(NamedObject.EVT_NAME_CHANGED)
+            self._notify(NamedObject.EVT_NAME_CHANGED, self)
 
     def getName(self):
         return self.__name

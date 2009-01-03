@@ -9,8 +9,13 @@ class Observable(object):
         elif observer not in self.__observations[subject]:
             self.__observations[subject].append(observer)
 
-    def _notify(self, subject):
+    def unsubscribe(self, subject, observer):
+        if subject in self.__observations:
+            while observer in self.__observations[subject]:
+                self.__observations[subject].remove(observer)
+
+    def _notify(self, subject, object):
         if subject in self.__observations:
             observers = self.__observations[subject]
             for observer in observers:
-                observer.Notify(subject, self)
+                observer.Notify(subject, object)

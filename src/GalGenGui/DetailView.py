@@ -77,6 +77,9 @@ class DetailView(object):
         self._EnableApplyButton(False)
         self._EnableCancelButton(False)
 
+    def Apply(self):
+        self._OnApply(None)
+
     def _OnCancel(self, event):
         self._EnableApplyButton(False)
         self._EnableCancelButton(False)
@@ -88,4 +91,7 @@ class DetailView(object):
             self._EnableCancelButton(modified == True)
 
     def _IsModified(self):
-        pass
+        return False
+
+    def IsModified(self):
+        return self._IsModified()

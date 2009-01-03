@@ -13,17 +13,31 @@ class DetailPanel(wx.Panel):
     def __init__(self, parent, style):
         wx.Panel.__init__(self, parent = parent, style = style)
         self.__event_handlers_enabled = True
+        self.__element = None
+        self.__view = None
 
     def GetEventHandlersEnabled(self):
         return self.__event_handlers_enabled;
     event_handlers_enabled = property(GetEventHandlersEnabled, None)
 
+    def __ShowApplyCancelDlg(self, new_element):
+        txt = '%s has been modified. Shall the modifications\nbe applied before switching to %s?' % (self.__view.element.name, new_element.name)
+        dlg = wx.MessageDialog(self, txt,
+                               'Apply changes',
+                                wx.YES_NO | wx.YES_DEFAULT | wx.ICON_INFORMATION)
+        if dlg.ShowModal() == wx.ID_YES:
+            self.__view.Apply()
+
     def Display(self, element):
-        self.__event_handlers_enabled = False
-        view = self.__GetViewForElement(element)
-        self.DestroyChildren()
-        view.FillPanel()
-        self.__event_handlers_enabled = True
+        if element != self.__element:
+            if self.__view and self.__view.IsModified():
+                self.__ShowApplyCancelDlg(element)
+            self.__event_handlers_enabled = False
+            view = self.__GetViewForElement(element)
+            self.DestroyChildren()
+            view.FillPanel()
+            self.__view = view
+            self.__event_handlers_enabled = True
 
     def __GetViewForElement(self, element):
         if isinstance(element, Project):

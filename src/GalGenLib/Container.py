@@ -12,12 +12,15 @@ class Container(Observable):
     def addChild(self, child):
         self.__contained.append(child)
         child.parent = self
-        self._notify(Container.EVT_CHILD_ADDED)
+        self._notify(Container.EVT_CHILD_ADDED, child)
 
     def removeChild(self, child):
         if child in self.__contained:
+            index = self.__contained.index(child)
             self.__contained.remove(child)
-            self._notify(Container.EVT_CHILD_REMOVED)
+            if index > 0: object = self.__contained[index - 1]
+            else: object = self
+            self._notify(Container.EVT_CHILD_REMOVED, object)
             
     def getChildren(self):
         return self.__contained

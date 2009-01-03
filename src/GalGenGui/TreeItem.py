@@ -4,17 +4,27 @@ from GalGenLib.NamedObject import NamedObject
 from GalGenLib.Container import Container
 
 class TreeItem(object):
+    property_expanded = 'tree_item_expanded'
 
     def __init__(self, tree, element, id):
         self.__tree = tree
         self.__element = element
         self.__id = id
+        self.__Subscribe()
+
+    def __Subscribe(self):
         # subscribe item for name changes of underlying object
-        element.subscribe(NamedObject.EVT_NAME_CHANGED, self)
-        if isinstance(element, Container):
+        self.__element.subscribe(NamedObject.EVT_NAME_CHANGED, self)
+        if isinstance(self.__element, Container):
             # subscribe TreePanel for add/remove events
-            element.subscribe(Container.EVT_CHILD_ADDED, self.__tree.GetParent())
-            element.subscribe(Container.EVT_CHILD_REMOVED, self.__tree.GetParent())
+            self.__element.subscribe(Container.EVT_CHILD_ADDED, self.__tree.GetParent())
+            self.__element.subscribe(Container.EVT_CHILD_REMOVED, self.__tree.GetParent())
+
+    def Unsubscribe(self):
+        self.__element.unsubscribe(NamedObject.EVT_NAME_CHANGED, self)
+        if isinstance(self.__element, Container):
+            self.__element.unsubscribe(Container.EVT_CHILD_ADDED, self.__tree.GetParent())
+            self.__element.unsubscribe(Container.EVT_CHILD_REMOVED, self.__tree.GetParent())
 
     def GetElement(self):
         return self.__element

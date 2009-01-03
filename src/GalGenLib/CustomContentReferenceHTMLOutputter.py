@@ -19,6 +19,7 @@ class CustomContentReferenceHTMLOutputter(NamedObjectHTMLOutputter):
         iframe.set('height', '696')
         iframe.set('scrolling', 'no')
         iframe.set('frameborder', '0')
+        iframe.text = "Iframes must be supported!"
     
     def _copyCustomContentHtmlFile(self, target_dir):
         if os.path.exists(self.entity.html_location):

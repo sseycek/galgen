@@ -1,4 +1,6 @@
 import os
+import shutil
+import time
 import wx
 from GalGenLib import Globals
 from GalGenLib.Core import Core
@@ -124,6 +126,11 @@ class Frame(wx.Frame):
             Core.getInstance().project.load()
             self.__GetTree().Populate()
 
+    def __CreateBackup(self, filename):
+        if os.path.exists(filename):
+            backup_filename = '%s.bak.%d' % (filename, int(time.time() * 100))
+            shutil.copyfile(filename, backup_filename)
+
     def OnSaveProject(self, event):
         if not Core.getInstance().project:
             wx.MessageBox('Nothing to save', 'Save project', wx.OK | wx.ICON_INFORMATION, self)
@@ -137,6 +144,7 @@ class Frame(wx.Frame):
                                     style=wx.SAVE | wx.CHANGE_DIR)
                 if dlg.ShowModal() != wx.ID_OK: return
                 Core.getInstance().project.filename = dlg.GetPath()
+            self.__CreateBackup(Core.getInstance().project.filename)
             fd = open(Core.getInstance().project.filename, 'w')
             Core.getInstance().project.save(fd)
             fd.close()

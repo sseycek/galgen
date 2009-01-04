@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+ name="Sample project "
+ galgen-version="0.8.2"
+ xhtml-template="/home/stepan/dev/galgen_trunk/test/template.html"
+ style-directory="/home/stepan/dev/galgen_trunk/test/style"
+ menu-id=""
+ title="Foo"
+ subtitle="Bar"
+ html-location="/home/stepan/dev/galgen_trunk/test/index_page.html"
+ supplemental-dir="/home/stepan/dev/galgen_trunk/test/index_files">
+<gallery name="Reisen" pic="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="menu_reisen" title="Reisen" subtitle="ins Ausland">
+<album name="Kanada" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Kanada" subtitle="da drueben">
+<picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
+</picture>
+</album>
+</gallery>
+<gallery name="Oesterreich" pic="" menu-id="" title="fdasga" subtitle="gfsdfa">
+<album name="fdazhq3gaf" pic="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
+<picture name="asdfasdfasd" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="ssfasfash" title="ssfasfash" subtitle="ssfasfash">
+</picture>
+</album>
+</gallery>
+<gallery name="Gallery" pic="" menu-id="" title="" subtitle="">
+<album name="Album" pic="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="sadf" subtitle="zwetzwetz">
+<picture name="Picture" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="dasqzg3q" subtitle="daszw4tz">
+</picture>
+</album>
+</gallery>
+<gallery name="Gallery X" pic="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="dah64te" subtitle="rewtwr">
+<album name="Album" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="asdf53gwrfq" subtitle="serqrtw">
+<picture name="Picture" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="eqwt53ztwertqw" subtitle="reqerqwerqwe">
+</picture>
+</album>
+</gallery>
+</project>

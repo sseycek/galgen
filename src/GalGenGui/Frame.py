@@ -7,6 +7,7 @@ from GalGenLib.Gallery import Gallery
 from GalGenLib.Album import Album
 from GalGenLib.Picture import Picture
 from Splitter import *
+from GenerationProgressDialog import GenerationProgressDialog
 
 class Frame(wx.Frame):
     WX_ID_THIS_FRAME = 100
@@ -147,8 +148,14 @@ class Frame(wx.Frame):
         else:
             target_dir_path = self.__GetTargetDir()
             if target_dir_path: #and not os.listdir(target_dir_path):
-                print 'Generating output into %s ...' % target_dir_path 
-                project.generateOutput(target_dir_path)
+                progress_dialog = GenerationProgressDialog(project.getPageCount(), self)
+                try:
+                    generated = project.generateOutput(target_dir_path, progress_dialog, 0)
+                    if generated != project.getPageCount():
+                        raise Exception, 'Unexpected: generated %d pages, while expected to generate %d' % (generated, project.getPageCount())
+                except:
+                    progress_dialog.destroy()
+                    raise
             else:
                 dlg = wx.MessageDialog(self, 'You have to select an empty target directory!',
                                        'Generate output',

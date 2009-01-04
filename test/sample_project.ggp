@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Sample project "
- galgen-version="0.8"
+ galgen-version="0.8.2"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""
@@ -12,6 +12,24 @@
 <gallery name="Reisen" pic="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="menu_reisen" title="Reisen" subtitle="ins Ausland">
 <album name="Kanada" pic="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="Kanada" subtitle="da drueben">
 <picture name="Fluss" location="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="Robson" subtitle="river">
+</picture>
+</album>
+</gallery>
+<gallery name="Oesterreich" pic="" menu-id="" title="fdasga" subtitle="gfsdfa">
+<album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
+<picture name="asdfasdfasd" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="ssfasfash" title="ssfasfash" subtitle="ssfasfash">
+</picture>
+</album>
+</gallery>
+<gallery name="Gallery" pic="" menu-id="" title="" subtitle="">
+<album name="Album" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="" title="sadf" subtitle="zwetzwetz">
+<picture name="Picture" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" menu-id="" title="dasqzg3q" subtitle="daszw4tz">
+</picture>
+</album>
+</gallery>
+<gallery name="Gallery X" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="" title="dah64te" subtitle="rewtwr">
+<album name="Album" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="asdf53gwrfq" subtitle="serqrtw">
+<picture name="Picture" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="" title="eqwt53ztwertqw" subtitle="reqerqwerqwe">
 </picture>
 </album>
 </gallery>

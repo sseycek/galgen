@@ -41,7 +41,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             thumb = thumbnailer.getThumbnail(self.entity.pic_location, 'album')
             thumb.save(os.path.join(album_dir, 'thumbs', '%dx%d' % (album_thumb_size[0], album_thumb_size[1]), self.entity.pic_file_name), 'JPEG')
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
         self.__copyPicture(target_dir)
         self.__generateThumbs(target_dir)
         self.updateCssRef(2)
@@ -53,4 +53,5 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self.__addPicture()
         file_name = '%s.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
+        return page_index
         

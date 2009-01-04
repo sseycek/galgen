@@ -87,7 +87,7 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
                 thumb = thumbnailer.getThumbnail(child.pic_location, 'gallery')
                 thumb.save(thumb_path, 'JPEG')
     
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
         target_dir = os.path.join(target_dir, self.entity.name)
         os.mkdir(target_dir)
         self.__createSubDirs(target_dir)
@@ -103,4 +103,5 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         self.__addIndexTable()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
-            child.generateOutput(target_dir)
+            page_index = child.generateOutput(target_dir, progress_updater, page_index)
+        return page_index

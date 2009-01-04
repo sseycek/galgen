@@ -80,13 +80,15 @@ class Project(CustomContentReference, Container, Modifyable):
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
+        page_index += 1
+        progress_updater.update(page_index, '%s: %s' % (self.__class__.__name__, self.name))
         if os.path.exists(self.style_directory):
             shutil.copytree(self.style_directory, os.path.join(target_dir, 'style'))
         else:
             raise Exception, 'Style directory not found'
         outputter = ProjectHTMLOutputter(self)
-        outputter.generateOutput(target_dir)
+        return outputter.generateOutput(target_dir, progress_updater, page_index)
 
     def __getMenuIdHrefMappingRecoursive(self, element, level, ret):
         if isinstance(element, Container):
@@ -99,3 +101,14 @@ class Project(CustomContentReference, Container, Modifyable):
         ret = []
         self.__getMenuIdHrefMappingRecoursive(self, level, ret)
         return ret
+
+    def __recursiveGetPageCount(self, element, count):
+        count +=1
+        if isinstance(element, Container):
+            for child in element.children:
+                count = self.__recursiveGetPageCount(child, count)
+        return count
+    
+    def getPageCount(self):
+        return self.__recursiveGetPageCount(self, 0)
+

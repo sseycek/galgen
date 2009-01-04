@@ -24,6 +24,8 @@ class Picture(Modifyable, PictureReference, Contained):
     def _getHtmlPath(self):
         return '%s/%s/%s' % (self.parent.parent.name, self.parent.name, self.html_file_name)
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
+        page_index += 1
+        progress_updater.update(page_index, '%s: %s' % (self.__class__.__name__, self.name))
         outputter = PictureHTMLOutputter(self)
-        outputter.generateOutput(target_dir)
+        return outputter.generateOutput(target_dir, progress_updater, page_index)

@@ -44,7 +44,7 @@ class Thumbnailer(object):
             raise msg
         size = self.__thumb_sizes[type]
         if size in self.__cache and path in self.__cache[size]:
-            logDebug('Got %dx%d thumbnail for %s from cache' % (size[0], size[1], path))
+            #logDebug('Got %dx%d thumbnail for %s from cache' % (size[0], size[1], path))
             return self.__cache[size][path]
         img = Image.open(path)
         img = self.__cropImg(img)
@@ -52,7 +52,7 @@ class Thumbnailer(object):
         if size not in self.__cache:
             self.__cache[size] = {}
         self.__cache[size][path] = img
-        logDebug('Added %dx%d thumbnail for %s to cache' % (size[0], size[1], path))
+        #logDebug('Added %dx%d thumbnail for %s to cache' % (size[0], size[1], path))
         return img
 
     def getGalleryThumbnailSize(self):

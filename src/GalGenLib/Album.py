@@ -18,6 +18,8 @@ class Album(Index, Contained):
     def _getHtmlPath(self):
         return '%s/%s/index.html' % (self.parent.name, self.name)
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
+        page_index += 1
+        progress_updater.update(page_index, '%s: %s' % (self.__class__.__name__, self.name))
         outputter = AlbumHTMLOutputter(self)
-        outputter.generateOutput(target_dir)
+        return outputter.generateOutput(target_dir, progress_updater, page_index)

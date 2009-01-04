@@ -62,7 +62,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         if slide_thumb_size != album_thumb_size:
              os.mkdir(os.path.join(album_dir, 'thumbs', '%dx%d' % slide_thumb_size))
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
         self.updateCssRef(2)
         self.updateStyleDirRefs(2)
         self.updateDocTitle()
@@ -76,4 +76,5 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         self.__createSubDirs(target_dir)
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
-            child.generateOutput(target_dir)
+            page_index = child.generateOutput(target_dir, progress_updater, page_index)
+        return page_index

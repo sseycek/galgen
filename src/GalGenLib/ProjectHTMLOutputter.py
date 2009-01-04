@@ -7,7 +7,7 @@ class ProjectHTMLOutputter(CustomContentReferenceHTMLOutputter):
     def __init__(self, project):
         CustomContentReferenceHTMLOutputter.__init__(self, project)
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
         self.updateCssRef(0)
         self.updateDocTitle()
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(0)
@@ -19,4 +19,5 @@ class ProjectHTMLOutputter(CustomContentReferenceHTMLOutputter):
         self._addIframe()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:
-            child.generateOutput(target_dir)
+            page_index = child.generateOutput(target_dir, progress_updater, page_index)
+        return page_index

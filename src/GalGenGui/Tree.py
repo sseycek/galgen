@@ -16,7 +16,7 @@ class Tree(wx.TreeCtrl):
         self.Populate()
 
     def __RestoreExpansionState(self, item_id):
-        if item_id.IsOk():
+        if item_id and item_id.IsOk():
             element = self.GetItemPyData(item_id).element
             if element.getGuiProperty(TreeItem.property_expanded):
                 self.Expand(item_id)
@@ -26,7 +26,7 @@ class Tree(wx.TreeCtrl):
                 child, child_cookie = self.GetNextChild(item_id, child_cookie)
 
     def __UnsubscribeObservers(self, item_id):
-        if item_id.IsOk():
+        if item_id and item_id.IsOk():
             tree_item = self.GetItemPyData(item_id)
             tree_item.Unsubscribe()
             child, child_cookie = self.GetFirstChild(item_id)

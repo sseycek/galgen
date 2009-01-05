@@ -2,6 +2,7 @@ import os
 import shutil
 import time
 import wx
+import codecs
 from GalGenLib import Globals
 from GalGenLib.Core import Core
 from GalGenLib.Project import Project
@@ -145,7 +146,7 @@ class Frame(wx.Frame):
                 if dlg.ShowModal() != wx.ID_OK: return
                 Core.getInstance().project.filename = dlg.GetPath()
             self.__CreateBackup(Core.getInstance().project.filename)
-            fd = open(Core.getInstance().project.filename, 'w')
+            fd = codecs.open(Core.getInstance().project.filename, 'w', 'utf-8')
             Core.getInstance().project.save(fd)
             fd.close()
 

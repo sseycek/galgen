@@ -61,6 +61,7 @@ class Project(CustomContentReference, Container, Modifyable):
         for child in children:
             child.save(stream)
         self.__writeEndTag(stream)
+        self.modified = False
 
     def __writeHeader(self, stream):
         stream.write(u'<?xml version="1.0" encoding="UTF-8"?>\n')

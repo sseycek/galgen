@@ -114,18 +114,19 @@ class Frame(wx.Frame):
         element.parent.removeChild(element)
 
     def OnOpenProject(self, event):
-        dlg = wx.FileDialog(self,
-                            message="Choose a file",
-                            defaultDir=os.getcwd(),
-                            defaultFile="",
-                            wildcard="GalGen project file (*.ggp)|*.ggp|All files (*.*)|*.*",
-                            style=wx.OPEN | wx.CHANGE_DIR)
-        if dlg.ShowModal() == wx.ID_OK:
-            if Core.getInstance().project and Core.getInstance().project.modified:
-                wx.MessageBox('%s has changes - save or close it' % Core.getInstance().project.name, 'Open project', wx.OK | wx.ICON_INFORMATION, self)
-            Core.getInstance().project = Project(dlg.GetPath())
-            Core.getInstance().project.load()
-            self.__GetTree().Populate()
+        if Core.getInstance().project and Core.getInstance().project.modified:
+            wx.MessageBox('%s has changes - save or close it' % Core.getInstance().project.name, 'Open project', wx.OK | wx.ICON_ERROR, self)
+        else:
+            dlg = wx.FileDialog(self,
+                                message="Choose a file",
+                                defaultDir=os.getcwd(),
+                                defaultFile="",
+                                wildcard="GalGen project file (*.ggp)|*.ggp|All files (*.*)|*.*",
+                                style=wx.OPEN | wx.CHANGE_DIR)
+            if dlg.ShowModal() == wx.ID_OK:
+                Core.getInstance().project = Project(dlg.GetPath())
+                Core.getInstance().project.load()
+                self.__GetTree().Populate()
 
     def __CreateBackup(self, filename):
         if os.path.exists(filename):

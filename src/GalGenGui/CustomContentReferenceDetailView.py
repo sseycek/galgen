@@ -65,8 +65,10 @@ class CustomContentReferenceDetailView(NamedObjectDetailView):
         super(CustomContentReferenceDetailView, self)._OnApply(event)
         if self._IsHtmlLocationModified():
             self.element.html_location = self._html_location_edit.GetValue()
+            self.element.modified = True
         if self._IsSupplementalDirModified():
             self.element.supplemental_dir = self._supplemental_dir_edit.GetValue()
+            self.element.modified = True
 
     def _OnCancel(self, event):
         super(CustomContentReferenceDetailView, self)._OnCancel(event)

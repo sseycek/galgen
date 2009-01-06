@@ -30,6 +30,7 @@ class NamedObjectDetailView(GalleryObjectDetailView):
         super(NamedObjectDetailView, self)._OnApply(event)
         if self.__IsNameModified():
             self.element.name = self._name_edit.GetValue()
+            self.element.modified = True
 
     def _OnCancel(self, event):
         super(NamedObjectDetailView, self)._OnCancel(event)

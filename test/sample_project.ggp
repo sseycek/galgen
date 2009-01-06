@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
- name="Sample project "
- galgen-version="0.8.2"
+ name="Sample project"
+ galgen-version="0.8.3"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""

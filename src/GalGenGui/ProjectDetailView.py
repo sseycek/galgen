@@ -81,8 +81,10 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         super(ProjectDetailView, self)._OnApply(event)
         if self.__IsXhtmlTemplateModified():
             self.element.xhtml_template = self.__xhtml_template_edit.GetValue()
+            self.element.modified = True
         if self.__IsStyleDirectoryModified():
             self.element.style_directory = self.__style_directory_edit.GetValue()
+            self.element.modified = True
 
     def _OnCancel(self, event):
         super(ProjectDetailView, self)._OnCancel(event)

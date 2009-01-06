@@ -29,6 +29,7 @@ class Frame(wx.Frame):
         self.__InitStatusBar()
         self.__InitToolBar()
         self.__InitSplitter()
+        self.Bind(wx.EVT_CLOSE, self.OnClose)
 
     def __InitMenu(self):
         self.__menu_file = wx.Menu()
@@ -88,6 +89,23 @@ class Frame(wx.Frame):
 
     def OnQuit(self, event):
         self.Close()
+
+    def OnClose(self, event):
+        if Core.getInstance().project and Core.getInstance().project.modified:
+            dlg = wx.MessageDialog(self,
+                                   '%s has been modified. Shall it be saved?' % Core.getInstance().project.name,
+                                   'Quitting' ,
+                                   wx.YES_NO | wx.YES_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION)
+            ret = dlg.ShowModal()
+            if ret == wx.ID_YES:
+                self.OnSaveProject(None)
+                self.Destroy()
+            elif ret == wx.ID_NO:
+                self.Destroy()
+            else:
+                pass
+        else:
+            self.Destroy()
 
     def OnAbout(self, event):
         wx.MessageBox('%s\n\n%s\n%s' %

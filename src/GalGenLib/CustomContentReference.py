@@ -8,7 +8,7 @@ class CustomContentReference(NamedObject):
     def __init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir):
         NamedObject.__init__(self, name, menu_id, title, subtitle)
         self.__html_location = html_location
-        self.__supplemental_path = supplemental_dir
+        self.__supplemental_dir = supplemental_dir
 
     def _getHtmlLocation(self):
         return self.__html_location

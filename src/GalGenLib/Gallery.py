@@ -1,16 +1,25 @@
-from Index import Index
+from NamedObject import NamedObject
+from Container import Container
 from Contained import Contained
 from GalleryHTMLOutputter import GalleryHTMLOutputter
 
-class Gallery(Index, Contained):
+class Gallery(NamedObject, Container, Contained):
 
-    def __init__(self, name, pic_location, menu_id, title, subtitle):
-        Index.__init__(self, name, pic_location, menu_id, title, subtitle)
+    def __init__(self, name, menu_id, title, subtitle):
+        NamedObject.__init__(self, name, menu_id, title, subtitle)
+        Container.__init__(self)
         Contained.__init__(self)
 
+    def save(self, stream):
+        self._writeStartTag(stream)
+        children = self.getChildren()
+        for child in children:
+            child.save(stream)
+        self._writeEndTag(stream)
+
     def _writeStartTag(self, stream):
-        stream.write(u'<gallery name="%s" pic="%s" menu-id="%s" title="%s" subtitle="%s">\n'
-                     % (self.name, self.pic_location, self.menu_id, self.title, self.subtitle))
+        stream.write(u'<gallery name="%s" menu-id="%s" title="%s" subtitle="%s">\n'
+                     % (self.name, self.menu_id, self.title, self.subtitle))
 
     def _writeEndTag(self, stream):
         stream.write(u'</gallery>\n')

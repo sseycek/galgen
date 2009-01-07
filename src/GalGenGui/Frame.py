@@ -118,7 +118,7 @@ class Frame(wx.Frame):
         tree_item_id = self.__GetTree().GetSelection()
         element = self.__GetTree().GetPyData(tree_item_id).element
         if isinstance(element, Project):
-            element.addChild(Gallery('Gallery', '', '', '', ''))
+            element.addChild(Gallery('Gallery', '', '', ''))
         elif isinstance(element, Gallery):
             element.addChild(Album('Album', '', '', '', ''))
         elif isinstance(element, Album):

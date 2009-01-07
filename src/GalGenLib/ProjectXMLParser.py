@@ -58,15 +58,15 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         # logDebug('startElementGallery called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising gallery, while there is no project on the stack yet'
-        index = Gallery(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
-        self.__element_stack.append(index)
+        gallery = Gallery(attributes['name'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        self.__element_stack.append(gallery)
 
     def __startElementAlbum(self, attributes):
         # logDebug('startElementAlbum called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising album, while there is no project on the stack yet'
-        index = Album(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
-        self.__element_stack.append(index)
+        album = Album(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        self.__element_stack.append(album)
 
     def __startElementPicture(self, attributes):
         # logDebug('startElementPicture called for "%s" located at "%s"' % (attributes['name'], attributes['location']))

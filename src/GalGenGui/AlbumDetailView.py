@@ -1,6 +1,6 @@
-from IndexDetailView import IndexDetailView
+from PictureReferenceDetailView import PictureReferenceDetailView
 
-class AlbumDetailView(IndexDetailView):
+class AlbumDetailView(PictureReferenceDetailView):
 
     def __init__(self, panel, element):
         super(AlbumDetailView, self).__init__(panel, element)

@@ -1,12 +1,21 @@
-from Index import Index
+from PictureReference import PictureReference
+from Container import Container
 from Contained import Contained
 from AlbumHTMLOutputter import AlbumHTMLOutputter
 
-class Album(Index, Contained):
+class Album(PictureReference, Container, Contained):
 
     def __init__(self, name, pic_location, menu_id, title, subtitle):
-        Index.__init__(self, name, pic_location, menu_id, title, subtitle)
+        PictureReference.__init__(self, name, pic_location, menu_id, title, subtitle)
+        Container.__init__(self)
         Contained.__init__(self)
+
+    def save(self, stream):
+        self._writeStartTag(stream)
+        children = self.getChildren()
+        for child in children:
+            child.save(stream)
+        self._writeEndTag(stream)
 
     def _writeStartTag(self, stream):
         stream.write(u'<album name="%s" pic="%s" menu-id="%s" title="%s" subtitle="%s">\n'

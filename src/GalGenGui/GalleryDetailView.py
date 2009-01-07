@@ -1,6 +1,6 @@
-from IndexDetailView import IndexDetailView
+from NamedObjectDetailView import NamedObjectDetailView
 
-class GalleryDetailView(IndexDetailView):
+class GalleryDetailView(NamedObjectDetailView):
 
     def __init__(self, panel, element):
         super(GalleryDetailView, self).__init__(panel, element)

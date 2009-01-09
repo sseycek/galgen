@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# comment should go here
 
 import os
 import shutil

@@ -3,10 +3,12 @@ from GalGenLib.Picture import Picture
 from GalGenLib.Project import Project
 from GalGenLib.Album import Album
 from GalGenLib.Gallery import Gallery
+from GalGenLib.CustomContentPage import CustomContentPage
 from ProjectDetailView import ProjectDetailView
 from AlbumDetailView import AlbumDetailView
 from GalleryDetailView import GalleryDetailView
 from PictureDetailView import PictureDetailView
+from CustomContentPageDetailView import CustomContentPageDetailView
 
 class DetailPanel(wx.Panel):
 
@@ -48,4 +50,9 @@ class DetailPanel(wx.Panel):
             return GalleryDetailView(self, element)
         elif isinstance(element, Picture):
             return PictureDetailView(self, element)
+        elif isinstance(element, CustomContentPage):
+            return CustomContentPageDetailView(self, element)
+        else:
+            raise Exception, 'no detail view available for element'
+        
 

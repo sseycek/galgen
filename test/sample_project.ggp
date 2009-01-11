@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Sample project"
- galgen-version="0.8.3"
+ galgen-version="0.8.4"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""
@@ -39,4 +39,6 @@
 </picture>
 </album>
 </gallery>
+<customcontent name="Kontaxt" location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text.html" dir-location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="webmaster">
+</customcontent>
 </project>

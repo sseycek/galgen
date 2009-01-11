@@ -1,6 +1,7 @@
 import wx
 from GalGenLib.Core import Core
 from GalGenLib.Picture import Picture
+from GalGenLib.CustomContentPage import CustomContentPage
 from TreeItem import TreeItem
 
 class Tree(wx.TreeCtrl):
@@ -61,7 +62,7 @@ class Tree(wx.TreeCtrl):
             self.SetItemPyData(child_id, item)
             if selected_element == child:
                 self.SelectItem(child_id)
-            if isinstance(child, Picture):
+            if isinstance(child, Picture) or isinstance(child, CustomContentPage):
                 self.SetItemImage(child_id, self.__file_img, wx.TreeItemIcon_Normal)
             else:
                 self.SetItemImage(child_id, self.__folder_img, wx.TreeItemIcon_Normal)

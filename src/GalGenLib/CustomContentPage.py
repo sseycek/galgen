@@ -1,13 +1,13 @@
 from Modifyable import Modifyable
 from CustomContentReference import CustomContentReference
 from Contained import Contained
-from CustomContentHTMLOutputter import CustomContentHTMLOutputter
+from CustomContentPageHTMLOutputter import CustomContentPageHTMLOutputter
 
 class CustomContentPage(Modifyable, CustomContentReference, Contained):
 
     def __init__(self, name, html_location, supplemental_dir, menu_id, title, subtitle):
         Modifyable.__init__(self)
-        CustomContentReference.__init__(self, name, html_location, supplemental_dir, menu_id, title, subtitle)
+        CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir)
         Contained.__init__(self)
 
     def save(self, stream):
@@ -22,8 +22,10 @@ class CustomContentPage(Modifyable, CustomContentReference, Contained):
         stream.write(u'</customcontent>\n')
 
     def _getHtmlPath(self):
-        return '%s/%s/%s' % (self.parent.parent.name, self.parent.name, self.html_file_name)
+        return '%s.html' % self.name
 
-    def generateOutput(self, target_dir):
+    def generateOutput(self, target_dir, progress_updater, page_index):
+        page_index += 1
+        progress_updater.update(page_index, '%s: %s' % (self.__class__.__name__, self.name))
         outputter = CustomContentPageHTMLOutputter(self)
-        outputter.generateOutput(target_dir)
+        return outputter.generateOutput(target_dir, progress_updater, page_index)

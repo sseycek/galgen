@@ -29,8 +29,9 @@ class CustomContentReferenceHTMLOutputter(NamedObjectHTMLOutputter):
             raise Exception, 'Index page not found'
     
     def _copyIframeDir(self, target_dir):
-        if os.path.exists(self.entity.supplemental_dir):
-            shutil.copytree(self.entity.supplemental_dir, os.path.join(target_dir, os.path.split(self.entity.supplemental_dir)[1]))
-        else:
-            raise Exception, 'Index page supplemental directory not found'
+        if self.entity.supplemental_dir:
+            if os.path.exists(self.entity.supplemental_dir):
+                shutil.copytree(self.entity.supplemental_dir, os.path.join(target_dir, os.path.split(self.entity.supplemental_dir)[1]))
+            else:
+                raise Exception, 'Index page supplemental directory not found'
         

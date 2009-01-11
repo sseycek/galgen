@@ -3,6 +3,7 @@ from Logging import *
 from Album import Album
 from Gallery import Gallery
 from Picture import Picture
+from CustomContentPage import CustomContentPage
 
 class ProjectXMLParser(xml.sax.handler.ContentHandler):
 
@@ -36,6 +37,8 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
             self.__startElementAlbum(attributes)
         elif name == "picture":
             self.__startElementPicture(attributes)
+        elif name == "customcontent":
+            self.__startElementCustomContentPage(attributes)
         else:
             logError('Unknown XML tag: %s' % name)
             self.__ignore_levels += 1
@@ -74,6 +77,10 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
             raise 'Unexpected - deserialising picture, while there is no index on the stack yet'
         picture = Picture(attributes['name'], attributes['location'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
         self.__element_stack.append(picture)
+
+    def __startElementCustomContentPage(self, attributes):
+        custom_page = CustomContentPage(attributes['name'], attributes['location'], attributes['dir-location'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        self.__element_stack.append(custom_page)
 
     def characters(self, data):
         if not self.__ignore_levels and data.strip():

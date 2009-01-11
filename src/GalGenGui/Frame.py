@@ -9,6 +9,7 @@ from GalGenLib.Project import Project
 from GalGenLib.Gallery import Gallery
 from GalGenLib.Album import Album
 from GalGenLib.Picture import Picture
+from GalGenLib.CustomContentPage import CustomContentPage
 from Splitter import *
 from GenerationProgressDialog import GenerationProgressDialog
 
@@ -20,7 +21,8 @@ class Frame(wx.Frame):
     WX_ID_FILE_MENU_GENERATE = 204
     WX_ID_FILE_MENU_EXIT = 210
     WX_ID_EDIT_MENU_ADD = 301
-    WX_ID_EDIT_MENU_REMOVE = 302
+    WX_ID_EDIT_MENU_ADD_CUSTOM = 302
+    WX_ID_EDIT_MENU_REMOVE = 303
     WX_ID_HELP_MENU_ABOUT = 401
 
     def __init__(self, parent, title):
@@ -40,10 +42,11 @@ class Frame(wx.Frame):
         self.__menu_file.AppendSeparator()
         self.__menu_file.Append(Frame.WX_ID_FILE_MENU_EXIT, 'E&xit\tCTRL+Q')
         self.__menu_edit = wx.Menu()
-        self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD, '&Add...\tCTRL+INS')
-        self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_REMOVE, '&Remove\tCTRL+DEL')
+        self.__menu_edit_add = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD, '&Add\tCTRL+INS')
+        self.__menu_edit_add_custom = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD_CUSTOM, '&Add custom page\tCTRL+SHIFT+INS')
+        self.__menu_edit_remove = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_REMOVE, '&Remove\tCTRL+DEL')
         self.__menu_help = wx.Menu()
-        self.__menu_help.Append(Frame.WX_ID_HELP_MENU_ABOUT, '&About...\tF1')
+        self.__menu_help.Append(Frame.WX_ID_HELP_MENU_ABOUT, '&About ...\tF1')
         self.__menu_bar = wx.MenuBar()
         self.__menu_bar.Append(self.__menu_file, '&File')
         self.__menu_bar.Append(self.__menu_edit, '&Edit')
@@ -54,6 +57,7 @@ class Frame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnSaveProject, id=Frame.WX_ID_FILE_MENU_SAVE)
         self.Bind(wx.EVT_MENU, self.OnGenerateOutput, id=Frame.WX_ID_FILE_MENU_GENERATE)
         self.Bind(wx.EVT_MENU, self.OnEditAdd, id=Frame.WX_ID_EDIT_MENU_ADD)
+        self.Bind(wx.EVT_MENU, self.OnEditAddCustom, id=Frame.WX_ID_EDIT_MENU_ADD_CUSTOM)
         self.Bind(wx.EVT_MENU, self.OnEditRemove, id=Frame.WX_ID_EDIT_MENU_REMOVE)
         self.Bind(wx.EVT_MENU, self.OnAbout, id=Frame.WX_ID_HELP_MENU_ABOUT)
         self.Bind(wx.EVT_MENU, self.OnQuit, id=Frame.WX_ID_FILE_MENU_EXIT)
@@ -125,6 +129,14 @@ class Frame(wx.Frame):
             element.addChild(Picture('Picture', '', '', '', ''))
         else:
             raise Exception, 'Don\'t know what to add'
+
+    def OnEditAddCustom(self, event):
+        tree_item_id = self.__GetTree().GetSelection()
+        element = self.__GetTree().GetPyData(tree_item_id).element
+        if isinstance(element, Project):
+            element.addChild(CustomContentPage('Custom page', '', '', '', '', ''))
+        else:
+            raise Exception, 'custom content pages only supported as direct child entries of project'
 
     def OnEditRemove(self, event):
         tree_item_id = self.__GetTree().GetSelection()
@@ -210,12 +222,33 @@ class Frame(wx.Frame):
         if item:
             element = self.__GetTree().GetPyData(item).element
             if isinstance(element, Project):
-                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_ADD, True)
-                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_REMOVE, False)
+                self.__menu_edit_add.SetText('&Add gallery\tCTRL+INS')
+                self.__menu_edit_add.Enable(True)
+                self.__menu_edit_add_custom.Enable(True)
+                self.__menu_edit_remove.SetText('&Remove\tCTRL+DEL')
+                self.__menu_edit_remove.Enable(False)
+            elif isinstance(element, Gallery):
+                self.__menu_edit_add.SetText('&Add album\tCTRL+INS')
+                self.__menu_edit_add.Enable(True)
+                self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_remove.SetText('&Remove gallery\tCTRL+DEL')
+                self.__menu_edit_remove.Enable(True)
+            elif isinstance(element, Album):
+                self.__menu_edit_add.SetText('&Add picture\tCTRL+INS')
+                self.__menu_edit_add.Enable(True)
+                self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_remove.SetText('&Remove album\tCTRL+DEL')
+                self.__menu_edit_remove.Enable(True)
             elif isinstance(element, Picture):
-                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_ADD, False)
-                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_REMOVE, True)
-            else:
-                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_ADD, True)
-                self.__menu_edit.Enable(Frame.WX_ID_EDIT_MENU_REMOVE, True)
-        
+                self.__menu_edit_add.Enable(False)
+                self.__menu_edit_add.SetText('&Add\tCTRL+INS')
+                self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_remove.SetText('&Remove picture\tCTRL+DEL')
+                self.__menu_edit_remove.Enable(True)
+            elif isinstance(element, CustomContentPage):
+                self.__menu_edit_add.Enable(False)
+                self.__menu_edit_add.SetText('&Add\tCTRL+INS')
+                self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_remove.SetText('&Remove custom page\tCTRL+DEL')
+                self.__menu_edit_remove.Enable(True)
+            else: raise Exception, 'unknown element type' 

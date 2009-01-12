@@ -9,3 +9,9 @@ class Contained(object):
         return self.__parent
 
     parent = property(getParent, setParent)
+    
+    def getNext(self, wrap = False):
+        return self.parent.getNext(self, wrap)
+    
+    def getPrevious(self, wrap = False):
+        return self.parent.getPrevious(self, wrap)

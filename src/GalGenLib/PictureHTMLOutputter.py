@@ -6,6 +6,7 @@ from Core import Core
 from xml.etree import cElementTree as etree
 
 class PictureHTMLOutputter(NamedObjectHTMLOutputter):
+    SLIDE_THUMB_COUNT = 7
 
     def __init__(self, picture):
         NamedObjectHTMLOutputter.__init__(self, picture)
@@ -41,6 +42,69 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             thumb = thumbnailer.getThumbnail(self.entity.pic_location, 'album')
             thumb.save(os.path.join(album_dir, 'thumbs', '%dx%d' % (album_thumb_size[0], album_thumb_size[1]), self.entity.pic_file_name), 'JPEG')
 
+    def __getThumbStripePictures(self):
+        left_neighours = []
+        right_neighbours = []
+        current = self.entity
+        while current:
+            current = current.getPrevious()
+            if current: left_neighours.append(current)
+        current = self.entity
+        while current:
+            current = current.getNext()
+            if current: right_neighbours.append(current)
+        picture_seq = [self.entity]
+        progress = True
+        while len(picture_seq) < self.SLIDE_THUMB_COUNT and progress:
+            progress = False
+            if left_neighours:
+                pic = left_neighours.pop(0)
+                picture_seq.insert(0, pic)
+                progress = True
+                if len(picture_seq) == self.SLIDE_THUMB_COUNT: break
+            if right_neighbours:
+                pic = right_neighbours.pop(0)
+                picture_seq.append(pic)
+                progress = True
+        return picture_seq
+        
+    def __updateThumbStripe(self):
+        thumb_tag = self.getThumbStripeTag()
+        if thumb_tag == None: raise Exception, 'No thumb stripe tag contained in template'
+        slide_thumb_size = Thumbnailer.getInstance().slide_thumb_size
+        #<table class="table1" cellspacing="0" cellpadding="0">
+        table = etree.SubElement(thumb_tag, 'table')
+        table.set('class', 'table1');
+        table.set('cellspacing', '0');
+        table.set('cellpadding', '0');
+        pictures = self.__getThumbStripePictures()
+        for i in range(self.SLIDE_THUMB_COUNT):
+            if i >= len(pictures): break
+            #<tr><td class="thumbzelle_small"><a href="peyto_lake.html"><img src="navithumbs/Peyto_Lake.jpg" class="navithumb"></a></td></tr>
+            tr = etree.SubElement(table, 'tr')
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'thumbzelle_small')
+            a = etree.SubElement(td, 'a')
+            a.set('href', pictures[i].html_file_name)
+            img = etree.SubElement(a, 'img')
+            if not pictures[i].pic_file_name.endswith('.jpg'): raise Exception, 'currently only jpg files are supported'
+            img.set('src', 'thumbs/%dx%d/%s' % (slide_thumb_size[0], slide_thumb_size[1], pictures[i].pic_file_name))
+            img.set('class', 'navithumb')
+            if pictures[i] == self.entity:
+                img.set('id', 'effect2')
+
+    def __updateNaviControls(self):
+        tag = self.getNaviAlbumTag()
+        if tag: tag.set('href', 'index.html')
+        prev = self.entity.getPrevious()
+        if prev:
+            tag = self.getNaviPrevTag()
+            if tag: tag.set('href', prev.html_file_name)
+        next = self.entity.getNext()
+        if next:
+            tag = self.getNaviNextTag()
+            if tag: tag.set('href', next.html_file_name)
+
     def generateOutput(self, target_dir, progress_updater, page_index):
         self.__copyPicture(target_dir)
         self.__generateThumbs(target_dir)
@@ -51,6 +115,8 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.__addPicture()
+        self.__updateThumbStripe()
+        self.__updateNaviControls()
         file_name = '%s.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
         return page_index

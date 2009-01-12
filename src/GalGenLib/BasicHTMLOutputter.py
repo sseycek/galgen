@@ -6,8 +6,12 @@ from xml.etree import cElementTree as etree
 class BasicHTMLOutputter(object):
     doc_title_tag_id = 'doctitle'
     content_tag_id = 'hauptzelle'
+    thumb_stripe_tag_id = 'thumbzelle'
     css_tag_id = 'css_ref'
     navi_tag_id = 'navizelle'
+    navi_prev_tag_id = 'navi-prev'
+    navi_next_tag_id = 'navi-next'
+    navi_album_tag_id = 'navi-album'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
     active_menu_item_class = 'effect1'
@@ -36,6 +40,9 @@ class BasicHTMLOutputter(object):
     def getContentTag(self):
         return self.getElementById(self.content_tag_id)
 
+    def getThumbStripeTag(self):
+        return self.getElementById(self.thumb_stripe_tag_id)
+
     def getDocTitleTag(self):
         return self.getElementById(self.doc_title_tag_id)
 
@@ -44,6 +51,15 @@ class BasicHTMLOutputter(object):
 
     def getNaviTag(self):
         return self.getElementById(self.navi_tag_id)
+
+    def getNaviPrevTag(self):
+        return self.getElementById(self.navi_prev_tag_id)
+
+    def getNaviNextTag(self):
+        return self.getElementById(self.navi_next_tag_id)
+
+    def getNaviAlbumTag(self):
+        return self.getElementById(self.navi_album_tag_id)
 
     def getTitleTag(self):
         return self.getElementById(self.title_tag_id)

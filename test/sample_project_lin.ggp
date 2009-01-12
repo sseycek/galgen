@@ -13,6 +13,46 @@
 <album name="Kanada" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Kanada" subtitle="da drueben">
 <picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
 </picture>
+<picture name="Fluss  2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Fluss 2" subtitle="...">
+</picture>
+<picture name="Fluss  3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Fluss 3" subtitle="...">
+</picture>
+<picture name="Fluss  4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Fluss 4" subtitle="...">
+</picture>
+<picture name="Fluss  5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" menu-id="" title="Fluss 5" subtitle="...">
+</picture>
+<picture name="Fluss  6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" menu-id="" title="Fluss 6" subtitle="...">
+</picture>
+<picture name="Fluss  7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" menu-id="" title="Fluss 7" subtitle="...">
+</picture>
+<picture name="Fluss  8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" menu-id="" title="Fluss 8" subtitle="...">
+</picture>
+<picture name="Fluss  9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" menu-id="" title="Fluss 9" subtitle="...">
+</picture>
+<picture name="Fluss 10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" menu-id="" title="Fluss 10" subtitle="...">
+</picture>
+</album>
+<album name="Kanada 2" pic="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Test" subtitle="mit 5 Bildern">
+<picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
+</picture>
+<picture name="Fluss  2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Fluss 2" subtitle="...">
+</picture>
+<picture name="Fluss  3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Fluss 3" subtitle="...">
+</picture>
+<picture name="Fluss  4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Fluss 4" subtitle="...">
+</picture>
+<picture name="Fluss  5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" menu-id="" title="Fluss 5" subtitle="...">
+</picture>
+</album>
+<album name="Kanada 3" pic="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Test" subtitle="mit 4 Bildern">
+<picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
+</picture>
+<picture name="Fluss  2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Fluss 2" subtitle="...">
+</picture>
+<picture name="Fluss  3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Fluss 3" subtitle="...">
+</picture>
+<picture name="Fluss  4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Fluss 4" subtitle="...">
+</picture>
 </album>
 </gallery>
 <gallery name="Oesterreich" menu-id="" title="fdasga" subtitle="gfsdfa">

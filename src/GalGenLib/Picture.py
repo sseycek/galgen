@@ -29,3 +29,4 @@ class Picture(Modifyable, PictureReference, Contained):
         progress_updater.update(page_index, '%s: %s' % (self.__class__.__name__, self.name))
         outputter = PictureHTMLOutputter(self)
         return outputter.generateOutput(target_dir, progress_updater, page_index)
+    

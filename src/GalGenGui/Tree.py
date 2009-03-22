@@ -13,12 +13,12 @@
 #     provided with the distribution.
 #  3. All advertising materials mentioning features or use of this 
 #     software must display the following acknowledgement: 
-#     “This product includes software developed by Stepan Seycek.”
+#     "This product includes software developed by Stepan Seycek."
 #  4. The name Stepan Seycek may not be used to endorse or promote 
 #     products derived from this software without specific prior 
 #     written permission. 
 #
-# THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
 # INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
 # AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
 # THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
@@ -34,6 +34,7 @@ from GalGenLib.Core import Core
 from GalGenLib.Picture import Picture
 from GalGenLib.CustomContentPage import CustomContentPage
 from TreeItem import TreeItem
+from PictureOnTreeDropTarget import PictureOnTreeDropTarget
 
 class Tree(wx.TreeCtrl):
     def __init__(self, parent, id, pos, size, style):
@@ -46,6 +47,8 @@ class Tree(wx.TreeCtrl):
         self.__file_img = img_list.Add(wx.ArtProvider.GetBitmap(wx.ART_NORMAL_FILE, wx.ART_OTHER, img_size))
         self.AssignImageList(img_list)
         self.Populate()
+        dt = PictureOnTreeDropTarget(self)
+        self.SetDropTarget(dt)
 
     def __RestoreExpansionState(self, item_id):
         if item_id and item_id.IsOk():

@@ -13,12 +13,12 @@
 #     provided with the distribution.
 #  3. All advertising materials mentioning features or use of this 
 #     software must display the following acknowledgement: 
-#     “This product includes software developed by Stepan Seycek.”
+#     "This product includes software developed by Stepan Seycek."
 #  4. The name Stepan Seycek may not be used to endorse or promote 
 #     products derived from this software without specific prior 
 #     written permission. 
 #
-# THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
 # INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
 # AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
 # THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
@@ -63,6 +63,7 @@ class DetailPanel(wx.Panel):
 
     def Display(self, element):
         if element != self.__element:
+            self.SetDropTarget(None)
             if self.__view and self.__view.IsModified():
                 self.__ShowApplyCancelDlg(element)
             self.__event_handlers_enabled = False

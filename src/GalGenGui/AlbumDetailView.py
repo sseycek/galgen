@@ -13,12 +13,12 @@
 #     provided with the distribution.
 #  3. All advertising materials mentioning features or use of this 
 #     software must display the following acknowledgement: 
-#     “This product includes software developed by Stepan Seycek.”
+#     "This product includes software developed by Stepan Seycek."
 #  4. The name Stepan Seycek may not be used to endorse or promote 
 #     products derived from this software without specific prior 
 #     written permission. 
 #
-# THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
 # INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
 # AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL 
 # THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
@@ -30,11 +30,14 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 from PictureReferenceDetailView import PictureReferenceDetailView
+from PictureOnAlbumPanelDropTarget import PictureOnAlbumPanelDropTarget
 
 class AlbumDetailView(PictureReferenceDetailView):
 
     def __init__(self, panel, element):
         super(AlbumDetailView, self).__init__(panel, element)
+        dt = PictureOnAlbumPanelDropTarget(self)
+        self._main_panel.SetDropTarget(dt)
 
     def GetLabelCategory(self):
         return 'ALBUM'

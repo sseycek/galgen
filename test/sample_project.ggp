@@ -9,15 +9,19 @@
  subtitle="Bar"
  html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
  supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
+<gallery name="Oesterreich" menu-id="" title="fdasga" subtitle="gfsdfa">
+<album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
+<picture name="C:\Dokumente und Einstellungen\sseycek\Desktop\test\Gallery X\Album\pics\Pic4.jpg" location="C:\Dokumente und Einstellungen\sseycek\Desktop\test\Gallery X\Album\pics\Pic4.jpg" menu-id="" title="" subtitle="">
+</picture>
+</album>
+</gallery>
 <gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="ins Ausland">
 <album name="Kanada" pic="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="Kanada" subtitle="da drueben">
 <picture name="Fluss" location="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="Robson" subtitle="river">
 </picture>
-</album>
-</gallery>
-<gallery name="Oesterreich" menu-id="" title="fdasga" subtitle="gfsdfa">
-<album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
 <picture name="asdfasdfasd" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="ssfasfash" title="ssfasfash" subtitle="ssfasfash">
+</picture>
+<picture name="Pic3" location="C:\Dokumente und Einstellungen\sseycek\Desktop\test\Gallery\Album\pics\Pic3.jpg" menu-id="" title="Pic3" subtitle="">
 </picture>
 </album>
 </gallery>

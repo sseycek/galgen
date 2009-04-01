@@ -42,10 +42,19 @@ class Container(Observable):
         self.__contained = []
         Observable.__init__(self)
 
-    def addChild(self, child):
-        self.__contained.append(child)
+    def addChild(self, child, index = -1):
+        if index >= 0 and index < len(self.__contained):
+            self.__contained.insert(index, child)
+        else:
+            self.__contained.append(child)
         child.parent = self
         self._notify(Container.EVT_CHILD_ADDED, child)
+
+    def addChildBeforeChild(self, child, before_child):
+        if before_child not in self.__contained:
+            raise 'BeforeChild invalid'
+        index = self.__contained.index(before_child)
+        self.addChild(child, index)
 
     def removeChild(self, child):
         if child in self.__contained:
@@ -74,9 +83,12 @@ class Container(Observable):
         except ValueError:
             raise Exception, 'Child not owned by container'
     
-    def getNext(self, child, wrap):
+    def getNextChild(self, child, wrap):
         return self.__getNeighbour(child, self.DIRECTION_RIGHT, wrap)
     
-    def getPrevious(self, child, wrap):
+    def getPreviousChild(self, child, wrap):
         return self.__getNeighbour(child, self.DIRECTION_LEFT, wrap)
+    
+    def getIndex(self, child):
+        return self.__contained.index(child)
     

@@ -32,6 +32,8 @@
 import wx
 from GalGenLib.Core import Core
 from GalGenLib.Picture import Picture
+from GalGenLib.Album import Album
+from GalGenLib.Gallery import Gallery
 from GalGenLib.CustomContentPage import CustomContentPage
 from TreeItem import TreeItem
 from PictureOnTreeDropTarget import PictureOnTreeDropTarget
@@ -49,6 +51,10 @@ class Tree(wx.TreeCtrl):
         self.Populate()
         dt = PictureOnTreeDropTarget(self)
         self.SetDropTarget(dt)
+        self.drag_item = None
+        self.Bind(wx.EVT_TREE_BEGIN_DRAG, self.OnBeginDrag)
+        self.Bind(wx.EVT_TREE_END_DRAG, self.OnEndDrag)
+
 
     def __RestoreExpansionState(self, item_id):
         if item_id and item_id.IsOk():
@@ -109,3 +115,39 @@ class Tree(wx.TreeCtrl):
         if item1_data < item2_data: return -1
         if item1_data == item2_data: return 0
         return 1
+
+    def OnBeginDrag(self, event):
+        item = event.GetItem()
+        if item:
+            element = self.GetPyData(item).element
+            if isinstance(element, Picture) or \
+            isinstance(element, Album) or \
+            isinstance(element, Gallery):
+                event.Allow()
+                self.drag_item = element
+
+    def OnEndDrag(self, event):
+        if not event.GetItem().IsOk():
+            return
+        item = event.GetItem()
+        if item and self.drag_item:
+            drop_item = self.GetPyData(item).element
+            if isinstance(self.drag_item, Picture) and isinstance(drop_item, Picture) or \
+            isinstance(self.drag_item, Album) and isinstance(drop_item, Album) or \
+            isinstance(self.drag_item, Gallery) and isinstance(drop_item, Gallery):
+                self.MoveItemBeforeItem(self.drag_item, drop_item)
+            elif isinstance(self.drag_item, Picture) and isinstance(drop_item, Album) or \
+            isinstance(self.drag_item, Album) and isinstance(drop_item, Gallery):
+                self.MoveItemToContainer(self.drag_item, drop_item)
+            self.drag_item = None
+
+    def MoveItemBeforeItem(self, drag_item, drop_item):
+        if drag_item != drop_item and \
+        drag_item != drop_item.getPrevious():
+            drag_item.parent.removeChild(drag_item)
+            drop_item.parent.addChildBeforeChild(drag_item, drop_item)
+            
+    def MoveItemToContainer(self, drag_item, drop_item):
+            drag_item.parent.removeChild(drag_item)
+            drop_item.addChild(drag_item)
+        

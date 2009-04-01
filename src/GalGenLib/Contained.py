@@ -42,7 +42,7 @@ class Contained(object):
     parent = property(getParent, setParent)
     
     def getNext(self, wrap = False):
-        return self.parent.getNext(self, wrap)
+        return self.parent.getNextChild(self, wrap)
     
     def getPrevious(self, wrap = False):
-        return self.parent.getPrevious(self, wrap)
+        return self.parent.getPreviousChild(self, wrap)

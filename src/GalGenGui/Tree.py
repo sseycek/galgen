@@ -47,6 +47,7 @@ class Tree(wx.TreeCtrl):
         self.__folder_img = img_list.Add(wx.ArtProvider.GetBitmap(wx.ART_FOLDER, wx.ART_OTHER, img_size))
         self.__folder_open_img = img_list.Add(wx.ArtProvider.GetBitmap(wx.ART_FILE_OPEN, wx.ART_OTHER, img_size))
         self.__file_img = img_list.Add(wx.ArtProvider.GetBitmap(wx.ART_NORMAL_FILE, wx.ART_OTHER, img_size))
+        self.__object_to_id = {}
         self.AssignImageList(img_list)
         self.Populate()
         dt = PictureOnTreeDropTarget(self)
@@ -86,6 +87,7 @@ class Tree(wx.TreeCtrl):
         project = Core.getInstance().project
         if project:
             self.__root_id = self.AddRoot(project.name)
+            self.__object_to_id[project] = self.__root_id
             item = TreeItem(self, project, self.__root_id)
             self.SetItemPyData(self.__root_id, item)
             self.SetItemImage(self.__root_id, self.__folder_img, wx.TreeItemIcon_Normal)
@@ -98,6 +100,7 @@ class Tree(wx.TreeCtrl):
     def __AddChildren(self, parent_id, selected_element):
         for child in self.GetItemPyData(parent_id).element.getChildren():
             child_id = self.AppendItem(parent_id, child.getName())
+            self.__object_to_id[child] = child_id
             item = TreeItem(self, child, child_id)
             self.SetItemPyData(child_id, item)
             if selected_element == child:

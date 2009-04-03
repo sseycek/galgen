@@ -36,9 +36,10 @@ from PictureHTMLOutputter import PictureHTMLOutputter
 
 class Picture(Modifyable, PictureReference, Contained):
 
-    def __init__(self, name, pic_location, menu_id, title, subtitle):
+    def __init__(self, name, pic_location, highres_location, menu_id, title, subtitle):
         Modifyable.__init__(self)
         PictureReference.__init__(self, name, pic_location, menu_id, title, subtitle)
+        self.highres_location = highres_location
         Contained.__init__(self)
 
     def save(self, stream):
@@ -46,8 +47,8 @@ class Picture(Modifyable, PictureReference, Contained):
         self.__writeEndTag(stream)
 
     def __writeStartTag(self, stream):
-        stream.write(u'<picture name="%s" location="%s" menu-id="%s" title="%s" subtitle="%s">\n'
-                     % (self.name, self.pic_location, self.menu_id, self.title, self.subtitle))
+        stream.write(u'<picture name="%s" location="%s" highres-location="%s" menu-id="%s" title="%s" subtitle="%s">\n'
+                     % (self.name, self.pic_location, self.highres_location, self.menu_id, self.title, self.subtitle))
 
     def __writeEndTag(self, stream):
         stream.write(u'</picture>\n')

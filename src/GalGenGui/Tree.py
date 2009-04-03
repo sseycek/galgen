@@ -92,26 +92,28 @@ class Tree(wx.TreeCtrl):
             self.SetItemPyData(self.__root_id, item)
             self.SetItemImage(self.__root_id, self.__folder_img, wx.TreeItemIcon_Normal)
             self.SetItemImage(self.__root_id, self.__folder_open_img, wx.TreeItemIcon_Expanded)
-            if selected_element == project:
-                self.SelectItem(self.__root_id)
-            self.__AddChildren(self.__root_id, selected_element)
+            self.__AddChildren(self.__root_id)
         self.__RestoreExpansionState(self.__root_id)
+        if selected_element:
+            self.SelectItem(self.__object_to_id[selected_element])
 
-    def __AddChildren(self, parent_id, selected_element):
-        for child in self.GetItemPyData(parent_id).element.getChildren():
-            child_id = self.AppendItem(parent_id, child.getName())
-            self.__object_to_id[child] = child_id
-            item = TreeItem(self, child, child_id)
-            self.SetItemPyData(child_id, item)
-            if selected_element == child:
-                self.SelectItem(child_id)
-            if isinstance(child, Picture) or isinstance(child, CustomContentPage):
-                self.SetItemImage(child_id, self.__file_img, wx.TreeItemIcon_Normal)
-            else:
-                self.SetItemImage(child_id, self.__folder_img, wx.TreeItemIcon_Normal)
-                self.SetItemImage(child_id, self.__folder_open_img, wx.TreeItemIcon_Expanded)
-                self.__AddChildren(child_id, selected_element)
-
+    def __AddChild(self, parent, parent_id, child):
+        child_id = self.AppendItem(parent_id, child.getName())
+        self.__object_to_id[child] = child_id
+        item = TreeItem(self, child, child_id)
+        self.SetItemPyData(child_id, item)
+        if isinstance(child, Picture) or isinstance(child, CustomContentPage):
+            self.SetItemImage(child_id, self.__file_img, wx.TreeItemIcon_Normal)
+        else:
+            self.SetItemImage(child_id, self.__folder_img, wx.TreeItemIcon_Normal)
+            self.SetItemImage(child_id, self.__folder_open_img, wx.TreeItemIcon_Expanded)
+            self.__AddChildren(child_id)
+    
+    def __AddChildren(self, parent_id):
+        parent = self.GetItemPyData(parent_id).element
+        for child in parent.getChildren():
+            self.__AddChild(parent, parent_id, child)
+            
     def OnCompareItems(self, item1, item2):
         item1_data = self.GetItemPyData(item1).element
         item2_data = self.GetItemPyData(item2).element
@@ -153,4 +155,13 @@ class Tree(wx.TreeCtrl):
     def MoveItemToContainer(self, drag_item, drop_item):
             drag_item.parent.removeChild(drag_item)
             drop_item.addChild(drag_item)
+        
+    def OnItemAdded(self, parent, child, selected):
+        self.__AddChild(parent, self.__object_to_id[parent], child)
+        self.SelectItem(self.__object_to_id[selected])
+
+    def OnItemRemoved(self, parent, child, selected):
+        self.Delete(self.__object_to_id[child])
+        self.SelectItem(self.__object_to_id[selected])
+        del(self.__object_to_id[child])
         

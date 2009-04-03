@@ -48,7 +48,7 @@ class Container(Observable):
         else:
             self.__contained.append(child)
         child.parent = self
-        self._notify(Container.EVT_CHILD_ADDED, child)
+        self._notify(Container.EVT_CHILD_ADDED, (self, child, child))
 
     def addChildBeforeChild(self, child, before_child):
         if before_child not in self.__contained:
@@ -60,9 +60,9 @@ class Container(Observable):
         if child in self.__contained:
             index = self.__contained.index(child)
             self.__contained.remove(child)
-            if index > 0: object = self.__contained[index - 1]
-            else: object = self
-            self._notify(Container.EVT_CHILD_REMOVED, object)
+            if index > 0: selected = self.__contained[index - 1]
+            else: selected = self
+            self._notify(Container.EVT_CHILD_REMOVED, (self, child, selected))
             
     def getChildren(self):
         return self.__contained

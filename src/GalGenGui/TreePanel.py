@@ -85,6 +85,8 @@ class TreePanel(wx.Panel):
             element = self.__tree.GetPyData(item).element
             element.setGuiProperty(TreeItem.property_expanded, False)
 
-    def Notify(self, event, observed):
-         if event == Container.EVT_CHILD_ADDED or event == Container.EVT_CHILD_REMOVED:
-            self.__tree.Populate(observed)
+    def Notify(self, event, (parent, child, selected)):
+         if event == Container.EVT_CHILD_ADDED:
+            self.__tree.OnItemAdded(parent, child, selected)
+         elif event == Container.EVT_CHILD_REMOVED:
+            self.__tree.OnItemRemoved(parent, child, selected)

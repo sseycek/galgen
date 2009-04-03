@@ -43,6 +43,19 @@ class PictureDetailView(PictureReferenceDetailView):
 
     def _FillPropertySizer(self):
         super(PictureDetailView, self)._FillPropertySizer()
+        self.__AddHighresLocation()
+
+    def __AddHighresLocation(self):
+        label = wx.StaticText(self._main_panel, -1, 'Highres location')
+        self.__highres_location_edit = wx.TextCtrl(self._main_panel, -1, self.element.highres_location, size = (600, -1))
+        self.__highres_find_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
+        self._main_panel.Bind(wx.EVT_BUTTON, self.__OnHighresFindButton, self.__highres_find_button)
+        self.__highres_find_button.SetSize(self.__highres_find_button.GetBestSize())
+        self._main_panel.Bind(wx.EVT_TEXT, self.__OnHighresLocationEdited, self.__highres_location_edit)
+        self._control_grid.Add(label, (6, 1))
+        self._control_grid.Add(self.__highres_location_edit, (6,2))
+        self._control_grid.Add(self.__highres_find_button, (6,3))
+
 
     def __AddImage(self):
         if self.element.pic_location and os.path.exists(self.element.pic_location):
@@ -69,3 +82,34 @@ class PictureDetailView(PictureReferenceDetailView):
             # have repaint problems here, refresh the complete panel
             # TODO: remove this ugly hack
             self._main_panel.Display(self.element)
+
+    def __OnHighresLocationEdited(self, event):
+        self._OnEdited()
+
+    def __OnHighresFindButton(self, event):
+        dlg = wx.FileDialog(self._main_panel,
+                            message="Choose a file",
+                            defaultDir=os.getcwd(),
+                            defaultFile="",
+                            wildcard="All files (*.*)|*.*",
+                            style=wx.OPEN | wx.CHANGE_DIR)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.__highres_location_edit.SetValue(dlg.GetPath())
+            self._OnEdited()
+
+    def __IsHighresLocationModified(self):
+        return self.__highres_location_edit.GetValue() != self.element.highres_location
+
+    def _IsModified(self):
+        return (self.__IsHighresLocationModified() or super(PictureDetailView, self)._IsModified())
+
+    def _OnApply(self, event):
+        super(PictureDetailView, self)._OnApply(event)
+        if self.__IsHighresLocationModified():
+            self.element.highres_location = self.__highres_location_edit.GetValue()
+            self.element.modified = True
+
+    def _OnCancel(self, event):
+        super(PictureDetailView, self)._OnCancel(event)
+        if self.__IsHighresLocationModified():
+            self.__highres_location_edit.SetValue(self.element.highres_location)

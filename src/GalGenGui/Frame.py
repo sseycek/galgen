@@ -157,7 +157,7 @@ class Frame(wx.Frame):
         elif isinstance(element, Gallery):
             element.addChild(Album('Album', '', '', '', ''))
         elif isinstance(element, Album):
-            element.addChild(Picture('Picture', '', '', '', ''))
+            element.addChild(Picture('Picture', '', '', '', '', ''))
         else:
             raise Exception, 'Don\'t know what to add'
 

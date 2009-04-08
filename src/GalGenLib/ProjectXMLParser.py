@@ -106,7 +106,11 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         # logDebug('startElementPicture called for "%s" located at "%s"' % (attributes['name'], attributes['location']))
         if len(self.__element_stack) < 2:
             raise 'Unexpected - deserialising picture, while there is no index on the stack yet'
-        picture = Picture(attributes['name'], attributes['location'], attributes['highres-location'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        highres_location = ''
+        # make this optional for compatibility
+        if 'highres-location' in attributes:
+            highres_location = attributes['highres-location']
+        picture = Picture(attributes['name'], attributes['location'], highres_location, attributes['menu-id'], attributes['title'], attributes['subtitle'])
         self.__element_stack.append(picture)
 
     def __startElementCustomContentPage(self, attributes):

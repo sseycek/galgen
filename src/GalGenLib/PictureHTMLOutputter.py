@@ -59,6 +59,10 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __copyPicture(self, album_dir):
         shutil.copyfile(self.entity.pic_location, os.path.join(album_dir, 'pics', self.entity.pic_file_name))
 
+    def __copyHighresPicture(self, album_dir):
+        if os.path.lexists(self.entity.highres_location):
+            shutil.copyfile(self.entity.highres_location, os.path.join(album_dir, 'pics', 'highres', self.entity.highres_pic_file_name))
+
     def __generateThumbs(self, album_dir):
         project = Core.getInstance().project
         thumbnailer = Thumbnailer.getInstance()
@@ -135,9 +139,13 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         if next:
             tag = self.getNaviNextTag()
             if tag: tag.set('href', next.html_file_name)
+        if os.path.lexists(self.entity.highres_location):
+            tag = self.getNaviHighresTag()
+            if tag: tag.set('href', 'pics/highres/%s' % self.entity.highres_pic_file_name)
 
     def generateOutput(self, target_dir, progress_updater, page_index):
         self.__copyPicture(target_dir)
+        self.__copyHighresPicture(target_dir)
         self.__generateThumbs(target_dir)
         self.updateCssRef(2)
         self.updateStyleDirRefs(2)

@@ -43,6 +43,7 @@ class BasicHTMLOutputter(object):
     navi_prev_tag_id = 'navi-prev'
     navi_next_tag_id = 'navi-next'
     navi_album_tag_id = 'navi-album'
+    navi_highres_tag_id = 'navi-highres'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
     active_menu_item_class = 'effect1'
@@ -88,6 +89,9 @@ class BasicHTMLOutputter(object):
 
     def getNaviNextTag(self):
         return self.getElementById(self.navi_next_tag_id)
+
+    def getNaviHighresTag(self):
+        return self.getElementById(self.navi_highres_tag_id)
 
     def getNaviAlbumTag(self):
         return self.getElementById(self.navi_album_tag_id)

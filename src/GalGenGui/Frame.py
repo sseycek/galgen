@@ -146,7 +146,7 @@ class Frame(wx.Frame):
         wx.MessageBox('%s\n\n%s\n%s' %
                       ('This is an application or creating photo gallery sites.',
                        'PRE-ALPHA State ...',
-                       'File tickets under http://sseycek.dyndns.org/galgen/'),
+                       'File tickets under https://galgen.seycek.net/'),
         'About %s' % Globals.ProgName, wx.OK | wx.ICON_INFORMATION, self)
 
     def OnEditAdd(self, event):

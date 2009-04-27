@@ -9,37 +9,11 @@
  subtitle="Bar"
  html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
  supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
-<gallery name="Oesterreich" menu-id="" title="fdasga" subtitle="gfsdfa">
+<gallery name="Oesterreich" menu-id="menu_oesterreich" title="fdasga" subtitle="gfsdfa">
 <album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
-<picture name="C:\Dokumente und Einstellungen\sseycek\Desktop\test\Gallery X\Album\pics\Pic4.jpg" location="C:\Dokumente und Einstellungen\sseycek\Desktop\test\Gallery X\Album\pics\Pic4.jpg" menu-id="" title="" subtitle="">
+<picture name="Pic3" location="C:\Dokumente und Einstellungen\sseycek\Desktop\Neuer Ordner\Kopie (2) von Kopie von Pic3.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\Neuer Ordner\Kopie (2) von Kopie von Pic3.jpg" menu-id="" title="" subtitle="">
 </picture>
-</album>
-</gallery>
-<gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="ins Ausland">
-<album name="Kanada" pic="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="Kanada" subtitle="da drueben">
-<picture name="Fluss" location="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="Robson" subtitle="river">
-</picture>
-<picture name="asdfasdfasd" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="ssfasfash" title="ssfasfash" subtitle="ssfasfash">
-</picture>
-<picture name="Pic3" location="C:\Dokumente und Einstellungen\sseycek\Desktop\test\Gallery\Album\pics\Pic3.jpg" menu-id="" title="Pic3" subtitle="">
-</picture>
-</album>
-</gallery>
-<gallery name="Gallery" menu-id="" title="" subtitle="">
-<album name="Album" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="" title="sadf" subtitle="zwetzwetz">
-<picture name="Picture" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" menu-id="" title="dasqzg3q" subtitle="daszw4tz">
-</picture>
-</album>
-</gallery>
-<gallery name="Gallery X" menu-id="" title="dah64te" subtitle="rewtwr">
-<album name="Album" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="asdf53gwrfq" subtitle="serqrtw">
-<picture name="Picture" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" menu-id="" title="eqwt53ztwertqw" subtitle="reqerqwerqwe">
-</picture>
-</album>
-</gallery>
-<gallery name="Gallery Y" menu-id="none" title="Hallo" subtitle="du">
-<album name="Album foo" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title=" A new" subtitle="one">
-<picture name="Picture bar" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="The" subtitle="newest">
+<picture name="Pic4" location="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\OTAPHOTO_v4\pics\Robson_River.jpg" menu-id="" title="" subtitle="">
 </picture>
 </album>
 </gallery>

@@ -29,6 +29,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
 # OF THE POSSIBILITY OF SUCH DAMAGE. 
 
+import os
 from Modifyable import Modifyable
 from PictureReference import PictureReference
 from Contained import Contained
@@ -55,6 +56,13 @@ class Picture(Modifyable, PictureReference, Contained):
 
     def _getHtmlPath(self):
         return '%s/%s/%s' % (self.parent.parent.name, self.parent.name, self.html_file_name)
+
+    def getHighresPicFileName(self):
+        if self.highres_location:
+            return os.path.split(self.highres_location)[1]
+        else: return None
+
+    highres_pic_file_name = property(getHighresPicFileName, None)
 
     def generateOutput(self, target_dir, progress_updater, page_index):
         page_index += 1

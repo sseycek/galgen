@@ -86,6 +86,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
 
     def __createSubDirs(self, album_dir):
         os.mkdir(os.path.join(album_dir, 'pics'))
+        os.mkdir(os.path.join(album_dir, 'pics', 'highres'))
         os.mkdir(os.path.join(album_dir, 'thumbs'))
         album_thumb_size = Thumbnailer.getInstance().album_thumb_size
         os.mkdir(os.path.join(album_dir, 'thumbs', '%dx%d' % album_thumb_size))

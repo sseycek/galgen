@@ -29,7 +29,7 @@ class PictureDropTarget(wx.FileDropTarget):
         if album is not None and self.__accept(filenames):
             for filename in filenames:
                 name = os.path.splitext(os.path.split(filename)[1])[0]
-                picture = Picture(name, filename, '', name, '')
+                picture = Picture(name, filename, '', '', name, '')
                 album.addChild(picture)
             return True
         return False

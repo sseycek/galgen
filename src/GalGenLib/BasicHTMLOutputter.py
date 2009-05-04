@@ -121,19 +121,23 @@ class BasicHTMLOutputter(object):
         fd.close()
         
     def updateCssRef(self, level):
-        tag = self.getCSSTag()
-        value = './%sstyle/styles.css' % (level * '../')
-        tag.set('href', value)
+        #tag = self.getCSSTag()
+        #value = './%sstyle/styles.css' % (level * '../')
+        #tag.set('href', value)
+        # currently we rely on absolute css reference in the template
+        pass
 
     def updateStyleDirRefs(self, level):
-        ref_attributes = ['href', 'src']
-        if level:
-            for elem in self.__html_tree.getiterator():
-                for attr in ref_attributes:
-                    if attr in elem.attrib and (elem.attrib[attr].startswith('style') or elem.attrib[attr].startswith('./style')):
-                        value = '%s%s' % (level * '../', elem.attrib[attr].lstrip('./'))
-                        elem.set(attr, value)
-                    
+        # ref_attributes = ['href', 'src']
+        # if level:
+        #     for elem in self.__html_tree.getiterator():
+        #         for attr in ref_attributes:
+        #             if attr in elem.attrib and (elem.attrib[attr].startswith('style') or elem.attrib[attr].startswith('./style')):
+        #                 value = '%s%s' % (level * '../', elem.attrib[attr].lstrip('./'))
+        #                 elem.set(attr, value)
+        # currently we rely on absolute values in the template
+        pass
+                              
     def updateTitleCell(self, title, subtitle):
         title = self.getTitleTag()
         if self.entity.title: title.text = self.entity.title

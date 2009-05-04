@@ -17,6 +17,6 @@
 </picture>
 </album>
 </gallery>
-<customcontent name="Kontaxt" location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text.html" dir-location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="webmaster">
+<customcontent name="Kontakt" location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text.html" dir-location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="webmaster">
 </customcontent>
 </project>

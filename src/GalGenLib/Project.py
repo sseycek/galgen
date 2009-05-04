@@ -84,6 +84,7 @@ class Project(CustomContentReference, Container, Modifyable):
             raise 'No filename provided for loading project'
         parser = ProjectXMLParser(self.__filename)
         parser.parse(self)
+        self.modified = False
 
     def save(self, stream):
         self.__writeHeader(stream)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Sample project"
- galgen-version="0.9"
+ galgen-version="0.9.1"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""
@@ -22,6 +22,28 @@
 <picture name="Pic5" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="">
 </picture>
 <picture name="Pic7" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="">
+</picture>
+</album>
+<album name="Album" pic="" menu-id="" title="" subtitle="">
+<picture name="Pic5" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="">
+</picture>
+<picture name="Pic6" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="">
+</picture>
+<picture name="Pic7" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="">
+</picture>
+<picture name="Pic8" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="">
+</picture>
+<picture name="Pic9" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="">
+</picture>
+<picture name="Pic10" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="">
+</picture>
+<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="">
+</picture>
+<picture name="Pic2" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="">
+</picture>
+<picture name="Pic3" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="">
+</picture>
+<picture name="Pic4" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="">
 </picture>
 </album>
 </gallery>

@@ -32,14 +32,16 @@
 from NamedObject import NamedObject
 from Container import Container
 from Contained import Contained
+from Modifyable import Modifyable
 from GalleryHTMLOutputter import GalleryHTMLOutputter
 
-class Gallery(NamedObject, Container, Contained):
+class Gallery(NamedObject, Container, Contained, Modifyable):
 
     def __init__(self, name, menu_id, title, subtitle):
         NamedObject.__init__(self, name, menu_id, title, subtitle)
         Container.__init__(self)
         Contained.__init__(self)
+        Modifyable.__init__(self)
 
     def save(self, stream):
         self._writeStartTag(stream)

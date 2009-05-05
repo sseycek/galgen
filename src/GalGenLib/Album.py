@@ -32,14 +32,16 @@
 from PictureReference import PictureReference
 from Container import Container
 from Contained import Contained
+from Modifyable import Modifyable
 from AlbumHTMLOutputter import AlbumHTMLOutputter
 
-class Album(PictureReference, Container, Contained):
+class Album(PictureReference, Container, Contained, Modifyable):
 
     def __init__(self, name, pic_location, menu_id, title, subtitle):
         PictureReference.__init__(self, name, pic_location, menu_id, title, subtitle)
         Container.__init__(self)
         Contained.__init__(self)
+        Modifyable.__init__(self)
 
     def save(self, stream):
         self._writeStartTag(stream)

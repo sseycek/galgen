@@ -66,11 +66,13 @@ class DetailPanel(wx.Panel):
             self.SetDropTarget(None)
             if self.__view and self.__view.IsModified():
                 self.__ShowApplyCancelDlg(element)
+            self.Freeze()
             self.__event_handlers_enabled = False
             view = self.__GetViewForElement(element)
             self.DestroyChildren()
             view.FillPanel()
             self.__view = view
+            self.Thaw()
             self.__event_handlers_enabled = True
 
     def __GetViewForElement(self, element):

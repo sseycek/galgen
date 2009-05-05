@@ -62,6 +62,11 @@ class DetailView(object):
 
     def _FillPropertySizerBelowButtons(self):
         pass
+
+    def GetPanel(self):
+        return self._main_panel
+    
+    panel = property(GetPanel, None)
     
     def FillPanel(self):
         self.__CreateSizers()

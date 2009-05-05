@@ -60,6 +60,8 @@ class TreePanel(wx.Panel):
     def GetTree(self):
         return self.__tree
 
+    tree = property(GetTree, None)
+
     def OnSize(self, event):
         w,h = self.GetClientSizeTuple()
         if self.__tree:

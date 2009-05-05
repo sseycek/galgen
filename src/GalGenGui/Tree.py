@@ -48,6 +48,7 @@ class Tree(wx.TreeCtrl):
         self.__folder_open_img = img_list.Add(wx.ArtProvider.GetBitmap(wx.ART_FILE_OPEN, wx.ART_OTHER, img_size))
         self.__file_img = img_list.Add(wx.ArtProvider.GetBitmap(wx.ART_NORMAL_FILE, wx.ART_OTHER, img_size))
         self.__object_to_id = {}
+        self.__detail_panel_refresh = True
         self.AssignImageList(img_list)
         self.Populate()
         dt = PictureOnTreeDropTarget(self)
@@ -162,10 +163,22 @@ class Tree(wx.TreeCtrl):
     def OnItemAdded(self, parent, child, selected):
         index = parent.getIndex(child)
         self.__AddChild(parent, self.__object_to_id[parent], child, index)
-        self.SelectItem(self.__object_to_id[selected])
+        if self.__detail_panel_refresh:
+            self.SelectItem(self.__object_to_id[selected])
 
     def OnItemRemoved(self, parent, child, selected):
         self.Delete(self.__object_to_id[child])
-        self.SelectItem(self.__object_to_id[selected])
+        if self.__detail_panel_refresh:
+            self.SelectItem(self.__object_to_id[selected])
         del(self.__object_to_id[child])
         
+    def EnableDetailPanelRefresh(self, value):
+        ret = self.__detail_panel_refresh
+        self.__detail_panel_refresh = value
+        return ret
+    
+    def ExpandObject(self, object):
+        if object in self.__object_to_id: 
+            id = self.__object_to_id[object]
+            self.Expand(id)
+            

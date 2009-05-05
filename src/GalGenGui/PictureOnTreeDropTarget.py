@@ -7,6 +7,7 @@ class PictureOnTreeDropTarget(PictureDropTarget):
     def __init__(self, tree):
         wx.FileDropTarget.__init__(self)
         self.__tree = tree
+        self.__detail_panel_refresh = False
 
     def _getAlbum(self, x, y):
         (id, flag) = self.__tree.HitTest((x, y))
@@ -15,3 +16,6 @@ class PictureOnTreeDropTarget(PictureDropTarget):
             if isinstance(item, Album):
                 return item
         return None
+
+    def _getTree(self):
+        return self.__tree

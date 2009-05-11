@@ -53,11 +53,12 @@ class Frame(wx.Frame):
     WX_ID_FILE_MENU_EXIT = 210
     WX_ID_EDIT_MENU_ADD = 301
     WX_ID_EDIT_MENU_ADD_CUSTOM = 302
-    WX_ID_EDIT_MENU_REMOVE = 303
+    WX_ID_EDIT_MENU_ADD_HIGHRES = 303
+    WX_ID_EDIT_MENU_REMOVE = 304
     WX_ID_HELP_MENU_ABOUT = 401
 
     def __init__(self, parent, title):
-        wx.Frame.__init__(self, parent, -1, title)
+        wx.Frame.__init__(self, parent, -1, title, (0,0), (1024,700))
         self.__InitMenu()
         self.__InitStatusBar()
         self.__InitToolBar()
@@ -75,6 +76,7 @@ class Frame(wx.Frame):
         self.__menu_edit = wx.Menu()
         self.__menu_edit_add = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD, '&Add\tCTRL+INS')
         self.__menu_edit_add_custom = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD_CUSTOM, '&Add custom page\tCTRL+SHIFT+INS')
+        self.__menu_edit_add_highres = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_ADD_HIGHRES, '&Add highres pictures ...\tCTRL+H')
         self.__menu_edit_remove = self.__menu_edit.Append(Frame.WX_ID_EDIT_MENU_REMOVE, '&Remove\tCTRL+DEL')
         self.__menu_help = wx.Menu()
         self.__menu_help.Append(Frame.WX_ID_HELP_MENU_ABOUT, '&About ...\tF1')
@@ -89,6 +91,7 @@ class Frame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnGenerateOutput, id=Frame.WX_ID_FILE_MENU_GENERATE)
         self.Bind(wx.EVT_MENU, self.OnEditAdd, id=Frame.WX_ID_EDIT_MENU_ADD)
         self.Bind(wx.EVT_MENU, self.OnEditAddCustom, id=Frame.WX_ID_EDIT_MENU_ADD_CUSTOM)
+        self.Bind(wx.EVT_MENU, self.OnEditAddHighres, id=Frame.WX_ID_EDIT_MENU_ADD_HIGHRES)
         self.Bind(wx.EVT_MENU, self.OnEditRemove, id=Frame.WX_ID_EDIT_MENU_REMOVE)
         self.Bind(wx.EVT_MENU, self.OnAbout, id=Frame.WX_ID_HELP_MENU_ABOUT)
         self.Bind(wx.EVT_MENU, self.OnQuit, id=Frame.WX_ID_FILE_MENU_EXIT)
@@ -199,6 +202,19 @@ class Frame(wx.Frame):
         else:
             raise Exception, 'custom content pages only supported as direct child entries of project'
 
+    def OnEditAddHighres(self, event):
+        tree_item_id = self.__GetTree().GetSelection()
+        element = self.__GetTree().GetPyData(tree_item_id).element
+        if isinstance(element, Album):
+            dlg = wx.DirDialog(self, "Highrs picture directory:", style = wx.DD_DEFAULT_STYLE)
+            if dlg.ShowModal() == wx.ID_OK:
+                dir = dlg.GetPath()
+                for pic in element.children:
+                    if os.path.lexists(os.path.join(dir, pic.pic_file_name)):
+                        pic.highres_location = os.path.join(dir, pic.pic_file_name);
+        else:
+            raise Exception, 'hirhres pictures can only be added to album'
+
     def OnEditRemove(self, event):
         tree_item_id = self.__GetTree().GetSelection()
         element = self.__GetTree().GetPyData(tree_item_id).element
@@ -286,30 +302,35 @@ class Frame(wx.Frame):
                 self.__menu_edit_add.SetText('&Add gallery\tCTRL+INS')
                 self.__menu_edit_add.Enable(True)
                 self.__menu_edit_add_custom.Enable(True)
+                self.__menu_edit_add_highres.Enable(False)
                 self.__menu_edit_remove.SetText('&Remove\tCTRL+DEL')
                 self.__menu_edit_remove.Enable(False)
             elif isinstance(element, Gallery):
                 self.__menu_edit_add.SetText('&Add album\tCTRL+INS')
                 self.__menu_edit_add.Enable(True)
                 self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_add_highres.Enable(False)
                 self.__menu_edit_remove.SetText('&Remove gallery\tCTRL+DEL')
                 self.__menu_edit_remove.Enable(True)
             elif isinstance(element, Album):
                 self.__menu_edit_add.SetText('&Add picture\tCTRL+INS')
                 self.__menu_edit_add.Enable(True)
                 self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_add_highres.Enable(True)
                 self.__menu_edit_remove.SetText('&Remove album\tCTRL+DEL')
                 self.__menu_edit_remove.Enable(True)
             elif isinstance(element, Picture):
                 self.__menu_edit_add.Enable(False)
                 self.__menu_edit_add.SetText('&Add\tCTRL+INS')
                 self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_add_highres.Enable(False)
                 self.__menu_edit_remove.SetText('&Remove picture\tCTRL+DEL')
                 self.__menu_edit_remove.Enable(True)
             elif isinstance(element, CustomContentPage):
                 self.__menu_edit_add.Enable(False)
                 self.__menu_edit_add.SetText('&Add\tCTRL+INS')
                 self.__menu_edit_add_custom.Enable(False)
+                self.__menu_edit_add_highres.Enable(False)
                 self.__menu_edit_remove.SetText('&Remove custom page\tCTRL+DEL')
                 self.__menu_edit_remove.Enable(True)
             else: raise Exception, 'unknown element type' 

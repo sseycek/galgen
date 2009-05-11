@@ -40,7 +40,7 @@ class Picture(Modifyable, PictureReference, Contained):
     def __init__(self, name, pic_location, highres_location, menu_id, title, subtitle):
         Modifyable.__init__(self)
         PictureReference.__init__(self, name, pic_location, menu_id, title, subtitle)
-        self.highres_location = highres_location
+        self.__highres_location = highres_location
         Contained.__init__(self)
 
     def save(self, stream):
@@ -57,6 +57,16 @@ class Picture(Modifyable, PictureReference, Contained):
     def _getHtmlPath(self):
         return '%s/%s/%s' % (self.parent.parent.name, self.parent.name, self.html_file_name)
 
+    def __getHighresLocation(self):
+        return self.__highres_location
+    
+    def __setHighresLocation(self, location):
+        if location != self.__highres_location:
+            self.__highres_location = location
+            self.modified = True
+    
+    highres_location = property(__getHighresLocation, __setHighresLocation)
+    
     def getHighresPicFileName(self):
         if self.highres_location:
             return os.path.split(self.highres_location)[1]

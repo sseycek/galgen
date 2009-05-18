@@ -16,12 +16,25 @@
       Highlight1.src = "http://seycek.eu/style/img/Logo_hover.png"; 
       Highlight2 = new Image();
       Highlight2.src = "http://seycek.eu/style/img/Logo_active.png"; 
+
       function Bildwechsel (Bildnr, Bildobjekt)
       {window.document.images[Bildnr].src = Bildobjekt.src;}
-    </script>	
+
+      function metaData(show) {
+    	  var metadata_div = document.getElementById("meta-data-div");
+    	  if (metadata_div) {
+          if (show) metadata_div.style.display="block";
+    	    else metadata_div.style.display="none";
+        }
+      }
+      </script>	
   </head>
 
   <body>
+    <div id="meta-data-div" style="top:44px; left:191px; width:694px; height:694px; position:absolute; background:#ff0000; color:#cccc00; filter:alpha(opacity=20); -moz-opacity:0.2; display:none;">
+    Some Exif Data ...
+    </div>
+
     <table  class="table1" cellspacing="0" cellpadding="0">
       <tr>
         <!-- Leer-Zelle -->
@@ -99,7 +112,7 @@
             </tr>
             <tr>
               <td class="navizelle-left">
-                <img src="http://seycek.eu/style/info.png" alt="Info" />
+                <img src="http://seycek.eu/style/info.png" alt="Info" onmouseover="metaData(true);" onmouseout="metaData(false);" />
               </td>
               <td class="navizelle-right">
                 <a id="navi-highres" target="_blank">

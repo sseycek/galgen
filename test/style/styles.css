@@ -299,3 +299,31 @@ a:active {
 #logo {
 	border-style: none;
 }
+
+#meta-data {
+  top:44px;
+  left:191px;
+  width:694px;
+  height:694px;
+  position:absolute;
+  background:#000000;
+  color:#ff0000;
+  filter:alpha(opacity=85);
+  -moz-opacity:0.85;
+  display:none;
+}
+
+.meta-data-table {
+  width:100%;
+  margin-top:200px;
+}
+.meta-data-key-td {
+  text-align:right;
+  width:50%;
+}
+
+.meta-data-value-td {
+  text-align:left;
+  font-weight:bold;
+  width:50%;
+}

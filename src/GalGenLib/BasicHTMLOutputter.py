@@ -44,6 +44,7 @@ class BasicHTMLOutputter(object):
     navi_next_tag_id = 'navi-next'
     navi_album_tag_id = 'navi-album'
     navi_highres_tag_id = 'navi-highres'
+    meta_data_tag_id = 'meta-data'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
     active_menu_item_class = 'effect1'
@@ -101,6 +102,9 @@ class BasicHTMLOutputter(object):
 
     def getSubtitleTag(self):
         return self.getElementById(self.subtitle_tag_id)
+
+    def getMetaDataTag(self):
+        return self.getElementById(self.meta_data_tag_id)
 
     def getXHTMLHeader(self):
         return ''''''

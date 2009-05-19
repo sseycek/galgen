@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Sample project"
- galgen-version="0.9.1"
+ galgen-version="0.9.2"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""
@@ -11,39 +11,7 @@
  supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
 <gallery name="Oesterreich" menu-id="menu_oesterreich" title="fdasga" subtitle="gfsdfa">
 <album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
-<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="">
-</picture>
-<picture name="Pic2" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="">
-</picture>
-<picture name="Pic3" location="C:\Dokumente und Einstellungen\sseycek\Desktop\Neuer Ordner\Kopie (2) von Kopie von Pic3.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\Neuer Ordner\Kopie (2) von Kopie von Pic3.jpg" menu-id="" title="" subtitle="">
-</picture>
-<picture name="Pic4" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="">
-</picture>
-<picture name="Pic5" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="">
-</picture>
-<picture name="Pic7" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9\test\Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="">
-</picture>
-</album>
-<album name="Album" pic="" menu-id="" title="" subtitle="">
-<picture name="Pic5" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="">
-</picture>
-<picture name="Pic6" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="">
-</picture>
-<picture name="Pic7" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="">
-</picture>
-<picture name="Pic8" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="">
-</picture>
-<picture name="Pic9" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="">
-</picture>
-<picture name="Pic10" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="">
-</picture>
-<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="">
-</picture>
-<picture name="Pic2" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="">
-</picture>
-<picture name="Pic3" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="">
-</picture>
-<picture name="Pic4" location="C:\Dokumente und Einstellungen\sseycek\Desktop\pkg\test\Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="">
+<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" menu-id="" title="Pic1" subtitle="">
 </picture>
 </album>
 </gallery>

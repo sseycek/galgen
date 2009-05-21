@@ -9,9 +9,9 @@
  subtitle="Bar"
  html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
  supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
-<gallery name="Oesterreich" menu-id="menu_oesterreich" title="fdasga" subtitle="gfsdfa">
-<album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
-<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" menu-id="" title="Pic1" subtitle="">
+<gallery name="Oesterreich" menu-id="menu_oesterreich" title="fdasga" subtitle="gfsdfa" description="">
+<album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd" description="">
+<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" menu-id="" title="Pic1" subtitle="" description="" exif="NIKON D200 :: 2006:12:12 16:04:52 :: 1/320 :: 9 :: 112 :: 168">
 </picture>
 </album>
 </gallery>

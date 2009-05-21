@@ -39,5 +39,9 @@ class AlbumDetailView(PictureReferenceDetailView):
         dt = PictureOnAlbumPanelDropTarget(self)
         self._main_panel.SetDropTarget(dt)
 
+    def _FillPropertySizer(self):
+        super(AlbumDetailView, self)._FillPropertySizer()
+        self._AddDescription(6, self._find_button)
+
     def GetLabelCategory(self):
         return 'ALBUM'

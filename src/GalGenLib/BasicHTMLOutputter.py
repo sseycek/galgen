@@ -44,6 +44,8 @@ class BasicHTMLOutputter(object):
     navi_next_tag_id = 'navi-next'
     navi_album_tag_id = 'navi-album'
     navi_highres_tag_id = 'navi-highres'
+    navi_info_tag_id = 'navi-info'
+    navi_slideshow_tag_id = 'navi-slideshow'
     meta_data_tag_id = 'meta-data'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
@@ -93,6 +95,12 @@ class BasicHTMLOutputter(object):
 
     def getNaviHighresTag(self):
         return self.getElementById(self.navi_highres_tag_id)
+
+    def getNaviInfoTag(self):
+        return self.getElementById(self.navi_info_tag_id)
+
+    def getNaviSlideshowTag(self):
+        return self.getElementById(self.navi_slideshow_tag_id)
 
     def getNaviAlbumTag(self):
         return self.getElementById(self.navi_album_tag_id)
@@ -155,9 +163,20 @@ class BasicHTMLOutputter(object):
             if a is not None:
                 a.set('href', href)
                 
-    def disableNaviControls(self):
-        tag = self.getNaviTag()
-        tag.clear()
+    def disableNaviControls(self, keep_info):
+        tag = self.getNaviAlbumTag()
+        if tag is not None: tag.clear()
+        tag = self.getNaviHighresTag()
+        if tag is not None: tag.clear()
+        if not keep_info:
+            tag = self.getNaviInfoTag()
+            if tag is not None: tag.clear()
+        tag = self.getNaviNextTag()
+        if tag is not None: tag.clear()
+        tag = self.getNaviPrevTag()
+        if tag is not None: tag.clear()
+        tag = self.getNaviSlideshowTag()
+        if tag is not None: tag.clear()
 
     def activateMenuItem(self):
         if self.entity.menu_id:

@@ -43,4 +43,21 @@ class NamedObjectHTMLOutputter(BasicHTMLOutputter):
     def updateDocTitle(self):
         title = self.getDocTitleTag()
         title.text = self.entity.name
+
+    def _fillMetaDataTag(self, extra_text):
+        tag = self.getMetaDataTag()
+        if tag is not None:
+            table = etree.SubElement(tag, 'table')
+            table.set('class', 'meta-data-table');
+            tr = etree.SubElement(table, 'tr')
+            tr.set('class', 'meta-data-tr');
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'meta-data-td');
+            td.text = self.entity.description
+            tr = etree.SubElement(table, 'tr')
+            tr.set('class', 'meta-data-tr');
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'meta-data-td');
+            td.text = extra_text
+                
         

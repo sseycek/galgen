@@ -130,7 +130,8 @@ class GalleryHTMLOutputter(NamedObjectHTMLOutputter):
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.activateMenuItem()
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
-        self.disableNaviControls()
+        self.disableNaviControls(True)
+        self._fillMetaDataTag('')
         self.__addIndexTable()
         self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
         for child in self.entity.children:

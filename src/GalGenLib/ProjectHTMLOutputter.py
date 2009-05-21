@@ -44,7 +44,7 @@ class ProjectHTMLOutputter(CustomContentReferenceHTMLOutputter):
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(0)
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
-        self.disableNaviControls()
+        self.disableNaviControls(False)
         self._copyIframeDir(target_dir)
         self._copyCustomContentHtmlFile(target_dir)
         self._addIframe()

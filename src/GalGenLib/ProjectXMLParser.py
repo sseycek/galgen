@@ -92,29 +92,41 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         # logDebug('startElementGallery called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising gallery, while there is no project on the stack yet'
-        gallery = Gallery(attributes['name'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        description = ''
+        if 'description' in attributes: 
+            description = attributes['description']
+        gallery = Gallery(attributes['name'], attributes['menu-id'], attributes['title'], attributes['subtitle'], description)
         self.__element_stack.append(gallery)
 
     def __startElementAlbum(self, attributes):
         # logDebug('startElementAlbum called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising album, while there is no project on the stack yet'
-        album = Album(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        description = ''
+        if 'description' in attributes: 
+            description = attributes['description']
+        album = Album(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'], description)
         self.__element_stack.append(album)
 
     def __startElementPicture(self, attributes):
         # logDebug('startElementPicture called for "%s" located at "%s"' % (attributes['name'], attributes['location']))
         if len(self.__element_stack) < 2:
             raise 'Unexpected - deserialising picture, while there is no index on the stack yet'
+        # make these optional for compatibility
         highres_location = ''
-        # make this optional for compatibility
         if 'highres-location' in attributes:
             highres_location = attributes['highres-location']
-        picture = Picture(attributes['name'], attributes['location'], highres_location, attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        description = ''
+        if 'description' in attributes: 
+            description = attributes['description']
+        exif = ''
+        if 'exif' in attributes: 
+            exif = attributes['exif']
+        picture = Picture(attributes['name'], attributes['location'], highres_location, attributes['menu-id'], attributes['title'], attributes['subtitle'], description, exif)
         self.__element_stack.append(picture)
 
     def __startElementCustomContentPage(self, attributes):
-        custom_page = CustomContentPage(attributes['name'], attributes['location'], attributes['dir-location'], attributes['menu-id'], attributes['title'], attributes['subtitle'])
+        custom_page = CustomContentPage(attributes['name'], attributes['location'], attributes['dir-location'], attributes['menu-id'], attributes['title'], attributes['subtitle'], '')
         self.__element_stack.append(custom_page)
 
     def characters(self, data):

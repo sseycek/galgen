@@ -43,8 +43,8 @@ class Project(CustomContentReference, Container, Modifyable):
     parent = None
 
     def __init__(self, filename = '', name = '', template = '', style_directory = '',
-                 menu_id = '', title = '', subtitle = '', html_location = '', supplemental_dir = ''):
-        CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir)
+                 menu_id = '', title = '', subtitle = '', html_location = '', supplemental_dir = '', description=''):
+        CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir, description)
         Container.__init__(self)
         Modifyable.__init__(self)
         self.__filename = filename

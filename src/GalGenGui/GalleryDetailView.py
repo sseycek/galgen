@@ -36,5 +36,9 @@ class GalleryDetailView(NamedObjectDetailView):
     def __init__(self, panel, element):
         super(GalleryDetailView, self).__init__(panel, element)
 
+    def _FillPropertySizer(self):
+        super(GalleryDetailView, self)._FillPropertySizer()
+        self._AddDescription(5, self._subtitle_edit)
+
     def GetLabelCategory(self):
         return 'GALLERY'

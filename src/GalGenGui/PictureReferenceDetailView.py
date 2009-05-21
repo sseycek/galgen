@@ -75,6 +75,11 @@ class PictureReferenceDetailView(NamedObjectDetailView):
         if self._IsImgLocationModified():
             self.element.pic_location = self._img_location_edit.GetValue()
             self.element.modified = True
+            self._PicLocationUpdated()
+
+    def _PicLocationUpdated(self):
+        # hook for subclasses
+        pass
 
     def _OnCancel(self, event):
         super(PictureReferenceDetailView, self)._OnCancel(event)

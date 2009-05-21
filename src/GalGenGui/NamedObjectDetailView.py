@@ -36,6 +36,8 @@ class NamedObjectDetailView(GalleryObjectDetailView):
 
     def __init__(self, panel, element):
         super(NamedObjectDetailView, self).__init__(panel, element)
+        # not present in all subclasses
+        self._description_edit = None
 
     def _FillPropertySizer(self):
         super(NamedObjectDetailView, self)._FillPropertySizer()
@@ -47,13 +49,31 @@ class NamedObjectDetailView(GalleryObjectDetailView):
         self._control_grid.Add(label, (1, 1))
         self._control_grid.Add(self._name_edit, (1, 2))
 
+    def _AddDescription(self, vpos, predecessor):
+        label = wx.StaticText(self._main_panel, -1, 'Description')
+        self._description_edit = wx.TextCtrl(self._main_panel, -1, self.element.description, style = wx.TE_MULTILINE | wx.TE_AUTO_SCROLL, size = (600, 50))
+        self._description_edit.MoveAfterInTabOrder(predecessor)
+        self._main_panel.Bind(wx.EVT_TEXT, self.__OnDescriptionEdited, self._description_edit)
+        #self._control_grid.Add((10, 10), (0, 0))
+        self._control_grid.Add(label, (vpos, 1))
+        self._control_grid.Add(self._description_edit, (vpos, 2))
+
     def __IsNameModified(self):
         return self._name_edit.GetValue() != self.element.name
 
+    def __IsDescriptionModified(self):
+        return self._description_edit and self._description_edit.GetValue() != self.element.description
+
     def _IsModified(self):
-        return (self.__IsNameModified() or super(NamedObjectDetailView, self)._IsModified())
+        return (self.__IsNameModified() or
+                self.__IsDescriptionModified() or 
+                super(NamedObjectDetailView, self)._IsModified())
 
     def __OnNameEdited(self, event):
+        if self._main_panel.event_handlers_enabled:
+            self._OnEdited()
+
+    def __OnDescriptionEdited(self, event):
         if self._main_panel.event_handlers_enabled:
             self._OnEdited()
 
@@ -62,8 +82,13 @@ class NamedObjectDetailView(GalleryObjectDetailView):
         if self.__IsNameModified():
             self.element.name = self._name_edit.GetValue()
             self.element.modified = True
+        if self.__IsDescriptionModified():
+            self.element.description = self._description_edit.GetValue()
+            self.element.modified = True
 
     def _OnCancel(self, event):
         super(NamedObjectDetailView, self)._OnCancel(event)
         if self.__IsNameModified():
              self._name_edit.SetValue(self.element.name)
+        if self.__IsDescriptionModified():
+             self._description_edit.SetValue(self.element.description)

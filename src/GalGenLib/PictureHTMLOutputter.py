@@ -31,19 +31,10 @@
 
 import os
 import shutil
-import EXIF
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
 from Thumbnailer import Thumbnailer
 from Core import Core
 from xml.etree import cElementTree as etree
-
-META_DATA_TAGS = (('Image Model', 'Camera Model:'),
-                  ('EXIF DateTimeOriginal', 'Creation Time:'),
-                  ('EXIF ISOSpeedRating', 'ISO Number:'),
-                  ('EXIF ExposureTime', 'Exposure Time:'),
-                  ('EXIF FNumber', 'Aperture:'),
-                  ('EXIF FocalLength','Focal Length:'),
-                  ('EXIF FocalLengthIn35mmFilm','Focal Length (35mm equivalent):'))
 
 class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     SLIDE_THUMB_COUNT = 7
@@ -137,29 +128,6 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             if pictures[i] == self.entity:
                 img.set('id', 'effect2')
 
-    def __fillMetaDataTag(self):
-        global META_DATA_TAGS
-        tag = self.getMetaDataTag()
-        if tag is not None:
-            try:
-                fd = open(self.entity.pic_location, 'rb')
-                meta_data = EXIF.process_file(fd)
-                fd.close()
-                table = etree.SubElement(tag, 'table')
-                table.set('class', 'meta-data-table');
-                for (k, name) in META_DATA_TAGS:
-                    if k in meta_data:
-                        tr = etree.SubElement(table, 'tr')
-                        tr.set('class', 'meta-data-tr');
-                        td = etree.SubElement(tr, 'td')
-                        td.set('class', 'meta-data-key-td');
-                        td.text = name
-                        td = etree.SubElement(tr, 'td')
-                        td.set('class', 'meta-data-value-td');
-                        td.text = str(meta_data[k])
-            except:
-                raise
-                # should be pass
 
     def __updateNaviControls(self):
         tag = self.getNaviAlbumTag()
@@ -175,7 +143,6 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         if os.path.lexists(self.entity.highres_location):
             tag = self.getNaviHighresTag()
             if tag: tag.set('href', 'pics/highres/%s' % self.entity.highres_pic_file_name)
-        self.__fillMetaDataTag()
 
     def generateOutput(self, target_dir, progress_updater, page_index):
         self.__copyPicture(target_dir)
@@ -190,6 +157,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self.__addPicture()
         self.__updateThumbStripe()
         self.__updateNaviControls()
+        self._fillMetaDataTag(self.entity.exif)
         file_name = '%s.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
         return page_index

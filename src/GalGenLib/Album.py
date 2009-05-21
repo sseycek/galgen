@@ -37,8 +37,8 @@ from AlbumHTMLOutputter import AlbumHTMLOutputter
 
 class Album(PictureReference, Container, Contained, Modifyable):
 
-    def __init__(self, name, pic_location, menu_id, title, subtitle):
-        PictureReference.__init__(self, name, pic_location, menu_id, title, subtitle)
+    def __init__(self, name, pic_location, menu_id, title, subtitle, description):
+        PictureReference.__init__(self, name, pic_location, menu_id, title, subtitle, description)
         Container.__init__(self)
         Contained.__init__(self)
         Modifyable.__init__(self)
@@ -51,8 +51,8 @@ class Album(PictureReference, Container, Contained, Modifyable):
         self._writeEndTag(stream)
 
     def _writeStartTag(self, stream):
-        stream.write(u'<album name="%s" pic="%s" menu-id="%s" title="%s" subtitle="%s">\n'
-                     % (self.name, self.pic_location, self.menu_id, self.title, self.subtitle))
+        stream.write(u'<album name="%s" pic="%s" menu-id="%s" title="%s" subtitle="%s" description="%s">\n'
+                     % (self.name, self.pic_location, self.menu_id, self.title, self.subtitle, self.description))
 
     def _writeEndTag(self, stream):
         stream.write(u'</album>\n')

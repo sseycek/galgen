@@ -36,8 +36,8 @@ from NamedObject import NamedObject
 class PictureReference(NamedObject):
     __html_extension = 'html'
     
-    def __init__(self, name, location, menu_id, title, subtitle):
-        NamedObject.__init__(self, name, menu_id, title, subtitle)
+    def __init__(self, name, location, menu_id, title, subtitle, description):
+        NamedObject.__init__(self, name, menu_id, title, subtitle, description)
         self.__location = location
 
     def getPicLocation(self):
@@ -45,6 +45,11 @@ class PictureReference(NamedObject):
 
     def setPicLocation(self, location):
         self.__location = location
+        self._picLocationUpdated()
+
+    def _picLocationUpdated(self):
+        # hook for subclasses
+        pass
 
     pic_location = property(getPicLocation, setPicLocation)
 

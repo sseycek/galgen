@@ -36,8 +36,8 @@ from NamedObject import NamedObject
 
 class CustomContentReference(NamedObject):
 
-    def __init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir):
-        NamedObject.__init__(self, name, menu_id, title, subtitle)
+    def __init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir, description):
+        NamedObject.__init__(self, name, menu_id, title, subtitle, description)
         self.__html_location = html_location
         self.__supplemental_dir = supplemental_dir
 

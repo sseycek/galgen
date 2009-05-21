@@ -44,6 +44,8 @@ class PictureDetailView(PictureReferenceDetailView):
     def _FillPropertySizer(self):
         super(PictureDetailView, self)._FillPropertySizer()
         self.__AddHighresLocation()
+        self._AddDescription(7, self.__highres_find_button)
+        self.__AddExif()
 
     def __AddHighresLocation(self):
         label = wx.StaticText(self._main_panel, -1, 'Highres location')
@@ -56,6 +58,16 @@ class PictureDetailView(PictureReferenceDetailView):
         self._control_grid.Add(self.__highres_location_edit, (6,2))
         self._control_grid.Add(self.__highres_find_button, (6,3))
 
+    def __AddExif(self):
+        label = wx.StaticText(self._main_panel, -1, 'EXIF')
+        self.__exif_edit = wx.TextCtrl(self._main_panel, -1, self.element.exif, size = (600, -1))
+        self._main_panel.Bind(wx.EVT_TEXT, self.__OnExifEdited, self.__exif_edit)
+        self.__exif_update_button = wx.Button(self._main_panel, -1, "Update", (20, 20))
+        self._main_panel.Bind(wx.EVT_BUTTON, self.__OnExifUpdateButton, self.__exif_update_button)
+        self.__exif_update_button.SetSize(self.__exif_update_button.GetBestSize())
+        self._control_grid.Add(label, (8, 1))
+        self._control_grid.Add(self.__exif_edit, (8,2))
+        self._control_grid.Add(self.__exif_update_button, (8,3))
 
     def __AddImage(self):
         if self.element.pic_location and os.path.exists(self.element.pic_location):
@@ -86,6 +98,9 @@ class PictureDetailView(PictureReferenceDetailView):
     def __OnHighresLocationEdited(self, event):
         self._OnEdited()
 
+    def __OnExifEdited(self, event):
+        self._OnEdited()
+
     def __OnHighresFindButton(self, event):
         dlg = wx.FileDialog(self._main_panel,
                             message="Choose a file",
@@ -97,19 +112,38 @@ class PictureDetailView(PictureReferenceDetailView):
             self.__highres_location_edit.SetValue(dlg.GetPath())
             self._OnEdited()
 
+    def __OnExifUpdateButton(self, event):
+        exif = self.element.extractExifFromPicture()
+        self.__exif_edit.SetValue(exif)
+        self._OnEdited()
+    
     def __IsHighresLocationModified(self):
         return self.__highres_location_edit.GetValue() != self.element.highres_location
 
+    def __IsExifModified(self):
+        return self.__exif_edit.GetValue() != self.element.exif
+
     def _IsModified(self):
-        return (self.__IsHighresLocationModified() or super(PictureDetailView, self)._IsModified())
+        return (self.__IsHighresLocationModified() or
+                self.__IsExifModified() or
+                super(PictureDetailView, self)._IsModified())
 
     def _OnApply(self, event):
         super(PictureDetailView, self)._OnApply(event)
         if self.__IsHighresLocationModified():
             self.element.highres_location = self.__highres_location_edit.GetValue()
             self.element.modified = True
+        if self.__IsExifModified():
+            self.element.exif = self.__exif_edit.GetValue()
+            self.element.modified = True
 
     def _OnCancel(self, event):
         super(PictureDetailView, self)._OnCancel(event)
         if self.__IsHighresLocationModified():
             self.__highres_location_edit.SetValue(self.element.highres_location)
+        if self.__IsExifModified():
+            self.__exif_edit.SetValue(self.element.exif)
+
+    def _PicLocationUpdated(self):
+        # update exif control
+        self.__exif_edit.SetValue(self.element.exif)

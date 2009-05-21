@@ -42,7 +42,8 @@ class PictureDropTarget(wx.FileDropTarget):
             self._beforeDroppingFiles(album)    
             for filename in filenames:
                 name = os.path.splitext(os.path.split(filename)[1])[0]
-                picture = Picture(name, filename, '', '', name, '')
+                picture = Picture(name, filename, '', '', name, '', '', '')
+                picture.exif = picture.extractExifFromPicture()
                 album.addChild(picture)
             self._afterDroppingFiles(album)    
             return True

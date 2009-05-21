@@ -37,8 +37,8 @@ from GalleryHTMLOutputter import GalleryHTMLOutputter
 
 class Gallery(NamedObject, Container, Contained, Modifyable):
 
-    def __init__(self, name, menu_id, title, subtitle):
-        NamedObject.__init__(self, name, menu_id, title, subtitle)
+    def __init__(self, name, menu_id, title, subtitle, description):
+        NamedObject.__init__(self, name, menu_id, title, subtitle, description)
         Container.__init__(self)
         Contained.__init__(self)
         Modifyable.__init__(self)
@@ -51,8 +51,8 @@ class Gallery(NamedObject, Container, Contained, Modifyable):
         self._writeEndTag(stream)
 
     def _writeStartTag(self, stream):
-        stream.write(u'<gallery name="%s" menu-id="%s" title="%s" subtitle="%s">\n'
-                     % (self.name, self.menu_id, self.title, self.subtitle))
+        stream.write(u'<gallery name="%s" menu-id="%s" title="%s" subtitle="%s" description="%s">\n'
+                     % (self.name, self.menu_id, self.title, self.subtitle, self.description))
 
     def _writeEndTag(self, stream):
         stream.write(u'</gallery>\n')

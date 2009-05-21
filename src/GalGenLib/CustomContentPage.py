@@ -36,9 +36,9 @@ from CustomContentPageHTMLOutputter import CustomContentPageHTMLOutputter
 
 class CustomContentPage(Modifyable, CustomContentReference, Contained):
 
-    def __init__(self, name, html_location, supplemental_dir, menu_id, title, subtitle):
+    def __init__(self, name, html_location, supplemental_dir, menu_id, title, subtitle, description):
         Modifyable.__init__(self)
-        CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir)
+        CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir, description)
         Contained.__init__(self)
 
     def save(self, stream):

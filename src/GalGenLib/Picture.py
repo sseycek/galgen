@@ -35,6 +35,7 @@ from Modifyable import Modifyable
 from PictureReference import PictureReference
 from Contained import Contained
 from PictureHTMLOutputter import PictureHTMLOutputter
+from XmlUtils import asXmlAttribute
 
 META_DATA_TAGS = (('Image Model', 'Camera Model:'),
                   ('EXIF DateTimeOriginal', 'Creation Time:'),
@@ -69,7 +70,9 @@ class Picture(Modifyable, PictureReference, Contained):
 
     def __writeStartTag(self, stream):
         stream.write(u'<picture name="%s" location="%s" highres-location="%s" menu-id="%s" title="%s" subtitle="%s" description="%s" exif="%s">\n'
-                     % (self.name, self.pic_location, self.highres_location, self.menu_id, self.title, self.subtitle, self.description, self.exif))
+                     % (asXmlAttribute(self.name), asXmlAttribute(self.pic_location), asXmlAttribute(self.highres_location),
+                        asXmlAttribute(self.menu_id), asXmlAttribute(self.title), asXmlAttribute(self.subtitle),
+                        asXmlAttribute(self.description), asXmlAttribute(self.exif)))
 
     def __writeEndTag(self, stream):
         stream.write(u'</picture>\n')

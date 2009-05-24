@@ -33,6 +33,7 @@ from Modifyable import Modifyable
 from CustomContentReference import CustomContentReference
 from Contained import Contained
 from CustomContentPageHTMLOutputter import CustomContentPageHTMLOutputter
+from XmlUtils import asXmlAttribute
 
 class CustomContentPage(Modifyable, CustomContentReference, Contained):
 
@@ -47,7 +48,8 @@ class CustomContentPage(Modifyable, CustomContentReference, Contained):
 
     def __writeStartTag(self, stream):
         stream.write(u'<customcontent name="%s" location="%s" dir-location="%s" menu-id="%s" title="%s" subtitle="%s">\n'
-                     % (self.name, self.html_location, self.supplemental_dir, self.menu_id, self.title, self.subtitle))
+                     % (asXmlAttribute(self.name), asXmlAttribute(self.html_location), asXmlAttribute(self.supplemental_dir), 
+                        asXmlAttribute(self.menu_id), asXmlAttribute(self.title), asXmlAttribute(self.subtitle)))
 
     def __writeEndTag(self, stream):
         stream.write(u'</customcontent>\n')

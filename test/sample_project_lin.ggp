@@ -1,78 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
- name="Sample project "
- galgen-version="0.8.4"
- xhtml-template="/home/stepan/dev/galgen_trunk/test/template.html"
- style-directory="/home/stepan/dev/galgen_trunk/test/style"
+ name="New project"
+ galgen-version="0.9.3"
+ xhtml-template=""
+ style-directory=""
  menu-id=""
- title="Foo"
- subtitle="Bar"
- html-location="/home/stepan/dev/galgen_trunk/test/index_page.html"
- supplemental-dir="/home/stepan/dev/galgen_trunk/test/index_page_files">
-<gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="ins Ausland">
-<album name="Kanada" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Kanada" subtitle="da drueben">
-<picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
-</picture>
-<picture name="Fluss  2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Fluss 2" subtitle="...">
-</picture>
-<picture name="Fluss  3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Fluss 3" subtitle="...">
-</picture>
-<picture name="Fluss  4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Fluss 4" subtitle="...">
-</picture>
-<picture name="Fluss  5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" menu-id="" title="Fluss 5" subtitle="...">
-</picture>
-<picture name="Fluss  6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" menu-id="" title="Fluss 6" subtitle="...">
-</picture>
-<picture name="Fluss  7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" menu-id="" title="Fluss 7" subtitle="...">
-</picture>
-<picture name="Fluss  8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" menu-id="" title="Fluss 8" subtitle="...">
-</picture>
-<picture name="Fluss  9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" menu-id="" title="Fluss 9" subtitle="...">
-</picture>
-<picture name="Fluss 10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" menu-id="" title="Fluss 10" subtitle="...">
-</picture>
-</album>
-<album name="Kanada 2" pic="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Test" subtitle="mit 5 Bildern">
-<picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
-</picture>
-<picture name="Fluss  2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Fluss 2" subtitle="...">
-</picture>
-<picture name="Fluss  3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Fluss 3" subtitle="...">
-</picture>
-<picture name="Fluss  4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Fluss 4" subtitle="...">
-</picture>
-<picture name="Fluss  5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" menu-id="" title="Fluss 5" subtitle="...">
-</picture>
-</album>
-<album name="Kanada 3" pic="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Test" subtitle="mit 4 Bildern">
-<picture name="Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Robson" subtitle="river">
-</picture>
-<picture name="Fluss  2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="Fluss 2" subtitle="...">
-</picture>
-<picture name="Fluss  3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="Fluss 3" subtitle="...">
-</picture>
-<picture name="Fluss  4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Fluss 4" subtitle="...">
+ title=""
+ subtitle=""
+ html-location=""
+ supplemental-dir="">
+<gallery name="Gallery" menu-id="" title="" subtitle="" description="">
+<album name="Album" pic="" menu-id="" title="" subtitle="" description="">
+<picture name="Picture" location="" highres-location="" menu-id="" title="" subtitle="" description="" exif="">
 </picture>
 </album>
 </gallery>
-<gallery name="Oesterreich" menu-id="" title="fdasga" subtitle="gfsdfa">
-<album name="fdazhq3gaf" pic="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd">
-<picture name="asdfasdfasd" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" menu-id="ssfasfash" title="ssfasfash" subtitle="ssfasfash">
-</picture>
-</album>
-</gallery>
-<gallery name="Gallery" menu-id="" title="" subtitle="">
-<album name="Album" pic="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="sadf" subtitle="zwetzwetz">
-<picture name="Picture" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="dasqzg3q" subtitle="daszw4tz">
-</picture>
-</album>
-</gallery>
-<gallery name="Gallery X" menu-id="" title="dah64te" subtitle="rewtwr">
-<album name="Album" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="asdf53gwrfq" subtitle="serqrtw">
-<picture name="Picture" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="eqwt53ztwertqw" subtitle="reqerqwerqwe">
-</picture>
-</album>
-</gallery>
-<customcontent name="Kontakt" location="/home/stepan/dev/galgen_trunk/test/kontakt_text.html" dir-location="/home/stepan/dev/galgen_trunk/test/kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="webmaster">
-</customcontent>
 </project>

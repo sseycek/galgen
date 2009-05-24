@@ -37,6 +37,7 @@ from CustomContentReference import CustomContentReference
 from Container import Container
 from Modifyable import Modifyable
 from ProjectHTMLOutputter import ProjectHTMLOutputter
+from XmlUtils import asXmlAttribute
 import Globals
 
 class Project(CustomContentReference, Container, Modifyable):
@@ -100,15 +101,15 @@ class Project(CustomContentReference, Container, Modifyable):
 
     def __writeStartTag(self, stream):
         stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
-                     ('name', self.name,
-                      'galgen-version', Globals.ProgVersion,
-                      'xhtml-template', self.__xhtml_template,
-                      'style-directory', self.__style_directory,
-                      'menu-id', self.menu_id,
-                      'title', self.title,
-                      'subtitle', self.subtitle,
-                      'html-location', self.html_location,
-                      'supplemental-dir', self.supplemental_dir))
+                     ('name', asXmlAttribute(self.name),
+                      'galgen-version', asXmlAttribute(Globals.ProgVersion),
+                      'xhtml-template', asXmlAttribute(self.__xhtml_template),
+                      'style-directory', asXmlAttribute(self.__style_directory),
+                      'menu-id', asXmlAttribute(self.menu_id),
+                      'title', asXmlAttribute(self.title),
+                      'subtitle', asXmlAttribute(self.subtitle),
+                      'html-location', asXmlAttribute(self.html_location),
+                      'supplemental-dir', asXmlAttribute(self.supplemental_dir)))
 
     def __writeEndTag(self, stream):
         stream.write(u'</project>\n')

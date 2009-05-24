@@ -34,6 +34,7 @@ from Container import Container
 from Contained import Contained
 from Modifyable import Modifyable
 from GalleryHTMLOutputter import GalleryHTMLOutputter
+from XmlUtils import asXmlAttribute
 
 class Gallery(NamedObject, Container, Contained, Modifyable):
 
@@ -52,7 +53,9 @@ class Gallery(NamedObject, Container, Contained, Modifyable):
 
     def _writeStartTag(self, stream):
         stream.write(u'<gallery name="%s" menu-id="%s" title="%s" subtitle="%s" description="%s">\n'
-                     % (self.name, self.menu_id, self.title, self.subtitle, self.description))
+                     % (asXmlAttribute(self.name), asXmlAttribute(self.menu_id),
+                        asXmlAttribute(self.title), asXmlAttribute(self.subtitle),
+                        asXmlAttribute(self.description)))
 
     def _writeEndTag(self, stream):
         stream.write(u'</gallery>\n')

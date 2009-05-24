@@ -34,6 +34,7 @@ from Container import Container
 from Contained import Contained
 from Modifyable import Modifyable
 from AlbumHTMLOutputter import AlbumHTMLOutputter
+from XmlUtils import asXmlAttribute
 
 class Album(PictureReference, Container, Contained, Modifyable):
 
@@ -52,7 +53,8 @@ class Album(PictureReference, Container, Contained, Modifyable):
 
     def _writeStartTag(self, stream):
         stream.write(u'<album name="%s" pic="%s" menu-id="%s" title="%s" subtitle="%s" description="%s">\n'
-                     % (self.name, self.pic_location, self.menu_id, self.title, self.subtitle, self.description))
+                     % (asXmlAttribute(self.name), asXmlAttribute(self.pic_location), asXmlAttribute(self.menu_id),
+                        asXmlAttribute(self.title), asXmlAttribute(self.subtitle), asXmlAttribute(self.description)))
 
     def _writeEndTag(self, stream):
         stream.write(u'</album>\n')

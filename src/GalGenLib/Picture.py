@@ -113,7 +113,7 @@ class Picture(Modifyable, PictureReference, Contained):
             for (k, name) in META_DATA_TAGS:
                 if k in meta_data:
                     if exif:
-                        exif += ' :: '
+                        exif += ' - '
                     exif += str(meta_data[k])
         except:
             # ignore error opening file

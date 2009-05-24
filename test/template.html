@@ -21,7 +21,7 @@
       {window.document.images[Bildnr].src = Bildobjekt.src;}
 
       function metaData(show) {
-    	  var metadata_div = document.getElementById("meta-data");
+    	  var metadata_div = document.getElementById("meta-data-outer");
     	  if (metadata_div) {
           if (show) metadata_div.style.display="block";
     	    else metadata_div.style.display="none";
@@ -31,7 +31,7 @@
   </head>
 
   <body>
-    <div id="meta-data"> </div>
+    <div id="meta-data-outer"> <div id="meta-data-inner"> </div> </div>
     <table  class="table1" cellspacing="0" cellpadding="0">
       <tr>
         <!-- Leer-Zelle -->
@@ -110,7 +110,7 @@
             <tr>
               <td class="navizelle-left">
                 <a id="navi-info">
-                  <img src="http://seycek.eu/style/info.png" class="navi" alt="Info" onmouseover="metaData(true);" onmouseout="metaData(false);" />
+                  <img src="http://seycek.eu/style/info.png" class="navi" title="Info" alt="Info" onmouseover="metaData(true);" onmouseout="metaData(false);" />
                 </a>
               </td>
               <td class="navizelle-right">

@@ -46,7 +46,7 @@ class BasicHTMLOutputter(object):
     navi_highres_tag_id = 'navi-highres'
     navi_info_tag_id = 'navi-info'
     navi_slideshow_tag_id = 'navi-slideshow'
-    meta_data_tag_id = 'meta-data'
+    meta_data_tag_id = 'meta-data-inner'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
     active_menu_item_class = 'effect1'

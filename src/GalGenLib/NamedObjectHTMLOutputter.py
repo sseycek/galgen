@@ -58,6 +58,11 @@ class NamedObjectHTMLOutputter(BasicHTMLOutputter):
             tr.set('class', 'meta-data-tr');
             td = etree.SubElement(tr, 'td')
             td.set('class', 'meta-data-td');
+            td.text = " "
+            tr = etree.SubElement(table, 'tr')
+            tr.set('class', 'meta-data-tr');
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'meta-data-td');
             td.text = extra_text
                 
         

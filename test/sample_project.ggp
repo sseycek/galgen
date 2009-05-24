@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
- name="Sample project"
- galgen-version="0.9.2"
- xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
- style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
+ name="Photos"
+ galgen-version="0.9.4"
+ xhtml-template="/home/stepan/dev/galgen_trunk/test/template.html"
+ style-directory="/home/stepan/dev/galgen_trunk/test/style"
  menu-id=""
- title="Foo"
- subtitle="Bar"
- html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
- supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
-<gallery name="Oesterreich" menu-id="menu_oesterreich" title="fdasga" subtitle="gfsdfa" description="">
-<album name="fdazhq3gaf" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" menu-id="" title="sahgsrtgs" subtitle="fdasd" description="">
-<picture name="Pic1" location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" highres-location="C:\Dokumente und Einstellungen\sseycek\Desktop\GALgen_0.9.1\test\DSC_0344_680.jpg" menu-id="" title="Pic1" subtitle="" description="" exif="NIKON D200 :: 2006:12:12 16:04:52 :: 1/320 :: 9 :: 112 :: 168">
+ title="Photos"
+ subtitle="of mine"
+ html-location="/home/stepan/dev/galgen_trunk/test/index_page.html"
+ supplemental-dir="/home/stepan/dev/galgen_trunk/test/index_page_files">
+<gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="in ferne Länder" description="Da fahrma hin">
+<album name="Tschechien" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Tschechien" subtitle="da waren wie" description="irgendwann bleib i dann dort">
+<picture name="Bild" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Ein Bild" subtitle="sagt mehr als tausend Worte" description="Ein Bildchen" exif="08/15">
 </picture>
 </album>
 </gallery>
-<customcontent name="Kontakt" location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text.html" dir-location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="webmaster">
-</customcontent>
 </project>

@@ -94,7 +94,7 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
             raise 'Unexpected - deserialising gallery, while there is no project on the stack yet'
         print attributes
         description = ''
-        if 'description' in attributes: 
+        if attributes.has_key('description'): 
             description = attributes['description']
         gallery = Gallery(attributes['name'], attributes['menu-id'], attributes['title'], attributes['subtitle'], description)
         self.__element_stack.append(gallery)
@@ -104,7 +104,7 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         if not self.__element_stack:
             raise 'Unexpected - deserialising album, while there is no project on the stack yet'
         description = ''
-        if 'description' in attributes: 
+        if attributes.has_key('description'): 
             description = attributes['description']
         album = Album(attributes['name'], attributes['pic'], attributes['menu-id'], attributes['title'], attributes['subtitle'], description)
         self.__element_stack.append(album)
@@ -115,13 +115,13 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
             raise 'Unexpected - deserialising picture, while there is no index on the stack yet'
         # make these optional for compatibility
         highres_location = ''
-        if 'highres-location' in attributes:
+        if attributes.has_key('highres-location'):
             highres_location = attributes['highres-location']
         description = ''
-        if 'description' in attributes: 
+        if attributes.has_key('description'): 
             description = attributes['description']
         exif = ''
-        if 'exif' in attributes: 
+        if attributes.has_key('exif'): 
             exif = attributes['exif']
         picture = Picture(attributes['name'], attributes['location'], highres_location, attributes['menu-id'], attributes['title'], attributes['subtitle'], description, exif)
         self.__element_stack.append(picture)

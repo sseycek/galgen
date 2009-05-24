@@ -198,7 +198,7 @@ class Frame(wx.Frame):
         tree_item_id = self.__GetTree().GetSelection()
         element = self.__GetTree().GetPyData(tree_item_id).element
         if isinstance(element, Project):
-            element.addChild(CustomContentPage('Custom page', '', '', '', '', ''))
+            element.addChild(CustomContentPage('Custom page', '', '', '', '', '', ''))
         else:
             raise Exception, 'custom content pages only supported as direct child entries of project'
 

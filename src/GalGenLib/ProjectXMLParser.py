@@ -92,6 +92,7 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         # logDebug('startElementGallery called for "%s"' % attributes['name'])
         if not self.__element_stack:
             raise 'Unexpected - deserialising gallery, while there is no project on the stack yet'
+        print attributes
         description = ''
         if 'description' in attributes: 
             description = attributes['description']

@@ -265,7 +265,7 @@ a:active {
 	line-height: 180%;
 	color: #666666;
 	border-bottom: 1px solid #a60000;
-	text-align:left;
+	text-align:right;
 	vertical-align: bottom;
 }
 
@@ -273,7 +273,7 @@ a:active {
 	height:58px;
 	line-height: 180%;	
 	color: #666666;
-	text-align:left;
+	text-align:right;
 	vertical-align:top;
 }
 

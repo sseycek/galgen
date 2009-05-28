@@ -58,7 +58,26 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         tr = None
         column_count = 0
         cell_count = 0
+        child_count = 0
+        if self.__current_idx_page > 1:
+            # pointer to prevoius page
+            tr = etree.SubElement(table, 'tr')
+            tr.set('align', 'center')
+            td = etree.SubElement(tr, 'td')
+            td.set('class', 'bildzelle')
+            td.set('id', 'to-previous-album-page')
+            column_count += 1
+            cell_count += 1
+            a = etree.SubElement(td, 'a')
+            if self.__current_idx_page > 2: prev_idx_html = 'index%d.html' % (self.__current_idx_page - 1)
+            else: prev_idx_html = 'index.html'
+            a.set('href', prev_idx_html)
+            a.text = 'prev'
         for child in self.entity.children:
+            child_count += 1
+            if child_count <= self.__handled_thumbs:
+                # already handled on on of previous pages
+                continue
             if tr is None or column_count == self.__column_count:
                 tr = etree.SubElement(table, 'tr')
                 tr.set('align', 'center')
@@ -68,10 +87,20 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             column_count += 1
             cell_count += 1
             a = etree.SubElement(td, 'a')
-            a.set('href', '%s/%s' % (self.__picture_page_dir, child.html_file_name))
-            img = etree.SubElement(a, 'img')
-            img.set('class', 'thumb')
-            img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
+            if cell_count == self.__column_count * self.__row_count and \
+            len(self.entity.children) - self.__handled_thumbs > 1:
+                # pointer to next page
+                next_idx_html = 'index%d.html' % (self.__current_idx_page + 1)
+                a.set('href', next_idx_html)
+                a.text = 'next'
+                break
+            else:
+                a.set('href', '%s/%s' % (self.__picture_page_dir, child.html_file_name))
+                img = etree.SubElement(a, 'img')
+                img.set('class', 'thumb')
+                img.set('src', '%s/%s' % (thumb_dir, child.pic_file_name))
+                self.__handled_thumbs += 1
+            
 
         # fill up with empty cells
         for i in range(self.__column_count * self.__row_count - cell_count):
@@ -94,20 +123,32 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         if slide_thumb_size != album_thumb_size:
              os.mkdir(os.path.join(album_dir, 'thumbs', '%dx%d' % slide_thumb_size))
 
+    def __reset(self):
+        '''resets the tree so that the next page can be generate'''
+        NamedObjectHTMLOutputter.__init__(self, self.entity)
+
     def generateOutput(self, target_dir, progress_updater, page_index):
-        self.updateCssRef(2)
-        self.updateStyleDirRefs(2)
-        self.updateDocTitle()
-        menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(2)
-        if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
-        self.updateTitleCell(self.entity.title, self.entity.subtitle)
-        self.disableNaviControls(True)
-        self._fillMetaDataTag('')
-        self.addIndexTable()
         target_dir = os.path.join(target_dir, self.entity.name)
         os.mkdir(target_dir)
         self.__createSubDirs(target_dir)
-        self.writeXHTML(self.html_tree, os.path.join(target_dir, 'index.html'))
+        self.__handled_thumbs = 0
+        self.__current_idx_page = 0
+        while len(self.entity.children) - self.__handled_thumbs > 0:
+            self.__current_idx_page += 1
+            if self.__current_idx_page > 1:
+                self.__reset()
+            self.updateCssRef(2)
+            self.updateStyleDirRefs(2)
+            self.updateDocTitle()
+            menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(2)
+            if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
+            self.updateTitleCell(self.entity.title, self.entity.subtitle)
+            self.disableNaviControls(True)
+            self._fillMetaDataTag('')
+            self.addIndexTable()
+            idx_file = 'index.html'
+            if self.__current_idx_page > 1: idx_file = 'index%d.html' % self.__current_idx_page
+            self.writeXHTML(self.html_tree, os.path.join(target_dir, idx_file))
         for child in self.entity.children:
             page_index = child.generateOutput(target_dir, progress_updater, page_index)
         return page_index

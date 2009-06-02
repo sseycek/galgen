@@ -65,14 +65,16 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             tr.set('align', 'center')
             td = etree.SubElement(tr, 'td')
             td.set('class', 'bildzelle')
-            td.set('id', 'to-previous-album-page')
             column_count += 1
             cell_count += 1
             a = etree.SubElement(td, 'a')
             if self.__current_idx_page > 2: prev_idx_html = 'index%d.html' % (self.__current_idx_page - 1)
             else: prev_idx_html = 'index.html'
             a.set('href', prev_idx_html)
-            a.text = 'prev'
+            img = etree.SubElement(a, 'img')
+            img.set('class', 'index-pager')
+            img.set('src', 'http://seycek.eu/style/back_thumbs.png')            
+            img.set('alt', 'back')            
         for child in self.entity.children:
             child_count += 1
             if child_count <= self.__handled_thumbs:
@@ -92,7 +94,10 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
                 # pointer to next page
                 next_idx_html = 'index%d.html' % (self.__current_idx_page + 1)
                 a.set('href', next_idx_html)
-                a.text = 'next'
+                img = etree.SubElement(a, 'img')
+                img.set('class', 'index-pager')
+                img.set('src', 'http://seycek.eu/style/next_thumbs.png')            
+                img.set('alt', 'next')            
                 break
             else:
                 a.set('href', '%s/%s' % (self.__picture_page_dir, child.html_file_name))

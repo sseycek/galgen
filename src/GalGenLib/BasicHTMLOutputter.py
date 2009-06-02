@@ -49,6 +49,7 @@ class BasicHTMLOutputter(object):
     meta_data_tag_id = 'meta-data-inner'
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
+    js_tag_id = 'js'
     active_menu_item_class = 'effect1'
 
     def __init__(self, entity):
@@ -83,6 +84,9 @@ class BasicHTMLOutputter(object):
 
     def getCSSTag(self):
         return self.getElementById(self.css_tag_id)
+
+    def getJSTag(self):
+        return self.getElementById(self.js_tag_id)
 
     def getNaviTag(self):
         return self.getElementById(self.navi_tag_id)

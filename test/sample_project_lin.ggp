@@ -1,18 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
- name="New project"
- galgen-version="0.9.3"
- xhtml-template=""
- style-directory=""
+ name="GALgen Test"
+ galgen-version="0.9.5"
+ xhtml-template="/home/stepan/dev/galgen_trunk/test/template.html"
+ style-directory="/home/stepan/dev/galgen_trunk/test/style"
  menu-id=""
- title=""
- subtitle=""
- html-location=""
- supplemental-dir="">
-<gallery name="Gallery" menu-id="" title="" subtitle="" description="">
-<album name="Album" pic="" menu-id="" title="" subtitle="" description="">
-<picture name="Picture" location="" highres-location="" menu-id="" title="" subtitle="" description="" exif="">
+ title="GALgen"
+ subtitle="Test"
+ html-location="/home/stepan/dev/galgen_trunk/test/index_page.html"
+ supplemental-dir="/home/stepan/dev/galgen_trunk/test/index_page_files">
+<gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="weit weg" description="Das ist eine Gallerie">
+<album name="XYZ" pic="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" menu-id="" title="XYZ" subtitle="ungelöst" description="Das ist ein Album ...">
+<picture name="Am Fluss" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" menu-id="" title="Am Fluss" subtitle="an welchem?" description="Foo bar and so on" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic1" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic2" location="/home/stepan/dev/galgen_trunk/test/Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="/home/stepan/dev/galgen_trunk/test/Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="/home/stepan/dev/galgen_trunk/test/Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="/home/stepan/dev/galgen_trunk/test/Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="/home/stepan/dev/galgen_trunk/test/Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="/home/stepan/dev/galgen_trunk/test/Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="/home/stepan/dev/galgen_trunk/test/Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="/home/stepan/dev/galgen_trunk/test/Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
 </picture>
 </album>
 </gallery>
+<customcontent name="Kontakt" location="/home/stepan/dev/galgen_trunk/test/kontakt_text.html" dir-location="/home/stepan/dev/galgen_trunk/test/kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="hallo">
+</customcontent>
 </project>

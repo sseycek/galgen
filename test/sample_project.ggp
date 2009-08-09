@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Photos"
- galgen-version="0.9.4"
- xhtml-template="/home/stepan/dev/galgen_trunk/test/template.html"
- style-directory="/home/stepan/dev/galgen_trunk/test/style"
+ galgen-version="0.9.5"
+ xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
+ style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
  menu-id=""
  title="Photos"
  subtitle="of mine"
- html-location="/home/stepan/dev/galgen_trunk/test/index_page.html"
- supplemental-dir="/home/stepan/dev/galgen_trunk/test/index_page_files">
+ html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
+ supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
 <gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="in ferne Länder" description="Da fahrma hin">
-<album name="Tschechien" pic="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" menu-id="" title="Tschechien" subtitle="da waren wie" description="irgendwann bleib i dann dort">
-<picture name="Bild" location="/home/stepan/dev/galgen_trunk/test/Pic1.jpg" highres-location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Ein Bild" subtitle="sagt mehr als tausend Worte" description="Ein Bildchen" exif="08/15">
+<album name="Tschechien" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Tschechien" subtitle="da waren wie" description="irgendwann bleib i dann dort">
+<picture name="Bild" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" highres-location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Ein Bild" subtitle="sagt mehr als tausend Worte" description="Ein Bildchen" exif="">
+</picture>
+<picture name="Pic2" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic3" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic4" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic5" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic6" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic7" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic8" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic9" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
+</picture>
+<picture name="Pic10" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
 </picture>
 </album>
 </gallery>
+<customcontent name="Custom page" location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text.html" dir-location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="Möglichkeiten">
+</customcontent>
 </project>

@@ -40,7 +40,7 @@ a:active {
 }
 
 .albumzelle {
-  width:116px;
+  width:232px;
   height:116px;
   margin-left:2px;
   margin-right:2px
@@ -346,3 +346,10 @@ a:active {
   font-size:14px;
 }
 
+div.gallery_row div.gallery_thumb {
+   height:116px; 
+}
+
+div.gallery_thumb {
+   width:232px; 
+}

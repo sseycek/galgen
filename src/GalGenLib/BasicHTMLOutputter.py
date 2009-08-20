@@ -50,6 +50,7 @@ class BasicHTMLOutputter(object):
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
     js_tag_id = 'js'
+    body_tag_id = 'body'
     active_menu_item_class = 'effect1'
 
     def __init__(self, entity):
@@ -117,6 +118,9 @@ class BasicHTMLOutputter(object):
 
     def getMetaDataTag(self):
         return self.getElementById(self.meta_data_tag_id)
+
+    def getBodyTag(self):
+        return self.getElementById(self.body_tag_id)
 
     def getXHTMLHeader(self):
         return ''''''

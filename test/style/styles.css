@@ -353,3 +353,15 @@ div.gallery_row div.gallery_thumb {
 div.gallery_thumb {
    width:232px; 
 }
+
+#highres_pic {
+  text-align: center;
+  margin: 20px;
+}
+
+#highres_pic_close {
+  color: #999999;
+  font-size:14px;
+  text-align: center;
+}
+

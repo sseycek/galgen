@@ -32,6 +32,7 @@
 import os
 import shutil
 from NamedObjectHTMLOutputter import NamedObjectHTMLOutputter
+from HTMLTemplate import HTMLTemplate
 from Thumbnailer import Thumbnailer
 from Core import Core
 from xml.etree import cElementTree as etree
@@ -54,7 +55,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         td.set('valign', 'middle')
         img = etree.SubElement(td, 'img')
         img.set('src', 'pics/%s' % self.entity.pic_file_name)
-        img.set('alt', 'Robson River')
+        img.set('alt', self.entity.name)
 
     def __copyPicture(self, album_dir):
         shutil.copyfile(self.entity.pic_location, os.path.join(album_dir, 'pics', self.entity.pic_file_name))
@@ -62,6 +63,29 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __copyHighresPicture(self, album_dir):
         if os.path.lexists(self.entity.highres_location):
             shutil.copyfile(self.entity.highres_location, os.path.join(album_dir, 'pics', 'highres', self.entity.highres_pic_file_name))
+
+    def __createHihgresHTML(self, album_dir):
+        if os.path.lexists(self.entity.highres_location):
+            file_name = '%s_hr.html' % self.entity.name
+            template = HTMLTemplate()
+            html_tree = template.HTML
+            for elem in html_tree.getiterator():
+                if 'id' in elem.attrib and elem.attrib['id'] == 'body':
+                    body = elem
+                    body.clear()
+                    div_pic = etree.SubElement(body, 'div')
+                    div_pic.set('id', 'highres_pic')
+                    img = etree.SubElement(div_pic, 'img')
+                    img.set('src', 'pics/highres/%s' % self.entity.pic_file_name)
+                    img.set('alt', self.entity.name)
+                    div_close = etree.SubElement(body, 'div')
+                    div_close.set('id', 'highres_pic_close')
+                    a = etree.SubElement(div_close, 'a')
+                    a.set('href', '#')
+                    a.set('onClick', 'window.close();')
+                    a.text = 'Close'
+                    self.writeXHTML(html_tree, os.path.join(album_dir, file_name))
+                    break
 
     def __generateThumbs(self, album_dir):
         project = Core.getInstance().project
@@ -142,7 +166,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             if tag: tag.set('href', next.html_file_name)
         if os.path.lexists(self.entity.highres_location):
             tag = self.getNaviHighresTag()
-            if tag: tag.set('href', 'pics/highres/%s' % self.entity.highres_pic_file_name)
+            if tag: tag.set('href', '%s_hr.html' % self.entity.name)
 
     def generateOutput(self, target_dir, progress_updater, page_index):
         self.__copyPicture(target_dir)
@@ -160,5 +184,6 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self._fillMetaDataTag(self.entity.exif)
         file_name = '%s.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
+        self.__createHihgresHTML(target_dir)
         return page_index
         

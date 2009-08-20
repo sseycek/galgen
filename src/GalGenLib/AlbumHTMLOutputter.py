@@ -148,6 +148,8 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(2)
             if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
             self.updateTitleCell(self.entity.title, self.entity.subtitle)
+            self.activateMenuItem(self.entity.parent)
+            self.updateMenuItem(self.entity)
             self.disableNaviControls(True)
             self._fillMetaDataTag('')
             self.addIndexTable()

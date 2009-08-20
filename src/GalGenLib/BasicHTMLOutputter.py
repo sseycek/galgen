@@ -186,9 +186,16 @@ class BasicHTMLOutputter(object):
         tag = self.getNaviSlideshowTag()
         if tag is not None: tag.clear()
 
-    def activateMenuItem(self):
-        if self.entity.menu_id:
-            a = self.getElementById(self.entity.menu_id)
+    def activateMenuItem(self, entity = None):
+        if not entity: entity = self.entity
+        if entity.menu_id:
+            a = self.getElementById(entity.menu_id)
             if a is not None:
                 a.set('class', self.active_menu_item_class) 
-                
+
+    def updateMenuItem(self, album):
+        gallery = album.parent
+        if gallery.menu_id:
+            div = self.getElementById('%s_album' % gallery.menu_id) # a little hacky ...
+            if div is not None:
+                div.text = album.name

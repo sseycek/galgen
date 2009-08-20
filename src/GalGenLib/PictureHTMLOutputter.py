@@ -177,6 +177,8 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self.updateDocTitle()
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(2)
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
+        self.activateMenuItem(self.entity.parent.parent)
+        self.updateMenuItem(self.entity.parent)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         self.__addPicture()
         self.__updateThumbStripe()

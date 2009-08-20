@@ -365,3 +365,10 @@ div.gallery_thumb {
   text-align: center;
 }
 
+div.menu_album {
+  margin-top: 5px;
+  margin-left: 40px;
+  font-style:italic;
+  color: #999999;
+  font-weight: bold;
+}

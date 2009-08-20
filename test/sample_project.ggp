@@ -11,7 +11,7 @@
  supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
 <gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="in ferne Länder" description="Da fahrma hin">
 <album name="Tschechien" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Tschechien" subtitle="da waren wie" description="irgendwann bleib i dann dort">
-<picture name="Bild" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" highres-location="/home/stepan/dev/galgen_trunk/test/Pic4.jpg" menu-id="" title="Ein Bild" subtitle="sagt mehr als tausend Worte" description="Ein Bildchen" exif="">
+<picture name="Bild" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" highres-location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Ein Bild" subtitle="sagt mehr als tausend Worte" description="Ein Bildchen" exif="">
 </picture>
 <picture name="Pic2" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
 </picture>

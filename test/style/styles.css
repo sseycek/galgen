@@ -221,6 +221,14 @@ a:active {
 	padding: 0px;
 }
 
+#table_hr {
+	border-collapse: collapse;
+	border: 0px;
+	padding: 0px;
+	text-align: center;
+	background-color: #111111;
+}
+
 .title { 
 	font-size: 14px;
 	font-weight: bold;	
@@ -356,13 +364,9 @@ div.gallery_thumb {
 
 #highres_pic {
   text-align: center;
-  margin: 20px;
-}
-
-#highres_pic_close {
-  color: #999999;
-  font-size:14px;
-  text-align: center;
+  border-collapse: collapse;
+  border-top: 1px solid #333333;
+  background-color:black;
 }
 
 div.menu_album {
@@ -371,4 +375,41 @@ div.menu_album {
   font-style:italic;
   color: #999999;
   font-weight: bold;
+}
+
+.gb_window {
+  font-size: 11px;
+  color: #000000;	
+  background-color: #cccccc;
+  border: 0px;
+}
+
+.gb_form_td_1 {
+  vertical-align: top;	
+  text-align: right;
+}
+
+.gb_form_td_4 {
+  text-align: right;
+}
+
+.gb_entries {
+  border-collapse:collapse;
+  width:95%;
+}
+
+.gb_name_date {
+  background-color:#999999;
+}
+
+.gb_name {
+  float: left;
+  text-align: left;
+  width:50%;
+}
+
+.gb_date {
+  float:right;
+  text-align: right;
+  width:50%;
 }

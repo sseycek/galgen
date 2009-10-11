@@ -22,118 +22,132 @@
 
       function metaData(show) {
     	  var metadata_div = document.getElementById("meta-data-outer");
+    	  var main_cell = document.getElementById("hauptzelle");
+    	  var whole_page = document.getElementById("whole_page");
+    	  var x = main_cell.offsetLeft + whole_page.offsetLeft;
+    	  var y = main_cell.offsetTop + whole_page.offsetTop;
+    	  var height = main_cell.offsetHeight;
+    	  var width = main_cell.offsetWidth;
     	  if (metadata_div) {
-          if (show) metadata_div.style.display="block";
-    	    else metadata_div.style.display="none";
-        }
+            if (show) {
+                metadata_div.style.left = x + "px";
+                metadata_div.style.top = y + "px";
+                metadata_div.style.width = (width - 1) + "px";
+                metadata_div.style.height = (height - 1)  + "px";
+                metadata_div.style.display="block";
+            }
+      	    else metadata_div.style.display="none";
+          }
       }
       </script>	
   </head>
 
   <body id="body">
-    <div id="meta-data-outer"> <div id="meta-data-inner"> </div> </div>
-    <table  class="table1" cellspacing="0" cellpadding="0">
-      <tr>
-        <!-- Leer-Zelle -->
-        <td id="leerzelle1" />
-        <!-- Logo-Zelle -->
-        <td id="logozelle">
-          <a href="http://seycek.eu/" onmouseover="Bildwechsel(0, Highlight1)" onmouseout="Bildwechsel(0, Normal1)" onclick="Bildwechsel(0, Highlight2)" title="HOME">
-		        <img src="http://seycek.eu/style/img/Logo_link.png" alt="Home" id="logo" />
-          </a>
-        </td>	
-        <!-- Leer-Zelle -->
-        <td id="leerzelle2" />
-      </tr>
+    <div id="whole_page">
+      <div id="meta-data-outer"><div id="meta-data-inner"> </div> </div>
+      <table  class="table1" cellspacing="0" cellpadding="0">
+        <tr>
+          <!-- Leer-Zelle -->
+          <td id="leerzelle1" />
+          <!-- Logo-Zelle -->
+          <td id="logozelle">
+            <a href="http://seycek.eu/" onmouseover="Bildwechsel(0, Highlight1)" onmouseout="Bildwechsel(0, Normal1)" onclick="Bildwechsel(0, Highlight2)" title="HOME">
+          	        <img src="http://seycek.eu/style/img/Logo_link.png" alt="Home" id="logo" />
+            </a>
+          </td>	
+          <!-- Leer-Zelle -->
+          <td id="leerzelle2" />
+        </tr>
 
-      <!--Menu_Zelle -->
-      <tr>
-        <td id="menuzelle">
-          <img src="http://seycek.eu/style/img/Galerien.png" alt="Galerien" /><br /><br />		
-          <a href="reisen.html" class="gal-info" id="menu_reisen" >&nbsp; Reisen</a><div id="menu_reisen_album" class="menu_album" >  </div><br/>
-          <a href="oesterreich.html" class="gal-info" id="menu_oesterreich">&nbsp; Österreich</a><div id="menu_oesterreich_album" class="menu_album" >  </div><br/>
-          <a href="flora_u_fauna.html" class="gal-info" id="menu_flora_u_fauna">&nbsp; Flora &amp; Fauna</a><div id="menu_flora_u_fauna_album" class="menu_album" > </div><br />
-          <a href="landschaften.html" class="gal-info" id="menu_landschaften">&nbsp; Landschaften</a><div id="menu_landschaften_album" class="menu_album" > </div><br />
-          <a href="menschen.html" class="gal-info" id="menu_menschen">&nbsp; Menschen</a><div id="menu_menschen_album" class="menu_album" > </div><br /> 		
-          <a href="details.html" class="gal-info" id="menu_architektur">&nbsp; Architektur</a><div id="menu_architektur_album" class="menu_album" > </div><br />
-          <a href="details.html" class="gal-info" id="menu_close_up">&nbsp; Makro &amp; Close-up</a><div id="menu_close_up_album" class="menu_album" > </div><br />
-          <a href="details.html" class="gal-info" id="menu_pele_mele">&nbsp; Pêle-mêle</a><div id="menu_pele_mele_album" class="menu_album" > </div><br />
-          <a href="kreativ.html" class="gal-info" id="menu_experiment">&nbsp; Experiment &amp; BW</a><div id="menu_eperiment_album" class="menu_album" > </div><br />
-          <br />
-          <img src="http://seycek.eu/style/img/Info.png" alt="Info" />
-          <br /><br />
-          <a href="diese_seiten.html" class="gal-info" id="menu_diese_seiten">&nbsp; Diese Seiten</a><br /><br />
-          <a href="neues.html" class="gal-info" id="menu_aktualisiert">&nbsp; Neu &amp; aktualisiert</a><br /><br />		
-          <a href="kontakt.html" class="gal-info" id="menu_kontakt">&nbsp; Kontakt &amp; Impressum</a><br /><br />	
-          <a href="vita.html" class="gal-info" id="menu_vita">&nbsp; Vita</a><br /><br />
-          <a href="technik.html" class="gal-info" id="menu_meine_technik">&nbsp; Meine Technik</a><br /><br />
-          <a href="workflow.html" class="gal-info" id="menu_mein_workflow">&nbsp; Mein Workflow</a><br /><br />			
-          <a href="blog.html" class="gal-info" id="menu_weblog">&nbsp; Mein Weblog</a><br /><br />
-          <a href="gaestebuch.html" class="gal-info" id="menu_gaestebuch">&nbsp; Gästebuch</a>
-        </td>
-        <!-- Haupt-Zelle -->
-        <td rowspan="2" id="hauptzelle" />
-        <!-- Thumbs-Zelle -->
-        <td id="thumbzelle" />
-   	  </tr>
-      <!-- Titel-Zelle -->
-      <tr>
-        <td class="titelzelle">
-          <table class="table1" cellspacing="0" cellpadding="0">
-            <tr>
-              <td id="titelzelle">
-                <div class="title" id="title" />
-              </td>
+        <!--Menu_Zelle -->
+        <tr>
+          <td id="menuzelle">
+            <img src="http://seycek.eu/style/img/Galerien.png" alt="Galerien" /><br /><br />		
+            <a href="reisen.html" class="gal-info" id="menu_reisen" >&nbsp; Reisen</a><div id="menu_reisen_album" class="menu_album" >  </div><br/>
+            <a href="oesterreich.html" class="gal-info" id="menu_oesterreich">&nbsp; Österreich</a><div id="menu_oesterreich_album" class="menu_album" >  </div><br/>
+            <a href="flora_u_fauna.html" class="gal-info" id="menu_flora_u_fauna">&nbsp; Flora &amp; Fauna</a><div id="menu_flora_u_fauna_album" class="menu_album" > </div><br />
+            <a href="landschaften.html" class="gal-info" id="menu_landschaften">&nbsp; Landschaften</a><div id="menu_landschaften_album" class="menu_album" > </div><br />
+            <a href="menschen.html" class="gal-info" id="menu_menschen">&nbsp; Menschen</a><div id="menu_menschen_album" class="menu_album" > </div><br /> 		
+            <a href="details.html" class="gal-info" id="menu_architektur">&nbsp; Architektur</a><div id="menu_architektur_album" class="menu_album" > </div><br />
+            <a href="details.html" class="gal-info" id="menu_close_up">&nbsp; Makro &amp; Close-up</a><div id="menu_close_up_album" class="menu_album" > </div><br />
+            <a href="details.html" class="gal-info" id="menu_pele_mele">&nbsp; Pêle-mêle</a><div id="menu_pele_mele_album" class="menu_album" > </div><br />
+            <a href="kreativ.html" class="gal-info" id="menu_experiment">&nbsp; Experiment &amp; BW</a><div id="menu_eperiment_album" class="menu_album" > </div><br />
+            <br />
+            <img src="http://seycek.eu/style/img/Info.png" alt="Info" />
+            <br /><br />
+            <a href="diese_seiten.html" class="gal-info" id="menu_diese_seiten">&nbsp; Diese Seiten</a><br /><br />
+            <a href="neues.html" class="gal-info" id="menu_aktualisiert">&nbsp; Neu &amp; aktualisiert</a><br /><br />		
+            <a href="kontakt.html" class="gal-info" id="menu_kontakt">&nbsp; Kontakt &amp; Impressum</a><br /><br />	
+            <a href="vita.html" class="gal-info" id="menu_vita">&nbsp; Vita</a><br /><br />
+            <a href="technik.html" class="gal-info" id="menu_meine_technik">&nbsp; Meine Technik</a><br /><br />
+            <a href="workflow.html" class="gal-info" id="menu_mein_workflow">&nbsp; Mein Workflow</a><br /><br />			
+            <a href="blog.html" class="gal-info" id="menu_weblog">&nbsp; Mein Weblog</a><br /><br />
+            <a href="gaestebuch.html" class="gal-info" id="menu_gaestebuch">&nbsp; Gästebuch</a>
+          </td>
+          <!-- Haupt-Zelle -->
+          <td rowspan="2" id="hauptzelle" />
+          <!-- Thumbs-Zelle -->
+          <td id="thumbzelle" />
             </tr>
-            <tr>
-              <td id="subtitelzelle">
-                <div class="subtitle" id="subtitle" />
-              </td>
-            </tr>
-          </table>
-        </td>			
-        <!-- Navi-Zelle -->
-        <td id="navizelle">
-          <table class="table1" cellspacing="0" cellpadding="0">
-            <tr>
-              <td class="navizelle-left">
-                <a id="navi-prev">
-                  <img src="http://seycek.eu/style/prev.png" class="navi" title="Vorheriges Bild" alt="Vorheriges Bild" />
-                </a>
-              </td>
-              <td class="navizelle-right">
-                <a id="navi-next">
-                  <img src="http://seycek.eu/style/next.png" class="navi" title="Nächstes Bild" alt="Nächstes Bild" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td class="navizelle-left">
-                <a id="navi-info">
-                  <img src="http://seycek.eu/style/info.png" class="navi" title="Info" alt="Info" onmouseover="metaData(true);" onmouseout="metaData(false);" />
-                </a>
-              </td>
-              <td class="navizelle-right">
-                <a id="navi-highres" target="_blank">
-                  <img src="http://seycek.eu/style/full.png" class="navi" title="Großes Bild" alt="Großes Bild" />
-                </a> 
-              </td>
-            </tr>
-            <tr>
-              <td class="navizelle-left">
-                <a id="navi-slideshow">
-                  <img src="http://seycek.eu/style/slshow.png" class="navi" title="Slideshow starten" alt="Slideshow starten" />
-                </a>
-              </td>
-              <td class="navizelle-right">
-                <a id="navi-album">
-                  <img src="http://seycek.eu/style/index.png" class="navi" alt="Thumbnail-Seite" title="Thumbnail-Seite" />
-                </a>
-              </td>
-            </tr>
-          </table>
-        </td>	
-      </tr>
-    </table>	
+        <!-- Titel-Zelle -->
+        <tr>
+          <td class="titelzelle">
+            <table class="table1" cellspacing="0" cellpadding="0">
+              <tr>
+                <td id="titelzelle">
+                  <div class="title" id="title" />
+                </td>
+              </tr>
+              <tr>
+                <td id="subtitelzelle">
+                  <div class="subtitle" id="subtitle" />
+                </td>
+              </tr>
+            </table>
+          </td>			
+          <!-- Navi-Zelle -->
+          <td id="navizelle">
+            <table class="table1" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="navizelle-left">
+                  <a id="navi-prev">
+                    <img src="http://seycek.eu/style/prev.png" class="navi" title="Vorheriges Bild" alt="Vorheriges Bild" />
+                  </a>
+                </td>
+                <td class="navizelle-right">
+                  <a id="navi-next">
+                    <img src="http://seycek.eu/style/next.png" class="navi" title="Nächstes Bild" alt="Nächstes Bild" />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td class="navizelle-left">
+                  <a id="navi-info">
+                    <img src="http://seycek.eu/style/info.png" class="navi" title="Info" alt="Info" onmouseover="metaData(true);" onmouseout="metaData(false);" />
+                  </a>
+                </td>
+                <td class="navizelle-right">
+                  <a id="navi-highres" target="_blank">
+                    <img src="http://seycek.eu/style/full.png" class="navi" title="Großes Bild" alt="Großes Bild" />
+                  </a> 
+                </td>
+              </tr>
+              <tr>
+                <td class="navizelle-left">
+                  <a id="navi-slideshow">
+                    <img src="http://seycek.eu/style/slshow.png" class="navi" title="Slideshow starten" alt="Slideshow starten" />
+                  </a>
+                </td>
+                <td class="navizelle-right">
+                  <a id="navi-album">
+                    <img src="http://seycek.eu/style/index.png" class="navi" alt="Thumbnail-Seite" title="Thumbnail-Seite" />
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </td>	
+        </tr>
+      </table>	
+    </div>
   </body>
 </html>

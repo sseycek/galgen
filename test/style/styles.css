@@ -5,6 +5,13 @@ body {
 	margin: 0px;
 	padding: 0px;
 	background-color: #111111; 
+	text-align:center;
+}
+
+#whole_page {
+	text-align:left;
+   	margin:0 auto;
+   	width:1003px;
 }
 
 a:link {

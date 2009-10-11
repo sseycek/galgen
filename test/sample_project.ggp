@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
- name="Photos"
+ name="Photopage"
  galgen-version="0.9.5"
- xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
- style-directory="C:\Data\dev\eclipse\galgen_trunk\test\style"
+ xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\template.html"
+ style-directory="C:\Users\sseycek\dev\galgen_trunk\test\style"
  menu-id=""
- title="Photos"
- subtitle="of mine"
- html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
- supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
-<gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="in ferne Länder" description="Da fahrma hin">
-<album name="Tschechien" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Tschechien" subtitle="da waren wie" description="irgendwann bleib i dann dort">
-<picture name="Bild" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" highres-location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Ein Bild" subtitle="sagt mehr als tausend Worte" description="Ein Bildchen" exif="">
+ title="Photopage"
+ subtitle="Otakar Seycek"
+ html-location="C:\Users\sseycek\dev\galgen_trunk\test\index_page.html"
+ supplemental-dir="C:\Users\sseycek\dev\galgen_trunk\test\index_page_files">
+<customcontent name="Guest Book" location="C:\Users\sseycek\dev\galgen_trunk\test\guestbook.html" dir-location="" menu-id="menu_guestbook" title="Guest Book" subtitle="...">
+</customcontent>
+<gallery name="Gallery" menu-id="menu_reisen" title="Test" subtitle="caption" description="">
+<album name="Österreich" pic="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" menu-id="" title="Österreich" subtitle="Photos" description="">
+<picture name="Pic2" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" menu-id="" title="Pic2" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic2" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+<picture name="Pic3" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic3.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic3.jpg" menu-id="" title="Pic3" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic3" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="">
+<picture name="Pic4" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic4.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic4.jpg" menu-id="" title="Pic4" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic4" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic4.jpg" highres-location="" menu-id="" title="Pic4" subtitle="" description="" exif="">
+<picture name="Pic5" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic5.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic5.jpg" menu-id="" title="Pic5" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic5" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic5.jpg" highres-location="" menu-id="" title="Pic5" subtitle="" description="" exif="">
+<picture name="Pic6" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic6.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic6.jpg" menu-id="" title="Pic6" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic6" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic6.jpg" highres-location="" menu-id="" title="Pic6" subtitle="" description="" exif="">
+<picture name="Pic7" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic7.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic7.jpg" menu-id="" title="Pic7" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic7" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic7.jpg" highres-location="" menu-id="" title="Pic7" subtitle="" description="" exif="">
+<picture name="Pic8" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic8.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic8.jpg" menu-id="" title="Pic8" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic8" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic8.jpg" highres-location="" menu-id="" title="Pic8" subtitle="" description="" exif="">
+<picture name="Pic9" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic9.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic9.jpg" menu-id="" title="Pic9" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic9" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic9.jpg" highres-location="" menu-id="" title="Pic9" subtitle="" description="" exif="">
-</picture>
-<picture name="Pic10" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic10.jpg" highres-location="" menu-id="" title="Pic10" subtitle="" description="" exif="">
+<picture name="Pic10" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic10.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic10.jpg" menu-id="" title="Pic10" subtitle="" description="" exif="">
 </picture>
 </album>
 </gallery>
-<customcontent name="Custom page" location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text.html" dir-location="C:\Data\dev\eclipse\galgen_trunk\test\kontakt_text_files" menu-id="menu_kontakt" title="Kontakt" subtitle="Möglichkeiten">
-</customcontent>
 </project>

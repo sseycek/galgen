@@ -150,7 +150,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             self.updateTitleCell(self.entity.title, self.entity.subtitle)
             self.activateMenuItem(self.entity.parent)
             self.updateMenuItem(self.entity)
-            self.disableNaviControls(True)
+            self.disableNaviControls(True, False)
             self._fillMetaDataTag('')
             self.addIndexTable()
             idx_file = 'index.html'

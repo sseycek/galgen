@@ -40,6 +40,12 @@ class CustomContentPageHTMLOutputter(CustomContentReferenceHTMLOutputter):
     def __init__(self, custom_content):
         CustomContentReferenceHTMLOutputter.__init__(self, custom_content)
 
+    def __updatePrevNavi(self):
+        tag = self.getNaviPrevTag()
+        if tag is not None:
+            tag.set('href', 'javascript:history.back()')
+            
+
     def generateOutput(self, target_dir, progress_updater, page_index):
         self.updateCssRef(0)
         self.updateStyleDirRefs(0)
@@ -47,7 +53,8 @@ class CustomContentPageHTMLOutputter(CustomContentReferenceHTMLOutputter):
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(0)
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
-        self.disableNaviControls(False)
+        self.disableNaviControls(False, True)
+        self.__updatePrevNavi()
         self._copyIframeDir(target_dir)
         self._copyCustomContentHtmlFile(target_dir)
         self._addIframe()

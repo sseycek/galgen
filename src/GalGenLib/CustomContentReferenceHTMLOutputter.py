@@ -45,10 +45,8 @@ class CustomContentReferenceHTMLOutputter(NamedObjectHTMLOutputter):
         content_element = self.getContentTag()
         iframe = etree.SubElement(content_element, 'iframe')
         iframe.set('src', self.entity.custom_content_reference_relative_html_path)
-        iframe.set('width', '696')
-        iframe.set('height', '696')
-        # iframe.set('scrolling', 'no')
         iframe.set('frameborder', '0')
+        iframe.set('class', 'hauptzelle')
         iframe.text = "Iframes must be supported!"
     
     def _copyCustomContentHtmlFile(self, target_dir):

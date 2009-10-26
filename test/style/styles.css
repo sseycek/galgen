@@ -286,6 +286,16 @@ a:active {
 	text-align: center;
 }
 
+div.hauptzelle {
+	height: 696px;
+	width: 696px;
+}
+
+iframe.hauptzelle {
+	height: 696px;
+	width: 696px;
+}
+
 #thumbzelle {
 	height: 580px;
 }
@@ -376,7 +386,22 @@ div.gallery_thumb {
   background-color:black;
 }
 
-div.menu_album {
+div.menu_entry {
+  margin-top: 3px;
+}
+
+div.menu_galleries {
+  height: 300px;
+}
+
+div.menu_custom_pages {
+}
+
+div.menu_entry {
+  margin-top: 3px;
+}
+
+div.menu_sub_entry {
   margin-top: 5px;
   margin-left: 40px;
   font-style:italic;

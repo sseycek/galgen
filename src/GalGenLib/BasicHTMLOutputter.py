@@ -171,7 +171,7 @@ class BasicHTMLOutputter(object):
             if a is not None:
                 a.set('href', href)
                 
-    def disableNaviControls(self, keep_info):
+    def disableNaviControls(self, keep_info, keep_prev):
         tag = self.getNaviAlbumTag()
         if tag is not None: tag.clear()
         tag = self.getNaviHighresTag()
@@ -181,8 +181,9 @@ class BasicHTMLOutputter(object):
             if tag is not None: tag.clear()
         tag = self.getNaviNextTag()
         if tag is not None: tag.clear()
-        tag = self.getNaviPrevTag()
-        if tag is not None: tag.clear()
+        if not keep_prev:
+            tag = self.getNaviPrevTag()
+            if tag is not None: tag.clear()
         tag = self.getNaviSlideshowTag()
         if tag is not None: tag.clear()
 

@@ -176,8 +176,8 @@ default_template = u'''<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
 
 
 class HTMLTemplate(object):
-    def __init__(self):
-        pass
+    def __init__(self, template_path):
+        self.__template_path = template_path
 
     def __addXhtmlEntitiesToParser(self, parser):
         parser.entity['nbsp'] = '&#160;'
@@ -314,9 +314,10 @@ class HTMLTemplate(object):
         global default_template
         parser = etree.XMLTreeBuilder()
         self.__addXhtmlEntitiesToParser(parser)
-        project = Core.getInstance().project
-        if project.xhtml_template and os.path.exists(project.xhtml_template):
-            fd = open(project.xhtml_template, 'r')
+        template_path = self.__template_path
+        if not template_path: template_path = Core.getInstance().project.xhtml_template
+        if template_path and os.path.exists(template_path):
+            fd = open(template_path, 'r')
             try:
                 parser.feed(fd.read())
                 fd.close()

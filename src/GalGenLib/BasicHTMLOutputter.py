@@ -55,7 +55,7 @@ class BasicHTMLOutputter(object):
 
     def __init__(self, entity):
         self.__entity = entity
-        template = HTMLTemplate()
+        template = HTMLTemplate(None)
         self.__html_tree = template.HTML
 
     def getHTMLTree(self):

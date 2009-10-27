@@ -67,25 +67,25 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __createHihgresHTML(self, album_dir):
         if os.path.lexists(self.entity.highres_location):
             file_name = '%s_hr.html' % self.entity.name
-            template = HTMLTemplate()
+            template = HTMLTemplate(Core.getInstance().project.highres_xhtml_template)
             html_tree = template.HTML
             for elem in html_tree.getiterator():
-                if 'id' in elem.attrib and elem.attrib['id'] == 'body':
-                    body = elem
-                    body.clear()
-                    div_pic = etree.SubElement(body, 'div')
-                    div_pic.set('id', 'highres_pic')
-                    img = etree.SubElement(div_pic, 'img')
-                    img.set('src', 'pics/highres/%s' % self.entity.pic_file_name)
-                    img.set('alt', self.entity.name)
-                    div_close = etree.SubElement(body, 'div')
-                    div_close.set('id', 'highres_pic_close')
-                    a = etree.SubElement(div_close, 'a')
-                    a.set('href', '#')
-                    a.set('onClick', 'window.close();')
-                    a.text = 'Close'
-                    self.writeXHTML(html_tree, os.path.join(album_dir, file_name))
-                    break
+                if 'id' in elem.attrib and elem.attrib['id'] == 'highres_navi_prev':
+                    tag = elem
+                    prev = self.entity.getPrevious()
+                    if prev:
+                        prev_file_name = '%s_hr.html' % prev.name
+                        tag.set('href', prev_file_name)
+                elif 'id' in elem.attrib and elem.attrib['id'] == 'highres_navi_next':
+                    tag = elem
+                    next = self.entity.getNext()
+                    if next:
+                        next_file_name = '%s_hr.html' % next.name
+                        tag.set('href', next_file_name)
+                elif 'id' in elem.attrib and elem.attrib['id'] == 'highres_img':
+                    tag = elem
+                    tag.set('src', 'pics/highres/%s' % self.entity.pic_file_name)
+            self.writeXHTML(html_tree, os.path.join(album_dir, file_name))
 
     def __generateThumbs(self, album_dir):
         project = Core.getInstance().project

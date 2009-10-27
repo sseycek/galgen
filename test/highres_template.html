@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+ <head>
+  <title id="doctitle"></title>
+   <meta http-equiv="content-script-type" content="text/javascript" />
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="author" content="Otakar Seycek" />
+   <meta name="keywords" lang="de" content="Foto, Fotografie, Reisefotografie, Österreich, Nikon, Portrait, Macro, Makro, Closeup, Close-up, Architektur, Fotograf, Landschaftsfotografie" />
+   <meta name="keywords" lang="en-us" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
+   <meta name="keywords" lang="en" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
+   <link rel="stylesheet" type="text/css" href="http://seycek.eu/style/styles.css" id="css_ref"/>
+  <script id="js" type="text/javascript">
+    Normal1 = new Image();
+    Normal1.src = "http://seycek.eu/style/img/Logo_link.png";   
+    Highlight1 = new Image();
+    Highlight1.src = "http://seycek.eu/style/img/Logo_hover.png"; 
+    Highlight2 = new Image();
+    Highlight2.src = "http://seycek.eu/style/img/Logo_active.png"; 
+
+    function Bildwechsel (Bildnr, Bildobjekt)
+    {window.document.images[Bildnr].src = Bildobjekt.src;}
+  </script>	
+ </head>
+
+ <body searchboxcompanion_highlight="off">
+  <table id="table_hr" align="center">
+   <tr>      
+    <td id="logozelle" colspan="3">
+     <a href="http://seycek.eu/" onclick="Bildwechsel(0, Highlight2)" onmouseout="Bildwechsel(0, Normal1)" onmouseover="Bildwechsel(0, Highlight1)" title="HOME">
+      <img alt="Home" id="logo" src="http://seycek.eu/style/img/Logo_link.png" />
+     </a>
+    </td>	
+   </tr>
+   <tr>
+    <td align="right">
+     <a id="highres_navi_prev">
+      <img alt="Vorheriges Bild" src="http://seycek.eu/style/img/back_hr.png" class="navi"/>
+ 	 </a>
+    </td>
+	<td>
+	 <a href="#" onclick="window.close();"><img alt="Schlie&szlig;en" src="http://seycek.eu/style/img/close_hr.png" class="navi"/></a>
+	</td>
+	<td align="left">
+     <a id="highres_navi_next">
+      <img alt="N&auml;chstes Bild" src="http://seycek.eu/style/img/go_on_hr.png" class="navi"/>
+	 </a>
+	</td>
+   </tr>
+  </table>
+
+  <div id="highres_pic">
+   <img alt="Wildhorse Lake" style="margin:2px" id="highres_img" />
+  </div>
+ </body>
+</html>

@@ -84,6 +84,9 @@ class ProjectXMLParser(xml.sax.handler.ContentHandler):
         self.__project.menu_id = attributes['menu-id']
         self.__project.title = attributes['title']
         self.__project.subtitle = attributes['subtitle']
+        self.__project.highres_xhtml_template = ''
+        if attributes.has_key('highres-xhtml-template'):
+            self.__project.highres_xhtml_template = attributes['highres-xhtml-template']
         if self.__element_stack:
             raise 'Unexpected - deserialising project, while there are already elements on the stack'
         self.__element_stack.append(self.__project)

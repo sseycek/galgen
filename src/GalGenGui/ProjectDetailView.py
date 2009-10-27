@@ -51,22 +51,36 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         self._control_grid.Add(self.__xhtml_template_edit, (7, 2))
         self._control_grid.Add(self.__find_xhtml_template_button, (7, 3))
 
+    def __AddHighresXhtmlTemplateControl(self):
+        label = wx.StaticText(self._main_panel, -1, 'Highres XHTML Template')
+        self.__highres_xhtml_template_edit = wx.TextCtrl(self._main_panel, -1, self.element.highres_xhtml_template, size = (600, -1))
+        self.__highres_xhtml_template_edit.MoveAfterInTabOrder(self.__find_xhtml_template_button)
+        self.__find_highres_xhtml_template_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
+        self.__find_highres_xhtml_template_button.MoveAfterInTabOrder(self.__highres_xhtml_template_edit)
+        self._main_panel.Bind(wx.EVT_BUTTON, self.__OnHighresXhtmlTemplateFindButton, self.__find_highres_xhtml_template_button)
+        self.__find_highres_xhtml_template_button.SetSize(self.__find_highres_xhtml_template_button.GetBestSize())
+        self._main_panel.Bind(wx.EVT_TEXT, self.__OnHighresXhtmlTemplateEdited, self.__highres_xhtml_template_edit)
+        self._control_grid.Add(label, (8, 1))
+        self._control_grid.Add(self.__highres_xhtml_template_edit, (8, 2))
+        self._control_grid.Add(self.__find_highres_xhtml_template_button, (8, 3))
+
     def __AddStyleDirectoryControl(self):
         label = wx.StaticText(self._main_panel, -1, 'Style Directory')
         self.__style_directory_edit = wx.TextCtrl(self._main_panel, -1, self.element.style_directory, size = (600, -1))
-        self.__style_directory_edit.MoveAfterInTabOrder(self.__find_xhtml_template_button)
+        self.__style_directory_edit.MoveAfterInTabOrder(self.__find_highres_xhtml_template_button)
         self.__find_style_directory_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
         self._main_panel.Bind(wx.EVT_BUTTON, self.__OnStyleDirectoryFindButton, self.__find_style_directory_button)
         self.__find_style_directory_button.SetSize(self.__find_style_directory_button.GetBestSize())
         self.__find_style_directory_button.MoveAfterInTabOrder(self.__style_directory_edit)
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnStyleDirectoryEdited, self.__style_directory_edit)
-        self._control_grid.Add(label, (8, 1))
-        self._control_grid.Add(self.__style_directory_edit, (8, 2))
-        self._control_grid.Add(self.__find_style_directory_button, (8, 3))
+        self._control_grid.Add(label, (9, 1))
+        self._control_grid.Add(self.__style_directory_edit, (9, 2))
+        self._control_grid.Add(self.__find_style_directory_button, (9, 3))
 
     def _FillPropertySizer(self):
         super(ProjectDetailView, self)._FillPropertySizer()
         self.__AddXhtmlTemplateControl()
+        self.__AddHighresXhtmlTemplateControl()
         self.__AddStyleDirectoryControl()
 
     def GetLabelCategory(self):
@@ -87,6 +101,21 @@ class ProjectDetailView(CustomContentReferenceDetailView):
             self.__xhtml_template_edit.SetValue(dlg.GetPath())
             self._OnEdited()
 
+    def __OnHighresXhtmlTemplateEdited(self, event):
+        if self._main_panel.event_handlers_enabled:
+            self._OnEdited()
+
+    def __OnHighresXhtmlTemplateFindButton(self, event):
+        dlg = wx.FileDialog(self._main_panel,
+                            message="Highres XHMTL template file",
+                            defaultDir=os.getcwd(),
+                            defaultFile="",
+                            wildcard="HTML files (*.html)|*.html",
+                            style=wx.OPEN | wx.CHANGE_DIR)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.__highres_xhtml_template_edit.SetValue(dlg.GetPath())
+            self._OnEdited()
+
     def __OnStyleDirectoryEdited(self, event):
         if self._main_panel.event_handlers_enabled:
             self._OnEdited()
@@ -100,11 +129,15 @@ class ProjectDetailView(CustomContentReferenceDetailView):
     def __IsXhtmlTemplateModified(self):
         return self.__xhtml_template_edit.GetValue() != self.element.xhtml_template
 
+    def __IsHighresXhtmlTemplateModified(self):
+        return self.__highres_xhtml_template_edit.GetValue() != self.element.highres_xhtml_template
+
     def __IsStyleDirectoryModified(self):
         return self.__style_directory_edit.GetValue() != self.element.style_directory
 
     def _IsModified(self):
         return (self.__IsXhtmlTemplateModified() or
+                self.__IsHighresXhtmlTemplateModified() or
                 self.__IsStyleDirectoryModified() or 
                 super(ProjectDetailView, self)._IsModified())
 
@@ -112,6 +145,9 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         super(ProjectDetailView, self)._OnApply(event)
         if self.__IsXhtmlTemplateModified():
             self.element.xhtml_template = self.__xhtml_template_edit.GetValue()
+            self.element.modified = True
+        if self.__IsHighresXhtmlTemplateModified():
+            self.element.highres_xhtml_template = self.__highres_xhtml_template_edit.GetValue()
             self.element.modified = True
         if self.__IsStyleDirectoryModified():
             self.element.style_directory = self.__style_directory_edit.GetValue()
@@ -121,6 +157,8 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         super(ProjectDetailView, self)._OnCancel(event)
         if self.__IsXhtmlTemplateModified():
              self.__xhtml_template_edit.SetValue(self.element.xhtml_template)
+        if self.__IsHighresXhtmlTemplateModified():
+             self.__highres_xhtml_template_edit.SetValue(self.element.highres_xhtml_template)
         if self.__IsStyleDirectoryModified():
              self.__style_directory_edit.SetValue(self.element.style_directory)
     

@@ -3,6 +3,7 @@
  name="Photopage"
  galgen-version="0.9.5"
  xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\template.html"
+ highres-xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\highres_template.html"
  style-directory="C:\Users\sseycek\dev\galgen_trunk\test\style"
  menu-id=""
  title="Photopage"

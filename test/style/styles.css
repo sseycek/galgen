@@ -11,7 +11,7 @@ body {
 #whole_page {
 	text-align:left;
    	margin:0 auto;
-   	width:1003px;
+   	width:1071px;
 }
 
 a:link {
@@ -219,6 +219,17 @@ a:active {
 	width: 116px;
 	height: 80px;
 	vertical-align: middle;
+	text-align: center;
+}
+
+div.thumbzelle_small {
+	width: 189px;
+	text-align: left;
+	margin-left: 15px;
+}
+
+div.thumbzelle_small_inner {
+	width: 88px;
 	text-align: center;
 }
 

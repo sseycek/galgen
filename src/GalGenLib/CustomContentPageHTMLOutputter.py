@@ -53,7 +53,8 @@ class CustomContentPageHTMLOutputter(CustomContentReferenceHTMLOutputter):
         menu_id_href_mapping = Core.getInstance().project.getMenuIdHrefMapping(0)
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
-        self.disableNaviControls(False, True)
+        # TODO: Hack alert
+        self.disableNaviControls(False, 'http://seycek.eu/style/img/back_hr.png')
         self.__updatePrevNavi()
         self._copyIframeDir(target_dir)
         self._copyCustomContentHtmlFile(target_dir)

@@ -41,6 +41,7 @@ class BasicHTMLOutputter(object):
     css_tag_id = 'css_ref'
     navi_tag_id = 'navizelle'
     navi_prev_tag_id = 'navi-prev'
+    navi_back_button_tag_id = 'navi-back-button'
     navi_next_tag_id = 'navi-next'
     navi_album_tag_id = 'navi-album'
     navi_highres_tag_id = 'navi-highres'
@@ -50,6 +51,7 @@ class BasicHTMLOutputter(object):
     title_tag_id = 'title'
     subtitle_tag_id = 'subtitle'
     js_tag_id = 'js'
+    js_globals_tag_id = 'js-globals'
     body_tag_id = 'body'
     active_menu_item_class = 'effect1'
 
@@ -89,11 +91,17 @@ class BasicHTMLOutputter(object):
     def getJSTag(self):
         return self.getElementById(self.js_tag_id)
 
+    def getJSGlobalsTag(self):
+        return self.getElementById(self.js_globals_tag_id)
+
     def getNaviTag(self):
         return self.getElementById(self.navi_tag_id)
 
     def getNaviPrevTag(self):
         return self.getElementById(self.navi_prev_tag_id)
+
+    def getNaviBackButtonTag(self):
+        return self.getElementById(self.navi_back_button_tag_id)
 
     def getNaviNextTag(self):
         return self.getElementById(self.navi_next_tag_id)
@@ -171,7 +179,7 @@ class BasicHTMLOutputter(object):
             if a is not None:
                 a.set('href', href)
                 
-    def disableNaviControls(self, keep_info, keep_prev):
+    def disableNaviControls(self, keep_info, back_button_img):
         tag = self.getNaviAlbumTag()
         if tag is not None: tag.clear()
         tag = self.getNaviHighresTag()
@@ -181,9 +189,14 @@ class BasicHTMLOutputter(object):
             if tag is not None: tag.clear()
         tag = self.getNaviNextTag()
         if tag is not None: tag.clear()
-        if not keep_prev:
+        if not back_button_img:
             tag = self.getNaviPrevTag()
             if tag is not None: tag.clear()
+        else:
+            back_button = self.getNaviBackButtonTag()
+            back_button.set('src', back_button_img)
+            back_button.set('title', 'back')
+            back_button.set('alt', 'back')
         tag = self.getNaviSlideshowTag()
         if tag is not None: tag.clear()
 

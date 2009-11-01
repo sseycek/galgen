@@ -9,6 +9,9 @@
     <meta name="keywords" lang="en-us" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
     <meta name="keywords" lang="en" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
     <link rel="stylesheet" type="text/css" href="http://seycek.eu/style/styles.css" id="css_ref"/>
+    <script type="text/javascript" id="js-globals">
+		var slideshow = false;
+    </script>
     <script type="text/javascript" id="js">
       Normal1 = new Image();
       Normal1.src = "http://seycek.eu/style/img/Logo_link.png";   
@@ -39,10 +42,16 @@
       	    else metadata_div.style.display="none";
           }
       }
+
+      function maybeSlideShow() {
+          if (slideshow) 
+              window.setTimeout("if (slideshow_next) location.href = slideshow_next;", 3500);
+      }
+      
       </script>	
   </head>
 
-  <body id="body">
+  <body id="body" onload="maybeSlideShow()">
     <div id="whole_page">
       <div id="meta-data-outer"><div id="meta-data-inner"> </div> </div>
       <table  class="table1" cellspacing="0" cellpadding="0">
@@ -115,7 +124,7 @@
               <tr>
                 <td class="navizelle-left">
                   <a id="navi-prev">
-                    <img src="http://seycek.eu/style/prev.png" class="navi" title="Vorheriges Bild" alt="Vorheriges Bild" />
+                    <img src="http://seycek.eu/style/prev.png" class="navi" title="Vorheriges Bild" alt="Vorheriges Bild" id="navi-back-button" />
                   </a>
                 </td>
                 <td class="navizelle-right">

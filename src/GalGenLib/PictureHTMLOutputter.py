@@ -143,7 +143,11 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             tr = etree.SubElement(table, 'tr')
             td = etree.SubElement(tr, 'td')
             td.set('class', 'thumbzelle_small')
-            a = etree.SubElement(td, 'a')
+            div1 = etree.SubElement(td, 'div')
+            div1.set('class', 'thumbzelle_small')
+            div2 = etree.SubElement(div1, 'div')
+            div2.set('class', 'thumbzelle_small_inner')
+            a = etree.SubElement(div2, 'a')
             a.set('href', pictures[i].html_file_name)
             img = etree.SubElement(a, 'img')
             if not pictures[i].pic_file_name.endswith('.jpg'): raise Exception, 'currently only jpg files are supported'
@@ -167,11 +171,21 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         if os.path.lexists(self.entity.highres_location):
             tag = self.getNaviHighresTag()
             if tag: tag.set('href', '%s_hr.html' % self.entity.name)
+        tag = self.getNaviSlideshowTag()
+        if tag: tag.set('href', '%s_sls.html' % self.entity.name)
 
-    def generateOutput(self, target_dir, progress_updater, page_index):
-        self.__copyPicture(target_dir)
-        self.__copyHighresPicture(target_dir)
-        self.__generateThumbs(target_dir)
+    def __updateSlideshowJs(self):
+        tag = self.getJSGlobalsTag()
+        if tag is not None:
+            next = self.entity.getNext()
+            if next:
+                tag.text = 'slideshow = true; slideshow_next = "%s_sls.html";' % next.name
+
+    def generateOutput(self, target_dir, progress_updater, page_index, slideshow = False):
+        if not slideshow:
+            self.__copyPicture(target_dir)
+            self.__copyHighresPicture(target_dir)
+            self.__generateThumbs(target_dir)
         self.updateCssRef(2)
         self.updateStyleDirRefs(2)
         self.updateDocTitle()
@@ -183,9 +197,18 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         self.__addPicture()
         self.__updateThumbStripe()
         self.__updateNaviControls()
-        self._fillMetaDataTag(self.entity.exif)
-        file_name = '%s.html' % self.entity.name
+        if not slideshow:
+            self._fillMetaDataTag(self.entity.exif)
+            file_name = '%s.html' % self.entity.name
+        else:
+            self.__updateSlideshowJs()
+            file_name = '%s_sls.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
-        self.__createHihgresHTML(target_dir)
+        if not slideshow:
+            self.__createHihgresHTML(target_dir)
+        if not slideshow:
+            # create corresponding slideshow file
+            slideshow_outputter = PictureHTMLOutputter(self.entity)
+            slideshow_outputter.generateOutput(target_dir, progress_updater, page_index, True)
         return page_index
         

@@ -10,7 +10,7 @@
  subtitle="Otakar Seycek"
  html-location="C:\Users\sseycek\dev\galgen_trunk\test\index_page.html"
  supplemental-dir="C:\Users\sseycek\dev\galgen_trunk\test\index_page_files">
-<customcontent name="Guest Book" location="C:\Users\sseycek\dev\galgen_trunk\test\guestbook.html" dir-location="" menu-id="menu_gaestebuch" title="Guest Book" subtitle="...">
+<customcontent name="Guest Book" location="C:\Users\sseycek\dev\galgen_trunk\test\gaestebuch_text.html" dir-location="" menu-id="menu_gaestebuch" title="Guest Book" subtitle="...">
 </customcontent>
 <gallery name="Gallery" menu-id="menu_reisen" title="Test" subtitle="caption" description="">
 <album name="Österreich" pic="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" menu-id="" title="Österreich" subtitle="Photos" description="">

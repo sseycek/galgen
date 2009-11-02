@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Photopage"
- galgen-version="0.9.5"
+ galgen-version="0.9.6"
  xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\template.html"
  highres-xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\highres_template.html"
  style-directory="C:\Users\sseycek\dev\galgen_trunk\test\style"
@@ -13,7 +13,7 @@
 <customcontent name="Guest Book" location="C:\Users\sseycek\dev\galgen_trunk\test\gaestebuch_text.html" dir-location="" menu-id="menu_gaestebuch" title="Guest Book" subtitle="...">
 </customcontent>
 <gallery name="Gallery" menu-id="menu_reisen" title="Test" subtitle="caption" description="">
-<album name="Österreich" pic="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" menu-id="" title="Österreich" subtitle="Photos" description="">
+<album name="Oesterreich" pic="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" menu-id="" title="Österreich" subtitle="Photos" description="">
 <picture name="Pic2" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" menu-id="" title="Pic2" subtitle="" description="Pic2" exif="">
 </picture>
 <picture name="Pic3" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic3.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic3.jpg" menu-id="" title="Pic3" subtitle="" description="Pic3" exif="">

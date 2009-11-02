@@ -406,6 +406,15 @@ div.menu_galleries {
   width: 189px;
 }
 
+div.menu-dummy {
+  width: 189px;
+  height: 581px;
+}
+
+div.thumb-stripe-dummy {
+  width: 189px;
+}
+
 div.menu_custom_pages {
 }
 

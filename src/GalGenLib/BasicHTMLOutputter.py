@@ -53,6 +53,7 @@ class BasicHTMLOutputter(object):
     js_tag_id = 'js'
     js_globals_tag_id = 'js-globals'
     body_tag_id = 'body'
+    menu_tag_id = 'menuzelle'
     active_menu_item_class = 'effect1'
 
     def __init__(self, entity):
@@ -129,6 +130,9 @@ class BasicHTMLOutputter(object):
 
     def getBodyTag(self):
         return self.getElementById(self.body_tag_id)
+
+    def getMenuTag(self):
+        return self.getElementById(self.menu_tag_id)
 
     def getXHTMLHeader(self):
         return ''''''

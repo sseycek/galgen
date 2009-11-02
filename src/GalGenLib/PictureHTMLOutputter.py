@@ -42,6 +42,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
 
     def __init__(self, picture):
         NamedObjectHTMLOutputter.__init__(self, picture)
+        self.__slideshow = False
 
     def __addPicture(self):
         content_element = self.getContentTag()
@@ -130,8 +131,13 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __updateThumbStripe(self):
         thumb_tag = self.getThumbStripeTag()
         if thumb_tag == None: raise Exception, 'No thumb stripe tag contained in template'
+        if self.__slideshow:
+            # no thumb stripe for slideshow
+            thumb_tag.clear()
+            div = etree.SubElement(thumb_tag, 'div')
+            div.set('class', 'thumb-stripe-dummy')
+            return
         slide_thumb_size = Thumbnailer.getInstance().slide_thumb_size
-        #<table class="table1" cellspacing="0" cellpadding="0">
         table = etree.SubElement(thumb_tag, 'table')
         table.set('class', 'table1');
         table.set('cellspacing', '0');
@@ -181,7 +187,16 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             if next:
                 tag.text = 'slideshow = true; slideshow_next = "%s_sls.html";' % next.name
 
+    def __clearMenu(self):
+        tag = self.getMenuTag()
+        if tag is not None:
+            tag.clear()
+            div = etree.SubElement(tag, 'div')
+            div.set('class', 'menu-dummy')
+
     def generateOutput(self, target_dir, progress_updater, page_index, slideshow = False):
+        if slideshow:
+            self.__slideshow = True;
         if not slideshow:
             self.__copyPicture(target_dir)
             self.__copyHighresPicture(target_dir)
@@ -202,6 +217,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             file_name = '%s.html' % self.entity.name
         else:
             self.__updateSlideshowJs()
+            self.__clearMenu()
             file_name = '%s_sls.html' % self.entity.name
         self.writeXHTML(self.html_tree, os.path.join(target_dir, file_name))
         if not slideshow:

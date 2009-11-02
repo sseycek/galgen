@@ -30,4 +30,4 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 ProgName = 'GALGen'
-ProgVersion = '0.9.5'
+ProgVersion = '0.9.6'

@@ -86,6 +86,9 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
                 elif 'id' in elem.attrib and elem.attrib['id'] == 'highres_img':
                     tag = elem
                     tag.set('src', 'pics/highres/%s' % self.entity.pic_file_name)
+                elif 'id' in elem.attrib and elem.attrib['id'] == 'doctitle':
+                    tag = elem
+                    tag.text = self.entity.name
             self.writeXHTML(html_tree, os.path.join(album_dir, file_name))
 
     def __generateThumbs(self, album_dir):

@@ -47,9 +47,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
     def __addPicture(self):
         content_element = self.getContentTag()
         table = etree.SubElement(content_element, 'table')
-        table.set('height', '696px');
-        table.set('width', '696px');
-        table.set('style', 'border-collapse:collapse; border:1px solid #333333');
+        table.set('id', 'picture-table');
         tr = etree.SubElement(table, 'tr')
         td = etree.SubElement(tr, 'td')
         td.set('align', 'center')

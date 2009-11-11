@@ -9,6 +9,7 @@
     <meta name="keywords" lang="en-us" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
     <meta name="keywords" lang="en" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
     <link rel="stylesheet" type="text/css" href="http://seycek.eu/style/styles.css" id="css_ref"/>
+    <link rel="shortcut icon" href="http://seycek.eu/style/favicon.ico" />
     <script type="text/javascript" id="js-globals">
 		var slideshow = false;
     </script>
@@ -33,10 +34,10 @@
     	  var width = main_cell.offsetWidth;
     	  if (metadata_div) {
             if (show) {
-                metadata_div.style.left = x + "px";
-                metadata_div.style.top = y + "px";
-                metadata_div.style.width = (width - 1) + "px";
-                metadata_div.style.height = (height - 1)  + "px";
+                metadata_div.style.left = (x + 1) + "px";
+                metadata_div.style.top = (y + 1) + "px";
+                metadata_div.style.width = (width - 2) + "px";
+                metadata_div.style.height = (height - 2)  + "px";
                 metadata_div.style.display="block";
             }
       	    else metadata_div.style.display="none";

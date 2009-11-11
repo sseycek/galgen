@@ -9,6 +9,7 @@
    <meta name="keywords" lang="en-us" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
    <meta name="keywords" lang="en" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
    <link rel="stylesheet" type="text/css" href="http://seycek.eu/style/styles.css" id="css_ref"/>
+   <link rel="shortcut icon" href="http://seycek.eu/style/favicon.ico" />
   <script id="js" type="text/javascript">
     Normal1 = new Image();
     Normal1.src = "http://seycek.eu/style/img/Logo_link.png";   
@@ -19,10 +20,19 @@
 
     function Bildwechsel (Bildnr, Bildobjekt)
     {window.document.images[Bildnr].src = Bildobjekt.src;}
-  </script>	
+
+    function Maximize()
+    {
+      window.innerWidth = screen.width;
+      window.innerHeight = screen.height;
+      window.screenX = 0;
+      window.screenY = 0;
+      alwaysLowered = false;
+    }    
+    </script>	
  </head>
 
- <body searchboxcompanion_highlight="off">
+ <body id="hr-body" onload="Maximize()">
   <table id="table_hr" align="center">
    <tr>      
     <td id="logozelle" colspan="3">

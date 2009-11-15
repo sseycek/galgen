@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="de" xml:lang="de" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title id="doctitle" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Otakar Seycek" />
+    <meta name="keywords" lang="de" content="Foto, Fotografie, Reisefotografie, Österreich, Nikon, Portrait, Macro, Makro, Closeup, Close-up, Architektur, Fotograf, Landschaftsfotografie" />
+    <meta name="keywords" lang="en-us" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
+    <meta name="keywords" lang="en" content="photo, photograph, photography, travel photography, Austria, Nikon, portrait, macro, closeup, close-up, architecture, landscape photography" />
+    <link rel="stylesheet" type="text/css" href="http://seycek.eu/style/styles.css" id="css_ref"/>
+    <link rel="shortcut icon" href="http://seycek.eu/style/favicon.ico" />
+    <script type="text/javascript" id="js-globals" />
+    <script type="text/javascript" id="js"><![CDATA[
+      Normal1 = new Image();
+      Normal1.src = "http://seycek.eu/style/img/Logo_link.png";   
+      Highlight1 = new Image();
+      Highlight1.src = "http://seycek.eu/style/img/Logo_hover.png"; 
+      Highlight2 = new Image();
+      Highlight2.src = "http://seycek.eu/style/img/Logo_active.png"; 
+
+      function Bildwechsel (Bildnr, Bildobjekt) {
+        window.document.images[Bildnr].src = Bildobjekt.src;
+      }
+
+      var interval = 3;
+
+      function updateSeconds() {
+        var div = document.getElementById("seconds");
+        if (div) div.firstChild.nodeValue = interval;
+      }
+
+      function incrInterval() {
+        interval = Math.min(++interval, 9);
+        updateSeconds();
+      }
+
+      function decrInterval() {
+        interval = Math.max(--interval, 2);
+        updateSeconds();
+      }
+      
+      function slideShowNext() {
+        location.href = slideshow_next + "?interval=" + interval;
+      }
+
+      function maybeSlideShow() {
+        if (slideshow) {
+          var strVars = window.location.search;
+          strVars = strVars.replace("?","");
+          var splitVars = strVars.split("&");
+          for(i=0; i != splitVars.length; ++i) {
+            var arg = splitVars[i].split("=");
+            if (arg[0] == "interval")
+              interval = parseInt(arg[1]);
+          }
+          updateSeconds();
+          window.setTimeout("slideShowNext();", Math.max(2, Math.min(9, interval)) * 1000);
+        }
+      }
+      
+      ]]></script>	
+  </head>
+
+  <body id="body" onload="maybeSlideShow()">
+    <div id="whole_page">
+      <div id="meta-data-outer"><div id="meta-data-inner"> </div> </div>
+      <table  class="table1" cellspacing="0" cellpadding="0">
+        <tr>
+          <!-- Leer-Zelle -->
+          <td id="leerzelle1" />
+          <!-- Logo-Zelle -->
+          <td id="logozelle">
+            <a href="http://seycek.eu/" onmouseover="Bildwechsel(0, Highlight1)" onmouseout="Bildwechsel(0, Normal1)" onclick="Bildwechsel(0, Highlight2)" title="HOME">
+          	        <img src="http://seycek.eu/style/img/Logo_link.png" alt="Home" id="logo" />
+            </a>
+          </td>	
+          <!-- Leer-Zelle -->
+          <td id="leerzelle2" />
+        </tr>
+
+        <!--Menu_Zelle -->
+        <tr>
+          <td id="menuzelle">
+           <div class="menu_galleries">
+           </div>
+           <div class="menu_custom_pages">
+           </div>
+          </td>
+          <!-- Haupt-Zelle -->
+          <td rowspan="2" id="hauptzelle" ><div class="hauptzelle"></div></td>
+          <!-- Thumbs-Zelle -->
+          <td id="thumbzelle" />
+            </tr>
+        <!-- Titel-Zelle -->
+        <tr>
+          <td class="titelzelle">
+            <table class="table1" cellspacing="0" cellpadding="0">
+              <tr>
+                <td id="titelzelle">
+                  <div class="title" id="title" />
+                </td>
+              </tr>
+              <tr>
+                <td id="subtitelzelle">
+                  <div class="subtitle" id="subtitle" />
+                </td>
+              </tr>
+            </table>
+          </td>			
+          <!-- Navi-Zelle -->
+          <td id="navizelle">
+            <table class="table1" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="navizelle-left">
+                  <a id="navi-prev">
+                    <img src="http://seycek.eu/style/img/prev_slsh.png" alt="Vorheriges Bild" class="navi" title="Vorheriges Bild" />
+                  </a>
+                </td>
+                <td class="navizelle-right">
+                  <a id="navi-next">
+                    <img src="http://seycek.eu/style/img/next_slsh.png" alt="Nächstes Bild" class="navi" title="Nächstes Bild" />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td class="navizelle-left">
+                  <img class="navi" src="http://seycek.eu/style/img/slow_slsh.png" title="langsamer" onclick="incrInterval();" />           
+                </td>
+                <td class="navizelle-right">               
+                  <img class="navi" src="http://seycek.eu/style/img/fast_slsh.png" title="schneller" onclick="decrInterval();" />               
+                </td>
+              </tr>
+              <tr>
+                <td class="navizelle-left">
+                  <a id="stop-slsh">
+                    <img alt="Slideshow stoppen" class="navi" src="http://seycek.eu/style/img/stop_slsh.png" title="Slideshow stoppen" />
+                  </a>
+                </td>
+                <td id="slideshow-speed">
+                  <span id="seconds">3</span><br/>sec
+                </td>
+              </tr>
+            </table>
+          </td>	
+        </tr>
+      </table>	
+    </div>
+  </body>
+</html>

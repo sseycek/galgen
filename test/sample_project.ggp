@@ -4,6 +4,7 @@
  galgen-version="0.9.6"
  xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\template.html"
  highres-xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\highres_template.html"
+ slideshow-xhtml-template="C:\Users\sseycek\dev\galgen_trunk\test\slideshow_template.html"
  style-directory="C:\Users\sseycek\dev\galgen_trunk\test\style"
  menu-id=""
  title="Photopage"

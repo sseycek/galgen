@@ -183,7 +183,7 @@ class BasicHTMLOutputter(object):
             if a is not None:
                 a.set('href', href)
                 
-    def disableNaviControls(self, keep_info, back_button_img):
+    def disableNaviControls(self, keep_info, back_button_img, slideshow_href):
         tag = self.getNaviAlbumTag()
         if tag is not None: tag.clear()
         tag = self.getNaviHighresTag()
@@ -202,8 +202,10 @@ class BasicHTMLOutputter(object):
             back_button.set('title', 'back')
             back_button.set('alt', 'back')
         tag = self.getNaviSlideshowTag()
-        if tag is not None: tag.clear()
-
+        if tag is not None:
+            if slideshow_href: tag.set('href', slideshow_href)
+            else: tag.clear()
+            
     def activateMenuItem(self, entity = None):
         if not entity: entity = self.entity
         if entity.menu_id:

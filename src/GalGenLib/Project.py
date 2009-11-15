@@ -43,7 +43,7 @@ import Globals
 class Project(CustomContentReference, Container, Modifyable):
     parent = None
 
-    def __init__(self, filename = '', name = '', template = '', highres_template = '', style_directory = '',
+    def __init__(self, filename = '', name = '', template = '', highres_template = '', slideshow_template = '', style_directory = '',
                  menu_id = '', title = '', subtitle = '', html_location = '', supplemental_dir = '', description=''):
         CustomContentReference.__init__(self, name, menu_id, title, subtitle, html_location, supplemental_dir, description)
         Container.__init__(self)
@@ -52,6 +52,7 @@ class Project(CustomContentReference, Container, Modifyable):
         self.__top_level_indexes = []
         self.__xhtml_template = template
         self.__highres_xhtml_template = highres_template
+        self.__slideshow_xhtml_template = slideshow_template
         self.__style_directory = style_directory
 
     def SetFilename(self, filename):
@@ -77,6 +78,14 @@ class Project(CustomContentReference, Container, Modifyable):
         return self.__highres_xhtml_template
 
     highres_xhtml_template = property(GetHighresXhtmlTemplate, SetHighresXhtmlTemplate)
+
+    def SetSlideshowXhtmlTemplate(self, template):
+        self.__slideshow_xhtml_template = template
+
+    def GetSlideshowXhtmlTemplate(self):
+        return self.__slideshow_xhtml_template
+
+    slideshow_xhtml_template = property(GetSlideshowXhtmlTemplate, SetSlideshowXhtmlTemplate)
 
     def SetStyleDirectory(self, dir):
         self.__style_directory = dir
@@ -109,11 +118,12 @@ class Project(CustomContentReference, Container, Modifyable):
         stream.write(u'<?xml version="1.0" encoding="UTF-8"?>\n')
 
     def __writeStartTag(self, stream):
-        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
+        stream.write(u'<project\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s"\n %s="%s">\n' %
                      ('name', asXmlAttribute(self.name),
                       'galgen-version', asXmlAttribute(Globals.ProgVersion),
                       'xhtml-template', asXmlAttribute(self.__xhtml_template),
                       'highres-xhtml-template', asXmlAttribute(self.__highres_xhtml_template),
+                      'slideshow-xhtml-template', asXmlAttribute(self.__slideshow_xhtml_template),
                       'style-directory', asXmlAttribute(self.__style_directory),
                       'menu-id', asXmlAttribute(self.menu_id),
                       'title', asXmlAttribute(self.title),

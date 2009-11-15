@@ -13,7 +13,7 @@
     <script type="text/javascript" id="js-globals">
 		var slideshow = false;
     </script>
-    <script type="text/javascript" id="js">
+    <script type="text/javascript" id="js"><![CDATA[
       Normal1 = new Image();
       Normal1.src = "http://seycek.eu/style/img/Logo_link.png";   
       Highlight1 = new Image();
@@ -45,11 +45,23 @@
       }
 
       function maybeSlideShow() {
-          if (slideshow) 
-              window.setTimeout("if (slideshow_next) location.href = slideshow_next;", 3500);
+          if (slideshow) {
+              interval = 3;
+              var strVars = window.location.search;
+              strVars = strVars.replace("?","");
+              var splitVars = strVars.split("&");
+              for(i=0; i != splitVars.length; ++i)
+              {
+                var arg = splitVars[i].split("=");
+                if (arg[0] == "interval")
+                	interval = parseInt(arg[1]);
+              }
+              var cmd = "if (slideshow_next) location.href = slideshow_next + \"?interval=\" + interval*1000;"
+              window.setTimeout(cmd, interval);
+          }
       }
       
-      </script>	
+      ]]></script>	
   </head>
 
   <body id="body" onload="maybeSlideShow()">

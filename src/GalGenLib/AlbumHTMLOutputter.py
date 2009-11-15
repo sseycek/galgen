@@ -138,6 +138,9 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
         self.__createSubDirs(target_dir)
         self.__handled_thumbs = 0
         self.__current_idx_page = 0
+        first_child_name = None
+        if len(self.entity.children) > 0:
+            first_child_name = self.entity.children[0].name
         while len(self.entity.children) - self.__handled_thumbs > 0:
             self.__current_idx_page += 1
             if self.__current_idx_page > 1:
@@ -150,7 +153,7 @@ class AlbumHTMLOutputter(NamedObjectHTMLOutputter):
             self.updateTitleCell(self.entity.title, self.entity.subtitle)
             self.activateMenuItem(self.entity.parent)
             self.updateMenuItem(self.entity)
-            self.disableNaviControls(True, False)
+            self.disableNaviControls(True, False, '%s_sls.html' % first_child_name)
             self._fillMetaDataTag('')
             self.addIndexTable()
             idx_file = 'index.html'

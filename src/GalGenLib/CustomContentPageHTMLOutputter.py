@@ -54,7 +54,7 @@ class CustomContentPageHTMLOutputter(CustomContentReferenceHTMLOutputter):
         if menu_id_href_mapping: self.updateMenuHrefs(menu_id_href_mapping)
         self.updateTitleCell(self.entity.title, self.entity.subtitle)
         # TODO: Hack alert
-        self.disableNaviControls(False, 'http://seycek.eu/style/img/back_hr.png')
+        self.disableNaviControls(False, 'http://seycek.eu/style/img/back_hr.png', None)
         self.__updatePrevNavi()
         self._copyIframeDir(target_dir)
         self._copyCustomContentHtmlFile(target_dir)

@@ -64,6 +64,19 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         self._control_grid.Add(self.__highres_xhtml_template_edit, (8, 2))
         self._control_grid.Add(self.__find_highres_xhtml_template_button, (8, 3))
 
+    def __AddSlideshowXhtmlTemplateControl(self):
+        label = wx.StaticText(self._main_panel, -1, 'Slideshow XHTML Template')
+        self.__slideshow_xhtml_template_edit = wx.TextCtrl(self._main_panel, -1, self.element.slideshow_xhtml_template, size = (600, -1))
+        self.__slideshow_xhtml_template_edit.MoveAfterInTabOrder(self.__find_highres_xhtml_template_button)
+        self.__find_slideshow_xhtml_template_button = wx.Button(self._main_panel, -1, "Find ...", (20, 20))
+        self.__find_slideshow_xhtml_template_button.MoveAfterInTabOrder(self.__slideshow_xhtml_template_edit)
+        self._main_panel.Bind(wx.EVT_BUTTON, self.__OnSlideshowXhtmlTemplateFindButton, self.__find_slideshow_xhtml_template_button)
+        self.__find_slideshow_xhtml_template_button.SetSize(self.__find_slideshow_xhtml_template_button.GetBestSize())
+        self._main_panel.Bind(wx.EVT_TEXT, self.__OnSlideshowXhtmlTemplateEdited, self.__slideshow_xhtml_template_edit)
+        self._control_grid.Add(label, (9, 1))
+        self._control_grid.Add(self.__slideshow_xhtml_template_edit, (9, 2))
+        self._control_grid.Add(self.__find_slideshow_xhtml_template_button, (9, 3))
+
     def __AddStyleDirectoryControl(self):
         label = wx.StaticText(self._main_panel, -1, 'Style Directory')
         self.__style_directory_edit = wx.TextCtrl(self._main_panel, -1, self.element.style_directory, size = (600, -1))
@@ -73,14 +86,15 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         self.__find_style_directory_button.SetSize(self.__find_style_directory_button.GetBestSize())
         self.__find_style_directory_button.MoveAfterInTabOrder(self.__style_directory_edit)
         self._main_panel.Bind(wx.EVT_TEXT, self.__OnStyleDirectoryEdited, self.__style_directory_edit)
-        self._control_grid.Add(label, (9, 1))
-        self._control_grid.Add(self.__style_directory_edit, (9, 2))
-        self._control_grid.Add(self.__find_style_directory_button, (9, 3))
+        self._control_grid.Add(label, (10, 1))
+        self._control_grid.Add(self.__style_directory_edit, (10, 2))
+        self._control_grid.Add(self.__find_style_directory_button, (10, 3))
 
     def _FillPropertySizer(self):
         super(ProjectDetailView, self)._FillPropertySizer()
         self.__AddXhtmlTemplateControl()
         self.__AddHighresXhtmlTemplateControl()
+        self.__AddSlideshowXhtmlTemplateControl()
         self.__AddStyleDirectoryControl()
 
     def GetLabelCategory(self):
@@ -116,6 +130,21 @@ class ProjectDetailView(CustomContentReferenceDetailView):
             self.__highres_xhtml_template_edit.SetValue(dlg.GetPath())
             self._OnEdited()
 
+    def __OnSlideshowXhtmlTemplateEdited(self, event):
+        if self._main_panel.event_handlers_enabled:
+            self._OnEdited()
+
+    def __OnSlideshowXhtmlTemplateFindButton(self, event):
+        dlg = wx.FileDialog(self._main_panel,
+                            message="Slideshow XHMTL template file",
+                            defaultDir=os.getcwd(),
+                            defaultFile="",
+                            wildcard="HTML files (*.html)|*.html",
+                            style=wx.OPEN | wx.CHANGE_DIR)
+        if dlg.ShowModal() == wx.ID_OK:
+            self.__slideshow_xhtml_template_edit.SetValue(dlg.GetPath())
+            self._OnEdited()
+
     def __OnStyleDirectoryEdited(self, event):
         if self._main_panel.event_handlers_enabled:
             self._OnEdited()
@@ -132,12 +161,16 @@ class ProjectDetailView(CustomContentReferenceDetailView):
     def __IsHighresXhtmlTemplateModified(self):
         return self.__highres_xhtml_template_edit.GetValue() != self.element.highres_xhtml_template
 
+    def __IsSlideshowXhtmlTemplateModified(self):
+        return self.__slideshow_xhtml_template_edit.GetValue() != self.element.slideshow_xhtml_template
+
     def __IsStyleDirectoryModified(self):
         return self.__style_directory_edit.GetValue() != self.element.style_directory
 
     def _IsModified(self):
         return (self.__IsXhtmlTemplateModified() or
                 self.__IsHighresXhtmlTemplateModified() or
+                self.__IsSlideshowXhtmlTemplateModified() or
                 self.__IsStyleDirectoryModified() or 
                 super(ProjectDetailView, self)._IsModified())
 
@@ -149,6 +182,9 @@ class ProjectDetailView(CustomContentReferenceDetailView):
         if self.__IsHighresXhtmlTemplateModified():
             self.element.highres_xhtml_template = self.__highres_xhtml_template_edit.GetValue()
             self.element.modified = True
+        if self.__IsSlideshowXhtmlTemplateModified():
+            self.element.slideshow_xhtml_template = self.__slideshow_xhtml_template_edit.GetValue()
+            self.element.modified = True
         if self.__IsStyleDirectoryModified():
             self.element.style_directory = self.__style_directory_edit.GetValue()
             self.element.modified = True
@@ -159,6 +195,8 @@ class ProjectDetailView(CustomContentReferenceDetailView):
              self.__xhtml_template_edit.SetValue(self.element.xhtml_template)
         if self.__IsHighresXhtmlTemplateModified():
              self.__highres_xhtml_template_edit.SetValue(self.element.highres_xhtml_template)
+        if self.__IsSlideshowXhtmlTemplateModified():
+             self.__slideshow_xhtml_template_edit.SetValue(self.element.slideshow_xhtml_template)
         if self.__IsStyleDirectoryModified():
              self.__style_directory_edit.SetValue(self.element.style_directory)
     

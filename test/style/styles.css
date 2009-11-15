@@ -505,3 +505,15 @@ div.menu_sub_entry {
 #gb_form_email_input {
   width: 225px;
 }
+
+#slideshow-speed {
+  text-align:center;
+  vertical-align:middle;
+  color:#3c3c3c;
+  border-collapse:collapse;
+  border:1px solid #222222;
+}
+
+#seconds {
+  font-weight: bold;
+}

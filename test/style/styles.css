@@ -361,6 +361,11 @@ iframe.hauptzelle {
     text-decoration: none;
 }
 
+.effect2 {
+  border-left:2px solid #a60000;
+  border-bottom:1px solid #a60000;
+}
+
 #effect2 {
 	border-left: 8px solid #a60000;
 	border-right: 8px solid #a60000;
@@ -440,7 +445,7 @@ div.menu_entry {
 
 div.menu_sub_entry {
   margin-top: 5px;
-  margin-left: 40px;
+  margin-left: 60px;
   color: #999999;
   font-weight: bold;
 }

@@ -55,6 +55,7 @@ class BasicHTMLOutputter(object):
     body_tag_id = 'body'
     menu_tag_id = 'menuzelle'
     active_menu_item_class = 'effect1'
+    active_submenu_item_class = 'effect2'
 
     def __init__(self, entity):
         self.__entity = entity
@@ -216,6 +217,7 @@ class BasicHTMLOutputter(object):
     def updateMenuItem(self, album):
         gallery = album.parent
         if gallery.menu_id:
-            div = self.getElementById('%s_album' % gallery.menu_id) # a little hacky ...
-            if div is not None:
-                div.text = album.name
+            span = self.getElementById('%s_album' % gallery.menu_id) # a little hacky ...
+            if span is not None:
+                span.text = album.name
+                span.set('class', self.active_submenu_item_class) 

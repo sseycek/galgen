@@ -62,6 +62,24 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         if os.path.lexists(self.entity.highres_location):
             shutil.copyfile(self.entity.highres_location, os.path.join(album_dir, 'pics', 'highres', self.entity.highres_pic_file_name))
 
+    def __getPrevWithHighres(self):
+        prev = self.entity.getPrevious()
+        while prev:
+            if os.path.lexists(prev.highres_location):
+                return prev
+            else:
+                prev = prev.getPrevious()
+        return None
+    
+    def __getNextWithHighres(self):
+        next = self.entity.getNext()
+        while next:
+            if os.path.lexists(next.highres_location):
+                return next
+            else:
+                next = next.getNext()
+        return None
+    
     def __createHihgresHTML(self, album_dir):
         if os.path.lexists(self.entity.highres_location):
             file_name = '%s_hr.html' % self.entity.name
@@ -69,23 +87,21 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
             html_tree = template.HTML
             for elem in html_tree.getiterator():
                 if 'id' in elem.attrib and elem.attrib['id'] == 'highres_navi_prev':
-                    tag = elem
-                    prev = self.entity.getPrevious()
+                    prev = self.__getPrevWithHighres()
                     if prev:
                         prev_file_name = '%s_hr.html' % prev.name
-                        tag.set('href', prev_file_name)
+                        elem.set('href', prev_file_name)
+                elif 'id' in elem.attrib and elem.attrib['id'] == 'highres_navi_close':
+                    elem.set('href', '%s.html' % self.entity.name)
                 elif 'id' in elem.attrib and elem.attrib['id'] == 'highres_navi_next':
-                    tag = elem
-                    next = self.entity.getNext()
+                    next = self.__getNextWithHighres()
                     if next:
                         next_file_name = '%s_hr.html' % next.name
-                        tag.set('href', next_file_name)
+                        elem.set('href', next_file_name)
                 elif 'id' in elem.attrib and elem.attrib['id'] == 'highres_img':
-                    tag = elem
-                    tag.set('src', 'pics/highres/%s' % self.entity.pic_file_name)
+                    elem.set('src', 'pics/highres/%s' % self.entity.pic_file_name)
                 elif 'id' in elem.attrib and elem.attrib['id'] == 'doctitle':
-                    tag = elem
-                    tag.text = self.entity.name
+                    elem.text = self.entity.name
             self.writeXHTML(html_tree, os.path.join(album_dir, file_name))
 
     def __createSlideshowHTML(self, album_dir):

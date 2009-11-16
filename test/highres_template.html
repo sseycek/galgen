@@ -18,21 +18,14 @@
     Highlight2 = new Image();
     Highlight2.src = "http://seycek.eu/style/img/Logo_active.png"; 
 
-    function Bildwechsel (Bildnr, Bildobjekt)
-    {window.document.images[Bildnr].src = Bildobjekt.src;}
+    function Bildwechsel (Bildnr, Bildobjekt) {
+        window.document.images[Bildnr].src = Bildobjekt.src;
+    }
 
-    function Maximize()
-    {
-      window.innerWidth = screen.width;
-      window.innerHeight = screen.height;
-      window.screenX = 0;
-      window.screenY = 0;
-      alwaysLowered = false;
-    }    
     </script>	
  </head>
 
- <body id="hr-body" onload="Maximize()">
+ <body id="hr-body">
   <table id="table_hr" align="center">
    <tr>      
     <td id="logozelle" colspan="3">
@@ -48,7 +41,7 @@
  	 </a>
     </td>
 	<td>
-	 <a href="#" onclick="window.close();"><img alt="Schlie&szlig;en" src="http://seycek.eu/style/img/close_hr.png" class="navi"/></a>
+	 <a id="highres_navi_close"><img alt="Zur Standardansicht" src="http://seycek.eu/style/img/close_hr.png" class="navi"/></a>
 	</td>
 	<td align="left">
      <a id="highres_navi_next">

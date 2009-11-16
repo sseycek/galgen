@@ -15,7 +15,7 @@
 <album name="Album" pic="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" menu-id="" title="Test" subtitle="Pictures" description="Test Album">
 <picture name="Pic1" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic1.jpg" menu-id="" title="Pic1" subtitle="" description="" exif="">
 </picture>
-<picture name="Pic2" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" menu-id="" title="Pic2" subtitle="" description="" exif="">
+<picture name="Pic2" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
 </picture>
 <picture name="Pic3" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic3.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic3.jpg" menu-id="" title="Pic3" subtitle="" description="" exif="">
 </picture>

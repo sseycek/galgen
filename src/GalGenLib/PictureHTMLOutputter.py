@@ -109,19 +109,7 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
         template = HTMLTemplate(Core.getInstance().project.slideshow_xhtml_template)
         html_tree = template.HTML
         for elem in html_tree.getiterator():
-            if 'id' in elem.attrib and elem.attrib['id'] == 'navi-prev':
-                tag = elem
-                prev = self.entity.getPrevious()
-                if prev:
-                    prev_file_name = '%s_sls.html' % prev.name
-                    tag.set('href', prev_file_name)
-            elif 'id' in elem.attrib and elem.attrib['id'] == 'navi-next':
-                tag = elem
-                next = self.entity.getNext()
-                if next:
-                    next_file_name = '%s_sls.html' % next.name
-                    tag.set('href', next_file_name)
-            elif 'id' in elem.attrib and elem.attrib['id'] == 'doctitle':
+            if 'id' in elem.attrib and elem.attrib['id'] == 'doctitle':
                 tag = elem
                 tag.text = self.entity.name
             elif 'id' in elem.attrib and elem.attrib['id'] == 'stop-slsh':
@@ -129,11 +117,15 @@ class PictureHTMLOutputter(NamedObjectHTMLOutputter):
                 tag.set('href', '%s.html' % self.entity.name)
             elif 'id' in elem.attrib and elem.attrib['id'] == 'js-globals':
                 tag = elem
+                tag_text = 'slideshow = true; '
+                prev = self.entity.getPrevious()
+                if prev: tag_text += 'slideshow_prev = "%s_sls.html" ;' % prev.name 
                 next = self.entity.getNext()
                 if next:
-                    tag.text = 'slideshow = true; slideshow_next = "%s_sls.html";' % next.name
+                    tag_text += 'slideshow_next = "%s_sls.html";' % next.name
                 else:
-                    tag.text = 'slideshow = true; slideshow_next = "%s.html";' % self.entity.name
+                    tag_text += 'slideshow_next = "%s.html";' % self.entity.name
+                tag.text = tag_text
             elif 'id' in elem.attrib and elem.attrib['id'] == 'hauptzelle':
                 tag = elem
                 table = etree.SubElement(tag, 'table')

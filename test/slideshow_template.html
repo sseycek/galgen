@@ -44,6 +44,11 @@
         location.href = slideshow_next + "?interval=" + interval;
       }
 
+      function slideShowPrev() {
+        if (slideshow_prev)
+	      location.href = slideshow_prev + "?interval=" + interval;
+      }
+
       function maybeSlideShow() {
         if (slideshow) {
           var strVars = window.location.search;
@@ -113,12 +118,12 @@
             <table class="table1" cellpadding="0" cellspacing="0">
               <tr>
                 <td class="navizelle-left">
-                  <a id="navi-prev">
+                  <a id="navi-prev" onclick="slideShowPrev()">
                     <img src="http://seycek.eu/style/img/prev_slsh.png" alt="Vorheriges Bild" class="navi" title="Vorheriges Bild" />
                   </a>
                 </td>
                 <td class="navizelle-right">
-                  <a id="navi-next">
+                  <a id="navi-next" onclick="slideShowNext()">
                     <img src="http://seycek.eu/style/img/next_slsh.png" alt="Nächstes Bild" class="navi" title="Nächstes Bild" />
                   </a>
                 </td>

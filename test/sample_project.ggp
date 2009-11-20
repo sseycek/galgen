@@ -33,6 +33,8 @@
 </picture>
 <picture name="Pic10" location="C:\Users\sseycek\dev\galgen_trunk\test\Pic10.jpg" highres-location="C:\Users\sseycek\dev\galgen_trunk\test\Pic10.jpg" menu-id="" title="Pic10" subtitle="" description="" exif="">
 </picture>
+<picture name="DSC_0038" location="C:\Dokumente und Einstellungen\sseycek\Desktop\DSC_0038.jpg" highres-location="" menu-id="" title="DSC_0038" subtitle="" description="" exif="">
+</picture>
 </album>
 </gallery>
 <customcontent name="Guestbook" location="C:\Users\sseycek\dev\galgen_trunk\test\gaestebuch_text.html" dir-location="" menu-id="menu_gaestebuch" title="Gästebuch" subtitle="...">

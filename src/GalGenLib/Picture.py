@@ -30,20 +30,19 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 import os
-import EXIF
+import pyexiv2
 from Modifyable import Modifyable
 from PictureReference import PictureReference
 from Contained import Contained
 from PictureHTMLOutputter import PictureHTMLOutputter
 from XmlUtils import asXmlAttribute
 
-META_DATA_TAGS = (('Image Model', 'Camera Model:'),
-                  ('EXIF DateTimeOriginal', 'Creation Time:'),
-                  ('EXIF ISOSpeedRating', 'ISO Number:'),
-                  ('EXIF ExposureTime', 'Exposure Time:'),
-                  ('EXIF FNumber', 'Aperture:'),
-                  ('EXIF FocalLength','Focal Length:'),
-                  ('EXIF FocalLengthIn35mmFilm','Focal Length (35mm equivalent):'))
+META_DATA_TAGS = ('Exif.Image.Model',
+                  'Lense',
+                  'Exif.Image.DateTime',
+                  'Exif.Photo.FocalLengthIn35mmFilm',
+                  'Exip.Photo.ExposureTime',
+                  'Exif.Photo.FNumber')
 
 class Picture(Modifyable, PictureReference, Contained):
 
@@ -107,11 +106,10 @@ class Picture(Modifyable, PictureReference, Contained):
         exif = ''
         global META_DATA_TAGS
         try:
-            fd = open(self.pic_location, 'rb')
-            meta_data = EXIF.process_file(fd)
-            fd.close()
-            for (k, name) in META_DATA_TAGS:
-                if k in meta_data:
+            meta_data = pyexiv2.Image(self.pic_location)
+            meta_data.readMetadata()
+            for k in META_DATA_TAGS:
+                if k in meta_data.exifKeys():
                     if exif:
                         exif += ' - '
                     exif += str(meta_data[k])

@@ -30,6 +30,7 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE. 
 
 import os
+import sys
 import shutil
 import time
 import wx
@@ -59,12 +60,19 @@ class Frame(wx.Frame):
 
     def __init__(self, parent, title):
         wx.Frame.__init__(self, parent, -1, title, (0,0), (1024,700))
+        self.__InitIcon()
         self.__InitMenu()
         self.__InitStatusBar()
         self.__InitToolBar()
         self.__InitSplitter()
         self.Bind(wx.EVT_CLOSE, self.OnClose)
 
+    def __InitIcon(self):
+        prog_dir = os.path.dirname(sys.argv[0])
+        icon_path = os.path.join(prog_dir, 'GALgen.ico')
+        icon = wx.Icon(icon_path, wx.BITMAP_TYPE_ICO)
+        wx.Frame.SetIcon(self, icon)            
+        
     def __InitMenu(self):
         self.__menu_file = wx.Menu()
         self.__menu_file.Append(Frame.WX_ID_FILE_MENU_NEW, '&New\tCTRL+N')

@@ -393,7 +393,7 @@ iframe.hauptzelle {
 }
 
 #meta-data-inner {
-  bottom:50px;
+  bottom:60px;
   left:30px;
   right:50px;
   position:absolute;
@@ -406,6 +406,7 @@ iframe.hauptzelle {
 .meta-data-td {
   color:black;	
   font-size:12px;
+  font-weight: bold;
 }
 
 div.gallery_row div.gallery_thumb {

@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 # Copyright (c) 2009 Stepan Seycek. All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or 
@@ -31,6 +33,7 @@
 
 import os
 import pyexiv2
+import datetime
 from Modifyable import Modifyable
 from PictureReference import PictureReference
 from Contained import Contained
@@ -38,11 +41,11 @@ from PictureHTMLOutputter import PictureHTMLOutputter
 from XmlUtils import asXmlAttribute
 
 META_DATA_TAGS = ('Exif.Image.Model',
-                  'Lense',
                   'Exif.Image.DateTime',
                   'Exif.Photo.FocalLengthIn35mmFilm',
                   'Exip.Photo.ExposureTime',
-                  'Exif.Photo.FNumber')
+                  'Exif.Photo.FNumber',
+                  'Exif.Photo.ISOSpeedRatings')
 
 class Picture(Modifyable, PictureReference, Contained):
 
@@ -110,12 +113,26 @@ class Picture(Modifyable, PictureReference, Contained):
             meta_data.readMetadata()
             for k in META_DATA_TAGS:
                 if k in meta_data.exifKeys():
+                    val = meta_data[k]
+                    if k == 'Exif.Image.DateTime':
+                        val = val.strftime('%Y-%m-%d')
+                    if k == 'Exif.Photo.FocalLengthIn35mmFilm':
+                        val = 'f=%d mm (KB)' % val
+                    if k == 'Exip.Photo.ExposureTime':
+                        val = '1/%d s' % val
+                    if k == 'Exif.Photo.FNumber':
+                        val = 1.0 * val.numerator / val.denominator
+                        if not val % 1: val = 'f/%d' % val
+                        else: val = 'f/%.1f' % val
+                    if k == 'Exif.Photo.ISOSpeedRatings':
+                        val = 'ISO %d' % val    
                     if exif:
-                        exif += ' - '
-                    exif += str(meta_data[k])
+                        exif += u' ● '
+                    exif += str(val)
         except:
             # ignore error opening file
-            pass
+            # pass
+            raise
         return exif
             
     def _picLocationUpdated(self):

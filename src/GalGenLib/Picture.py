@@ -33,7 +33,6 @@
 
 import os
 import pyexiv2
-import datetime
 from Modifyable import Modifyable
 from PictureReference import PictureReference
 from Contained import Contained
@@ -41,7 +40,7 @@ from PictureHTMLOutputter import PictureHTMLOutputter
 from XmlUtils import asXmlAttribute
 
 META_DATA_TAGS = ('Exif.Image.Model',
-                  'Exif.Image.DateTime',
+                  'Exif.Photo.DateTimeOriginal',
                   'Exif.Photo.FocalLengthIn35mmFilm',
                   'Exip.Photo.ExposureTime',
                   'Exif.Photo.FNumber',
@@ -114,7 +113,7 @@ class Picture(Modifyable, PictureReference, Contained):
             for k in META_DATA_TAGS:
                 if k in meta_data.exifKeys():
                     val = meta_data[k]
-                    if k == 'Exif.Image.DateTime':
+                    if k == 'Exif.Photo.DateTimeOriginal':
                         val = val.strftime('%Y-%m-%d')
                     if k == 'Exif.Photo.FocalLengthIn35mmFilm':
                         val = 'f=%d mm (KB)' % val

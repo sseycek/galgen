@@ -42,7 +42,7 @@ from XmlUtils import asXmlAttribute
 META_DATA_TAGS = ('Exif.Image.Model',
                   'Exif.Photo.DateTimeOriginal',
                   'Exif.Photo.FocalLengthIn35mmFilm',
-                  'Exip.Photo.ExposureTime',
+                  'Exif.Photo.ExposureTime',
                   'Exif.Photo.FNumber',
                   'Exif.Photo.ISOSpeedRatings')
 
@@ -110,20 +110,24 @@ class Picture(Modifyable, PictureReference, Contained):
         try:
             meta_data = pyexiv2.Image(self.pic_location)
             meta_data.readMetadata()
+            exif_keys = meta_data.exifKeys()
             for k in META_DATA_TAGS:
-                if k in meta_data.exifKeys():
+                if k in exif_keys:
                     val = meta_data[k]
                     if k == 'Exif.Photo.DateTimeOriginal':
                         val = val.strftime('%Y-%m-%d')
-                    if k == 'Exif.Photo.FocalLengthIn35mmFilm':
+                    elif k == 'Exif.Photo.FocalLengthIn35mmFilm':
                         val = 'f=%d mm (KB)' % val
-                    if k == 'Exip.Photo.ExposureTime':
-                        val = '1/%d s' % val
-                    if k == 'Exif.Photo.FNumber':
+                    elif k == 'Exif.Photo.ExposureTime':
+                        if val.denominator > val.numerator:
+                            val = '1/%d s' % (val.denominator/val.numerator)
+                        else:
+                            val = ('%.1f s' % (1.0 * val.numerator / val.denominator)).replace('.',',')
+                    elif k == 'Exif.Photo.FNumber':
                         val = 1.0 * val.numerator / val.denominator
                         if not val % 1: val = 'f/%d' % val
-                        else: val = 'f/%.1f' % val
-                    if k == 'Exif.Photo.ISOSpeedRatings':
+                        else: val = ('f/%.1f' % val).replace('.',',')
+                    elif k == 'Exif.Photo.ISOSpeedRatings':
                         val = 'ISO %d' % val    
                     if exif:
                         exif += u' ● '

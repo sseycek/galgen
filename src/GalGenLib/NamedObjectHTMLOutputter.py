@@ -53,16 +53,21 @@ class NamedObjectHTMLOutputter(BasicHTMLOutputter):
             tr.set('class', 'meta-data-tr');
             td = etree.SubElement(tr, 'td')
             td.set('class', 'meta-data-td');
-            td.text = self.entity.description
-            tr = etree.SubElement(table, 'tr')
-            tr.set('class', 'meta-data-tr');
-            td = etree.SubElement(tr, 'td')
-            td.set('class', 'meta-data-td');
-            td.text = " "
-            tr = etree.SubElement(table, 'tr')
-            tr.set('class', 'meta-data-tr');
-            td = etree.SubElement(tr, 'td')
-            td.set('class', 'meta-data-td');
-            td.text = extra_text
-                
-        
+            texts = self.entity.description.split('<br/>')
+            td.text = texts[0]
+            if len(texts) > 1:
+                texts = texts[1:]
+                for text in texts:
+                    br = etree.SubElement(td, 'br')
+                    br.tail = text
+            if extra_text:
+                tr = etree.SubElement(table, 'tr')
+                tr.set('class', 'meta-data-tr');
+                td = etree.SubElement(tr, 'td')
+                td.set('class', 'meta-data-td');
+                td.text = " "
+                tr = etree.SubElement(table, 'tr')
+                tr.set('class', 'meta-data-tr');
+                td = etree.SubElement(tr, 'td')
+                td.set('class', 'meta-data-td');
+                td.text = extra_text

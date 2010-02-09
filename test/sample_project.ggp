@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
  name="Photopage"
- galgen-version="0.9.7"
+ galgen-version="0.9.8"
  xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\template.html"
  highres-xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\highres_template.html"
  slideshow-xhtml-template="C:\Data\dev\eclipse\galgen_trunk\test\slideshow_template.html"
@@ -12,8 +12,8 @@
  html-location="C:\Data\dev\eclipse\galgen_trunk\test\index_page.html"
  supplemental-dir="C:\Data\dev\eclipse\galgen_trunk\test\index_page_files">
 <gallery name="Reisen" menu-id="menu_reisen" title="Reisen" subtitle="in die Welt" description="">
-<album name="Album" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Test" subtitle="Pictures" description="Test Album">
-<picture name="Zahnkofel" location="C:\Dokumente und Einstellungen\sseycek\Desktop\Zahnkofel.jpg" highres-location="" menu-id="" title="Zahnkofel" subtitle="" description="" exif="NIKON D200 ● 2009-10-11 ● f=18 mm (KB) ● f/10 ● ISO 100">
+<album name="Album" pic="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" menu-id="" title="Test" subtitle="Pictures" description="Test Album&lt;br/&gt;Zeile 2&lt;br/&gt;Zeile 3&lt;br/&gt;&lt;br/&gt;Zeile 5">
+<picture name="Zahnkofel" location="C:\Dokumente und Einstellungen\sseycek\Desktop\Zahnkofel.jpg" highres-location="" menu-id="" title="Zahnkofel" subtitle="" description="Foo&lt;br/&gt;Bar" exif="NIKON D200 ● 2009-09-07 ● f=18 mm (KB) ● 1/60 s ● f/10 ● ISO 100">
 </picture>
 <picture name="Pic3" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic3.jpg" highres-location="" menu-id="" title="Pic3" subtitle="" description="" exif="2009-01-12">
 </picture>
@@ -33,7 +33,9 @@
 </picture>
 <picture name="Pic1" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic1.jpg" highres-location="" menu-id="" title="Pic1" subtitle="" description="" exif="2009-01-12">
 </picture>
-<picture name="Pic2" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="2009-01-12">
+<picture name="Pic2" location="C:\Data\dev\eclipse\galgen_trunk\test\Pic2.jpg" highres-location="" menu-id="" title="Pic2" subtitle="" description="" exif="">
+</picture>
+<picture name="Picture" location="C:\Dokumente und Einstellungen\sseycek\Desktop\DSC_4916_.jpg" highres-location="" menu-id="" title="" subtitle="" description="" exif="">
 </picture>
 </album>
 </gallery>

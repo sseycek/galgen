@@ -108,9 +108,9 @@ class Picture(Modifyable, PictureReference, Contained):
         exif = ''
         global META_DATA_TAGS
         try:
-            meta_data = pyexiv2.Image(self.pic_location)
-            meta_data.readMetadata()
-            exif_keys = meta_data.exifKeys()
+            meta_data = pyexiv2.ImageMetadata(self.pic_location)
+            meta_data.read() # readMetadata()
+            exif_keys = meta_data.exif_keys
             for k in META_DATA_TAGS:
                 if k in exif_keys:
                     val = meta_data[k]

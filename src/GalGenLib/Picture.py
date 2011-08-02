@@ -39,12 +39,14 @@ from Contained import Contained
 from PictureHTMLOutputter import PictureHTMLOutputter
 from XmlUtils import asXmlAttribute
 
-META_DATA_TAGS = ('Exif.Image.Model',
-                  'Exif.Photo.DateTimeOriginal',
-                  'Exif.Photo.FocalLengthIn35mmFilm',
-                  'Exif.Photo.ExposureTime',
-                  'Exif.Photo.FNumber',
-                  'Exif.Photo.ISOSpeedRatings')
+EXIF_TAGS = ('Exif.Image.Model',
+             'Exif.Photo.DateTimeOriginal',
+             'Exif.Photo.FocalLengthIn35mmFilm',
+             'Exif.Photo.ExposureTime',
+             'Exif.Photo.FNumber',
+             'Exif.Photo.ISOSpeedRatings')
+
+XMP_TAGS = ('Xmp.aux.Lens',)
 
 class Picture(Modifyable, PictureReference, Contained):
 
@@ -106,14 +108,19 @@ class Picture(Modifyable, PictureReference, Contained):
     
     def extractExifFromPicture(self):
         exif = ''
-        global META_DATA_TAGS
+        exif_data = []
+        camera_pos = -1
+        global EXIF_TAGS, XMP_TAGS
         try:
             meta_data = pyexiv2.ImageMetadata(self.pic_location)
             meta_data.read() # readMetadata()
             exif_keys = meta_data.exif_keys
-            for k in META_DATA_TAGS:
+            i = 0
+            for k in EXIF_TAGS:
                 if k in exif_keys:
-                    val = meta_data[k]
+                    if k == 'Exif.Image.Model': camera_pos = i
+                    i += 1
+                    val = meta_data[k].value
                     if k == 'Exif.Photo.DateTimeOriginal':
                         val = val.strftime('%Y-%m-%d')
                     elif k == 'Exif.Photo.FocalLengthIn35mmFilm':
@@ -129,9 +136,17 @@ class Picture(Modifyable, PictureReference, Contained):
                         else: val = ('f/%.1f' % val).replace('.',',')
                     elif k == 'Exif.Photo.ISOSpeedRatings':
                         val = 'ISO %d' % val    
-                    if exif:
-                        exif += u' ● '
-                    exif += str(val)
+                    exif_data.append(val)
+
+            xmp_keys = meta_data.xmp_keys
+            for k in XMP_TAGS:
+                if k in xmp_keys:
+                    val = meta_data[k].value
+                    exif_data.insert(camera_pos + 1, val)
+ 
+            for val in exif_data:
+                if exif: exif += u' ● '
+                exif += str(val)
         except:
             # ignore error opening file
             # pass
